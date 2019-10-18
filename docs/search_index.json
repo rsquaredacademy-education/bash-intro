@@ -1,0 +1,15 @@
+[
+["index.html", "Command Line Basics for R Users Preface Structure of the book Software information", " Command Line Basics for R Users Aravind Hebbali 2019-10-18 Preface This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Structure of the book Chapter 1 introduces the concept of version control and its benefits. Chapter ?? introduces basic command line skills. Chapter ?? deals with setting up git. Chapter ?? shows how to set up GitHub projects using RStudio. Chapter ?? gives a tour of GitHub features. Chapter ?? explores git commands in some detail. Software information The R session information when compiling this book is shown below: sessionInfo() ## R version 3.6.1 (2019-07-05) ## Platform: x86_64-w64-mingw32/x64 (64-bit) ## Running under: Windows 10 x64 (build 18362) ## ## Matrix products: default ## ## locale: ## [1] LC_COLLATE=English_India.1252 LC_CTYPE=English_India.1252 ## [3] LC_MONETARY=English_India.1252 LC_NUMERIC=C ## [5] LC_TIME=English_India.1252 ## ## attached base packages: ## [1] stats graphics grDevices utils datasets methods base ## ## loaded via a namespace (and not attached): ## [1] compiler_3.6.1 magrittr_1.5 bookdown_0.13 tools_3.6.1 ## [5] htmltools_0.3.6 rstudioapi_0.10 yaml_2.2.0 Rcpp_1.0.2 ## [9] stringi_1.4.3 rmarkdown_1.15 knitr_1.24 stringr_1.4.0 ## [13] xfun_0.9 digest_0.6.21 evaluate_0.13 "],
+["intro.html", "Chapter 1 Introduction", " Chapter 1 Introduction "],
+["navigate.html", "Chapter 2 Navigating File System", " Chapter 2 Navigating File System "],
+["filemanagement.html", "Chapter 3 File Management", " Chapter 3 File Management "],
+["io.html", "Chapter 4 Input/Output", " Chapter 4 Input/Output "],
+["regex.html", "Chapter 5 Search &amp; Regular Expression", " Chapter 5 Search &amp; Regular Expression "],
+["datatransfer.html", "Chapter 6 Data Transfer", " Chapter 6 Data Transfer "],
+["sudo.html", "Chapter 7 sudo", " Chapter 7 sudo "],
+["compress.html", "Chapter 8 File Compression", " Chapter 8 File Compression "],
+["sysinfo.html", "Chapter 9 System Info", " Chapter 9 System Info "],
+["others.html", "Chapter 10 Others", " Chapter 10 Others "],
+["rinshell.html", "Chapter 11 R in the Shell", " Chapter 11 R in the Shell "],
+["summary.html", "Chapter 12 Summary", " Chapter 12 Summary "]
+]

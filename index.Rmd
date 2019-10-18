@@ -1,0 +1,29 @@
+--- 
+title: "Command Line Basics for R Users"
+author: "Aravind Hebbali"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+description: "A gentle introduction to the command line."
+---
+
+# Preface {-}
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+## Structure of the book {-}
+
+Chapter \@ref(intro) introduces the concept of version control and its benefits. 
+Chapter \@ref(shell) introduces basic command line skills. Chapter \@ref(setup)
+deals with setting up git. Chapter \@ref(projects) shows how to set up GitHub
+projects using RStudio. Chapter \@ref(tour) gives a tour of GitHub features. 
+Chapter \@ref(commands) explores git commands in some detail.
+
+## Software information {-}
+
+The R session information when compiling this book is shown below:
+
+```{r session}
+sessionInfo()
+```

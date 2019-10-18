@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Introduction to Shell | R, Git &amp; GitHub</title>
+  <meta name="description" content="Introduction to version control with R, Git and GitHub." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Introduction to Shell | R, Git &amp; GitHub" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Introduction to version control with R, Git and GitHub." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Introduction to Shell | R, Git &amp; GitHub" />
+  
+  <meta name="twitter:description" content="Introduction to version control with R, Git and GitHub." />
+  
+
+<meta name="author" content="Aravind Hebbali" />
+
+
+<meta name="date" content="2019-10-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="setup.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R, Git & GitHub</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information"><i class="fa fa-check"></i>Software information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#version-control"><i class="fa fa-check"></i><b>1.1</b> Version Control</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#what-is-version-control"><i class="fa fa-check"></i><b>1.1.1</b> What is version control?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#why-use-version-control"><i class="fa fa-check"></i><b>1.1.2</b> Why use version control?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#create-backups"><i class="fa fa-check"></i><b>1.1.3</b> Create Backups</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#track-changes"><i class="fa fa-check"></i><b>1.1.4</b> Track Changes</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#work-collaboratively"><i class="fa fa-check"></i><b>1.1.5</b> Work Collaboratively</a></li>
+<li class="chapter" data-level="1.1.6" data-path="intro.html"><a href="intro.html#prevent-conflicts"><i class="fa fa-check"></i><b>1.1.6</b> Prevent Conflicts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#git"><i class="fa fa-check"></i><b>1.2</b> Git</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#github"><i class="fa fa-check"></i><b>1.3</b> GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="shell.html"><a href="shell.html"><i class="fa fa-check"></i><b>2</b> Introduction to Shell</a><ul>
+<li class="chapter" data-level="2.1" data-path="shell.html"><a href="shell.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="shell.html"><a href="shell.html#directory"><i class="fa fa-check"></i><b>2.2</b> Directory</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="shell.html"><a href="shell.html#current-directory"><i class="fa fa-check"></i><b>2.2.1</b> Current directory</a></li>
+<li class="chapter" data-level="2.2.2" data-path="shell.html"><a href="shell.html#navigate"><i class="fa fa-check"></i><b>2.2.2</b> Navigate</a></li>
+<li class="chapter" data-level="2.2.3" data-path="shell.html"><a href="shell.html#view-contents"><i class="fa fa-check"></i><b>2.2.3</b> View contents</a></li>
+<li class="chapter" data-level="2.2.4" data-path="shell.html"><a href="shell.html#create-directory"><i class="fa fa-check"></i><b>2.2.4</b> Create directory</a></li>
+<li class="chapter" data-level="2.2.5" data-path="shell.html"><a href="shell.html#remove-directory"><i class="fa fa-check"></i><b>2.2.5</b> Remove directory</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="shell.html"><a href="shell.html#list-files"><i class="fa fa-check"></i><b>2.3.1</b> List files</a></li>
+<li class="chapter" data-level="2.3.2" data-path="shell.html"><a href="shell.html#copy-files"><i class="fa fa-check"></i><b>2.3.2</b> Copy files</a></li>
+<li class="chapter" data-level="2.3.3" data-path="shell.html"><a href="shell.html#rename-files"><i class="fa fa-check"></i><b>2.3.3</b> Rename files</a></li>
+<li class="chapter" data-level="2.3.4" data-path="shell.html"><a href="shell.html#remove-files"><i class="fa fa-check"></i><b>2.3.4</b> Remove files</a></li>
+<li class="chapter" data-level="2.3.5" data-path="shell.html"><a href="shell.html#move-files"><i class="fa fa-check"></i><b>2.3.5</b> Move files</a></li>
+<li class="chapter" data-level="2.3.6" data-path="shell.html"><a href="shell.html#print-content"><i class="fa fa-check"></i><b>2.3.6</b> Print content</a></li>
+<li class="chapter" data-level="2.3.7" data-path="shell.html"><a href="shell.html#create-file"><i class="fa fa-check"></i><b>2.3.7</b> Create file</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#word-count"><i class="fa fa-check"></i><b>2.4</b> Word count</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>3</b> Installation &amp; Set Up</a><ul>
+<li class="chapter" data-level="3.1" data-path="setup.html"><a href="setup.html#github-repository"><i class="fa fa-check"></i><b>3.1</b> GitHub Repository</a></li>
+<li class="chapter" data-level="3.2" data-path="setup.html"><a href="setup.html#configure-git"><i class="fa fa-check"></i><b>3.2</b> Configure Git</a></li>
+<li class="chapter" data-level="3.3" data-path="setup.html"><a href="setup.html#workflow"><i class="fa fa-check"></i><b>3.3</b> Workflow</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="setup.html"><a href="setup.html#clone-repository"><i class="fa fa-check"></i><b>3.3.1</b> Clone repository</a></li>
+<li class="chapter" data-level="3.3.2" data-path="setup.html"><a href="setup.html#make-changes"><i class="fa fa-check"></i><b>3.3.2</b> Make changes</a></li>
+<li class="chapter" data-level="3.3.3" data-path="setup.html"><a href="setup.html#register-changes"><i class="fa fa-check"></i><b>3.3.3</b> Register changes</a></li>
+<li class="chapter" data-level="3.3.4" data-path="setup.html"><a href="setup.html#push-changes"><i class="fa fa-check"></i><b>3.3.4</b> Push changes</a></li>
+<li class="chapter" data-level="3.3.5" data-path="setup.html"><a href="setup.html#check-remote"><i class="fa fa-check"></i><b>3.3.5</b> Check remote</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="setup.html"><a href="setup.html#configure-rstudio"><i class="fa fa-check"></i><b>3.4</b> Configure RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="projects.html"><a href="projects.html"><i class="fa fa-check"></i><b>4</b> Projects</a><ul>
+<li class="chapter" data-level="4.1" data-path="projects.html"><a href="projects.html#new-projects"><i class="fa fa-check"></i><b>4.1</b> New Projects</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="projects.html"><a href="projects.html#create-repository"><i class="fa fa-check"></i><b>4.1.1</b> Create repository</a></li>
+<li class="chapter" data-level="4.1.2" data-path="projects.html"><a href="projects.html#clone-repository-1"><i class="fa fa-check"></i><b>4.1.2</b> Clone repository</a></li>
+<li class="chapter" data-level="4.1.3" data-path="projects.html"><a href="projects.html#make-changes-1"><i class="fa fa-check"></i><b>4.1.3</b> Make changes</a></li>
+<li class="chapter" data-level="4.1.4" data-path="projects.html"><a href="projects.html#stage-commit-push"><i class="fa fa-check"></i><b>4.1.4</b> Stage, Commit &amp; Push</a></li>
+<li class="chapter" data-level="4.1.5" data-path="projects.html"><a href="projects.html#modify-remote-repo"><i class="fa fa-check"></i><b>4.1.5</b> Modify remote repo</a></li>
+<li class="chapter" data-level="4.1.6" data-path="projects.html"><a href="projects.html#pull-changes"><i class="fa fa-check"></i><b>4.1.6</b> Pull changes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="projects.html"><a href="projects.html#existing-projects"><i class="fa fa-check"></i><b>4.2</b> Existing Projects</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="projects.html"><a href="projects.html#create-repository-1"><i class="fa fa-check"></i><b>4.2.1</b> Create repository</a></li>
+<li class="chapter" data-level="4.2.2" data-path="projects.html"><a href="projects.html#clone-repository-2"><i class="fa fa-check"></i><b>4.2.2</b> Clone repository</a></li>
+<li class="chapter" data-level="4.2.3" data-path="projects.html"><a href="projects.html#move-files-1"><i class="fa fa-check"></i><b>4.2.3</b> Move files</a></li>
+<li class="chapter" data-level="4.2.4" data-path="projects.html"><a href="projects.html#stage-commit-push-1"><i class="fa fa-check"></i><b>4.2.4</b> Stage, Commit &amp; Push</a></li>
+<li class="chapter" data-level="4.2.5" data-path="projects.html"><a href="projects.html#check-remote-repo"><i class="fa fa-check"></i><b>4.2.5</b> Check remote repo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tour.html"><a href="tour.html"><i class="fa fa-check"></i><b>5</b> GitHub Tour</a><ul>
+<li class="chapter" data-level="5.1" data-path="tour.html"><a href="tour.html#tour-1"><i class="fa fa-check"></i><b>5.1</b> Tour</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="tour.html"><a href="tour.html#profile"><i class="fa fa-check"></i><b>5.1.1</b> Profile</a></li>
+<li class="chapter" data-level="5.1.2" data-path="tour.html"><a href="tour.html#organization"><i class="fa fa-check"></i><b>5.1.2</b> Organization</a></li>
+<li class="chapter" data-level="5.1.3" data-path="tour.html"><a href="tour.html#gist"><i class="fa fa-check"></i><b>5.1.3</b> Gist</a></li>
+<li class="chapter" data-level="5.1.4" data-path="tour.html"><a href="tour.html#repository"><i class="fa fa-check"></i><b>5.1.4</b> Repository</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="tour.html"><a href="tour.html#github-pages"><i class="fa fa-check"></i><b>5.2</b> GitHub Pages</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="tour.html"><a href="tour.html#introduction-1"><i class="fa fa-check"></i><b>5.2.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2.2" data-path="tour.html"><a href="tour.html#set-up"><i class="fa fa-check"></i><b>5.2.2</b> Set up</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="commands.html"><a href="commands.html"><i class="fa fa-check"></i><b>6</b> Git Commands</a><ul>
+<li class="chapter" data-level="6.1" data-path="commands.html"><a href="commands.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="commands.html"><a href="commands.html#help"><i class="fa fa-check"></i><b>6.1.1</b> Help</a></li>
+<li class="chapter" data-level="6.1.2" data-path="commands.html"><a href="commands.html#version"><i class="fa fa-check"></i><b>6.1.2</b> Version</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="commands.html"><a href="commands.html#configuration"><i class="fa fa-check"></i><b>6.2</b> Configuration</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="commands.html"><a href="commands.html#username"><i class="fa fa-check"></i><b>6.2.1</b> Username</a></li>
+<li class="chapter" data-level="6.2.2" data-path="commands.html"><a href="commands.html#email"><i class="fa fa-check"></i><b>6.2.2</b> Email</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="commands.html"><a href="commands.html#repository-1"><i class="fa fa-check"></i><b>6.3</b> Repository</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="commands.html"><a href="commands.html#initiate"><i class="fa fa-check"></i><b>6.3.1</b> Initiate</a></li>
+<li class="chapter" data-level="6.3.2" data-path="commands.html"><a href="commands.html#clone"><i class="fa fa-check"></i><b>6.3.2</b> Clone</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="commands.html"><a href="commands.html#tracking"><i class="fa fa-check"></i><b>6.4</b> Tracking</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="commands.html"><a href="commands.html#status"><i class="fa fa-check"></i><b>6.4.1</b> Status</a></li>
+<li class="chapter" data-level="6.4.2" data-path="commands.html"><a href="commands.html#diff"><i class="fa fa-check"></i><b>6.4.2</b> Diff</a></li>
+<li class="chapter" data-level="6.4.3" data-path="commands.html"><a href="commands.html#add"><i class="fa fa-check"></i><b>6.4.3</b> Add</a></li>
+<li class="chapter" data-level="6.4.4" data-path="commands.html"><a href="commands.html#reset"><i class="fa fa-check"></i><b>6.4.4</b> Reset</a></li>
+<li class="chapter" data-level="6.4.5" data-path="commands.html"><a href="commands.html#commit"><i class="fa fa-check"></i><b>6.4.5</b> Commit</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="commands.html"><a href="commands.html#synchronize"><i class="fa fa-check"></i><b>6.5</b> Synchronize</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="commands.html"><a href="commands.html#push"><i class="fa fa-check"></i><b>6.5.1</b> Push</a></li>
+<li class="chapter" data-level="6.5.2" data-path="commands.html"><a href="commands.html#fetch"><i class="fa fa-check"></i><b>6.5.2</b> Fetch</a></li>
+<li class="chapter" data-level="6.5.3" data-path="commands.html"><a href="commands.html#merge"><i class="fa fa-check"></i><b>6.5.3</b> Merge</a></li>
+<li class="chapter" data-level="6.5.4" data-path="commands.html"><a href="commands.html#pull"><i class="fa fa-check"></i><b>6.5.4</b> Pull</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="commands.html"><a href="commands.html#others"><i class="fa fa-check"></i><b>6.6</b> Others</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="commands.html"><a href="commands.html#log"><i class="fa fa-check"></i><b>6.6.1</b> Log</a></li>
+<li class="chapter" data-level="6.6.2" data-path="commands.html"><a href="commands.html#show"><i class="fa fa-check"></i><b>6.6.2</b> Show</a></li>
+<li class="chapter" data-level="6.6.3" data-path="commands.html"><a href="commands.html#remote"><i class="fa fa-check"></i><b>6.6.3</b> Remote</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R, Git &amp; GitHub</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="shell" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Introduction to Shell</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">2.1</span> Introduction</h2>
+<p>In this chapter, we will learn the basics of using command line. We will learn
+just enough topics to be able to use Git &amp; GitHub. If you want to learn more,
+we have listed a few resources at the end of the chapter for reference.</p>
+</div>
+<div id="directory" class="section level2">
+<h2><span class="header-section-number">2.2</span> Directory</h2>
+<div id="current-directory" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Current directory</h3>
+<p>To get the current directory, use <code>pwd</code> (present working directory).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="bu">pwd</span></a></code></pre></div>
+<pre><code>## /cygdrive/j/R/ebooks/bash-intro</code></pre>
+</div>
+<div id="navigate" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Navigate</h3>
+<p>To navigate to a sub directory, use <code>cd</code> followed by the name of the directory.
+You don’t need to type the full name of the directory, type a few letters and
+use TAB for auto completion. In the below example, we navigate to the <code>docs</code>
+directory using <code>cd</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">cd</span> docs</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="bu">pwd</span></a></code></pre></div>
+<pre><code>## /cygdrive/j/R/ebooks/bash-intro/docs</code></pre>
+<p>To return to the main directory, use <code>cd ..</code>. Remember there is a single space
+between <code>cd</code> and the 2 dots.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="bu">cd</span> ..</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="bu">pwd</span></a></code></pre></div>
+<pre><code>## /cygdrive/j/R/ebooks</code></pre>
+</div>
+<div id="view-contents" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> View contents</h3>
+<p>To list all the sub folders and files in a directory, use <code>ls</code>. If you want to
+list hidden folders and files, use <code>ls -a</code>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+<div id="create-directory" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Create directory</h3>
+<p><code>mkdir</code> will create a new folder in your current directory.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">mkdir</span> examples</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## examples
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+<div id="remove-directory" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> Remove directory</h3>
+<p><code>rmdir</code> will remove/delete empty folders. If you have files in the folder,
+you have to remove them first before removing the folder.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">rmdir</span> examples</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+</div>
+<div id="files" class="section level2">
+<h2><span class="header-section-number">2.3</span> Files</h2>
+<div id="list-files" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> List files</h3>
+<p><code>ls</code> will list all the files in a folder.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+<p>If you want to list hidden files, use <code>ls -a</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">ls</span> -a</a></code></pre></div>
+<pre><code>## .
+## ..
+## .Rproj.user
+## .gitignore
+## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+<div id="copy-files" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Copy files</h3>
+<p>To create a copy of a file, use <code>cp</code> followed by the name of the file and its
+extension and the name of the copied file.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">cp</span> index.Rmd home.Rmd</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## home.Rmd
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+<div id="rename-files" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Rename files</h3>
+<p><code>mv</code> can be used to rename files.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">mv</span> home.Rmd homepage.Rmd</a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## homepage.Rmd
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+<div id="remove-files" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Remove files</h3>
+<p>To remove files from a folder, use <code>rm</code> followed by the file name.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1"><span class="fu">rm</span> homepage.Rmd</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## index.Rmd
+## r-git-github.Rmd
+## style.css</code></pre>
+</div>
+<div id="move-files" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Move files</h3>
+<p>To move files to a different folder or sub folder, use <code>mv</code>. In the below
+example, we use <code>mv</code> to move <strong>home.Rmd</strong> to the <strong>examples</strong> folder.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1"><span class="fu">mkdir</span> examples</a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="fu">cp</span> index.Rmd home.Rmd</a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="fu">mv</span> home.Rmd examples</a>
+<a class="sourceLine" id="cb25-4" title="4"><span class="bu">cd</span> examples</a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## home.Rmd</code></pre>
+</div>
+<div id="print-content" class="section level3">
+<h3><span class="header-section-number">2.3.6</span> Print content</h3>
+<p>To view the contents of a file, use <code>cat</code> followed by the file name.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb27-1" title="1"><span class="fu">cat</span> style.css</a></code></pre></div>
+<pre><code>## p.caption {
+##   color: #777;
+##   margin-top: 10px;
+## }
+## p code {
+##   white-space: inherit;
+## }
+## pre {
+##   word-break: normal;
+##   word-wrap: normal;
+## }
+## pre code {
+##   white-space: inherit;
+## }</code></pre>
+<p><code>head</code> will return the first 10 lines of a file.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb29-1" title="1"><span class="fu">head</span> style.css</a></code></pre></div>
+<pre><code>## p.caption {
+##   color: #777;
+##   margin-top: 10px;
+## }
+## p code {
+##   white-space: inherit;
+## }
+## pre {
+##   word-break: normal;
+##   word-wrap: normal;</code></pre>
+</div>
+<div id="create-file" class="section level3">
+<h3><span class="header-section-number">2.3.7</span> Create file</h3>
+<p>To create a new file, use <code>touch</code> followed by the file name and the extension.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb31-1" title="1"><span class="fu">touch</span> todo.txt</a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<pre><code>## 00-author.Rmd
+## 01-intro.Rmd
+## 02-shell.Rmd
+## 03-install.Rmd
+## 04-projects.Rmd
+## 05-github.Rmd
+## 06-commands.Rmd
+## README.md
+## _bookdown.yml
+## _output.yml
+## bash-intro.Rproj
+## docs
+## examples
+## index.Rmd
+## r-git-github.Rmd
+## style.css
+## todo.txt</code></pre>
+<p>If you want to add some content while creating the file, use <code>echo</code>, followed
+by the content in quotes, the <code>&gt;</code> symbol and the file name with extension.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb33-1" title="1"><span class="bu">echo</span> <span class="st">&quot;hello&quot;</span> <span class="op">&gt;</span> file1.txt</a></code></pre></div>
+</div>
+</div>
+<div id="word-count" class="section level2">
+<h2><span class="header-section-number">2.4</span> Word count</h2>
+<p><code>wc</code> will return the number of characters, words and lines in a file.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># characters, words and lines</span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="fu">wc</span> style.css</a></code></pre></div>
+<pre><code>##  14  26 172 style.css</code></pre>
+<p>The following can be used to return only one of the above:</p>
+<ul>
+<li><code>-c</code> for characters</li>
+<li><code>-w</code> for words</li>
+<li><code>-l</code> for lines</li>
+</ul>
+<div id="characters" class="section level4">
+<h4><span class="header-section-number">2.4.0.1</span> Characters</h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># characters</span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="fu">wc</span> -c style.css</a></code></pre></div>
+<pre><code>## 172 style.css</code></pre>
+</div>
+<div id="words" class="section level4">
+<h4><span class="header-section-number">2.4.0.2</span> Words</h4>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># words</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="fu">wc</span> -w style.css </a></code></pre></div>
+<pre><code>## 26 style.css</code></pre>
+</div>
+<div id="lines" class="section level4">
+<h4><span class="header-section-number">2.4.0.3</span> Lines</h4>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># lines</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="fu">wc</span> -l style.css </a></code></pre></div>
+<pre><code>## 14 style.css</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="setup.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
