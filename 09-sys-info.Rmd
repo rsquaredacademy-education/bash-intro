@@ -1,2 +1,117 @@
 # System Info {#sysinfo}
 
+In this chapter, we will explore commands that will allow us to
+
+- display information about the system
+- display memory usage information
+- display file system disk space usage 
+- exit the terminal
+- run commands a superuser
+- shutdown the system
+
+```{r table_sys_mgmt, echo=FALSE}
+cname   <- c("`uname`", "`free`", "`df`", "`exit`", "`sudo`", "`shutdown`")
+descrip <- c("Display important information about the system",
+             "Display free, used, swap memory in the system",
+             "Display file system disk space usage",
+             "Exit the terminal",
+             "Run command as super user",
+             "Shutdown the system")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+## uname
+
+The `uname` command is used to view important information about the system. Using additional options, we can
+
+- print details about operating system
+- hardware & software related information
+
+```{r table_uname, echo=FALSE}
+cname   <- c("`uname`", "`uname -mp`", "`uname -srv`", "`uname -n`", "`uname -a`")
+descrip <- c("Print details about the current machine and the operating system running on it",
+             "Hardware related information; machine & processor",
+             "Software related information; operating system, release number and version",
+             "Nodename of the system",
+             "Print all available information system")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+### Print all available information about the system
+
+```{bash c104a}
+uname -a
+```
+
+### Display free, used, swap memory in the system
+
+```{bash c105a}
+free
+```
+
+### Display file system disk space usage
+
+```{bash c106a}
+df
+```
+
+## Others
+
+In this section, let us look at a few other useful commands that will allow us 
+to
+
+- see how long a command takes to execute
+- delay activity
+- display and clear command history list
+
+```{r table_others, echo=FALSE}
+cname   <- c("`time`", "`sleep`", "`sleep 1m`", "`sleep 1h`", "`history`", "`history -c`")
+descrip <- c("See how long a command takes to execute",
+             "Delay activity in seconds",
+             "Delay activity in minutes",
+             "Delay activity in hours",
+             "Display command history list with line numbers",
+             "Clear the command history list")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+In R, we can use `Sys.sleep()` to delay activity and `history()` to view command history.
+
+```{r r_others, echo=FALSE}
+cname   <- c("`sleep`", "`history`")
+descrip <- c("`Sys.sleep()`",
+             "`history()`")
+data.frame(Command = cname, R = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+## Funny Commands
+
+Below are a few funny commands for you to try out. Use `sudo apt-get install` to install fortune and banner before trying them.
+
+```{r table_funny_commands, echo=FALSE}
+cname   <- c("`fortune`", "`yes`", "`banner`", "`rev`")
+descrip <- c("Poignant, inspirational & silly phrases",
+             "Output a string repeatedly until killed",
+             "ASCII banner", "Reverse each character")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```

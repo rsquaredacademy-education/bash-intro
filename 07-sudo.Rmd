@@ -1,2 +1,19 @@
 # sudo {#sudo}
 
+sudo **S**uper **U**ser **DO** is a prefix of commands that only superuser or root users are allowed to run. It is similar to **run as administrator** option in Windows. It is used to install, update and remove software. We will use it in the next section to install & update packages.
+
+```{r table_sudo, echo=FALSE}
+cname   <- c("`dpkg --list`", "`sudo apt-get update`", "`sudo apt-get install`", 
+             "`sudo apt-get remove`", "`sudo apt-get purge`", "`sudo apt-get autoremove`")
+descrip <- c("List installed packages",
+             "Update packages",
+             "Install packages", 
+             "Remove packages (retain configuration, plugins and settings",
+             "Remove packages including personalized settings",
+             "Remove any dependencies no longer in use")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```

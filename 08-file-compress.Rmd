@@ -1,2 +1,292 @@
 # File Compression {#compress}
 
+In this chapter, we will explore file compression using the following
+
+- `tar`
+- `gzip`
+- `zip`
+- `unzip`
+
+## tar
+
+The `tar` command is used for file compression. It works with both `tar` and
+`tar.gz` extensions. It is used to
+
+- list files 
+- extract files 
+- create archives
+- append file to existing archives
+
+`tar` creates, maintains, modifies, and extracts files that are archived in the tar format. Tar stands for tape archive and is an archiving file format.
+
+```{r table_tar, echo=FALSE}
+cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
+             "`tar cvfz`", "`tar rvf`", "`tar rvfz`")
+descrip <- c("List an archive",
+             "List a gzipped archive",
+             "Extract an archive", 
+             "Extract a gzipped archive",
+             "Create an uncompressed tar archive",
+             "Create a tar gzipped archive", 
+             "Add a file to an existing archive", 
+             "Add a file to an existing gzipped archive")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+We will use different options along with the `tar` command for listing, extracting, creating and adding files. The `vf` (**v** stands for verbosely show .tar file progress and **f** stands for file name type of the archive file) option is common for all the above operations while the following are specific.
+
+- `t` for listing
+- `x` for extracting
+- `c` for creating
+- `r` for adding files
+
+While dealing with `tar.gz` archives we will use `z` in addition to `vf` and the above options. 
+
+### List
+
+Let us list all the files & folders in `release_names.tar`. As mentioned above. to list the files in the archive, we use the `t` option.
+
+```{bash c70a, eval=FALSE}
+tar -tvf release_names.tar 
+```
+
+```{bash c70b, echo=FALSE}
+cd cline
+tar -tvf release_names.tar 
+```
+
+### Extract
+
+Let us extract files from `release_names.tar` using the `x` option in addition to `vf`.
+
+```{bash c71a, eval=FALSE}
+tar -xvf release_names.tar 
+ls
+```
+
+```{bash c71b, echo=FALSE}
+cd cline
+rm release_names.txt release_names_18.txt release_names_19.txt
+tar -xvf release_names.tar 
+ls
+```
+
+### Create 
+
+Using the `c` option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.
+
+```{bash c68a, eval=FALSE}
+tar -cvf release_names.tar release_names.txt
+```
+
+```{bash c68b, echo=FALSE}
+cd cline
+tar -cvf release_names.tar release_names.txt
+```
+
+### Add 
+
+To add a file to an existing archive, use the `r` option. Let us add `release_names_18.txt` and `release_names_19.txt` to the archive we created in the previous step. 
+
+```{bash c69a, eval=FALSE}
+tar -rvf release_names.tar release_names_18.txt release_names_19.txt
+```
+
+```{bash c69b, echo=FALSE}
+cd cline
+tar -rvf release_names.tar release_names_18.txt release_names_19.txt
+```
+
+In R, we can use the `tar()` and `untar()` functions from the `utils` package to handle `.tar` and `.tar.gz` archives.
+
+```{r r_tar, echo=FALSE}
+cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
+             "`tar cvfz`")
+descrip <- c("`utils::untar('archive.tar', list = TRUE)`",
+             "`utils::untar('archive.tar.gz', list = TRUE)`",
+             "`utils::untar('archive.tar')`",
+             "`utils::untar('archive.tar.gz')`",
+             "`utils::tar('archive.tar')`",
+             "`utils::tar('archive.tar', compression = 'gzip')`")
+data.frame(Command = cname, R = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+## gzip
+
+```{r table_gzip, echo=FALSE}
+cname   <- c("`gzip`", "`gzip -d`", "`gzip -c`", "`zip -r`", "`zip`",                       "`unzip`", "`unzip -d`", "`unzip -l`")
+descrip <- c("Compress a file",
+             "Decompress a file",
+             "Compress a file and specify the output file name",
+             "Compress a directory",
+             "Add files to an existing zip file",
+             "Extract files from a zip files",
+             "Extract files from a zip file and specify the output file name",
+             "List contents of a zip file")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+
+`gzip`, `gunzip`, and `zcat` commands are used to compress or expand files in the GNU GZIP format i.e. files with `.gz` extension
+
+### Compress 
+
+Let us compress `release_names.txt` file using `gzip`.
+
+```{bash c72a, eval=FALSE}
+gzip release_names.txt
+ls
+```
+
+```{bash c72b, echo=FALSE}
+cd cline
+gzip release_names.txt
+ls
+```
+
+```{bash c72c, echo=FALSE}
+cd cline
+gunzip release_names.txt.gz
+```
+
+
+### Decompress 
+
+Use the `-d` option with `gzip` to decompress a file. In the below example, we decompress the `sept_15.csv.gz` file (downloaded using `wget` or `curl` earlier). You can also use `gunzip` for the same result.
+
+
+```{bash c73a, eval=FALSE}
+gzip -d sept_15.csv.gz
+ls
+```
+
+```{bash c73b, echo=FALSE}
+cd cline
+gzip -d sept_15.csv.gz
+ls
+```
+
+### Specify Filename
+
+Use `-c` and `>` to specify a different file name while compressing using `gzip`. In the below example, `gzip` will create `releases.txt.gz` instead of `release_names.txt.gz`.
+
+```{bash c90a, eval=FALSE}
+gzip -c release_names.txt > releases.txt.gz
+ls
+```
+
+```{bash c90b, echo=FALSE}
+cd cline
+gzip -c release_names.txt > releases.txt.gz
+ls
+```
+
+## zip & unzip
+
+`zip` creates ZIP archives while `unzip` lists and extracts compressed files in a ZIP archive.
+
+### List 
+
+Let us list all the files and folders in `main_project.zip()` using `unzip` and the `-l` option. 
+
+```{bash c97a, eval=FALSE}
+unzip -l main_project.zip
+```
+
+```{bash c97b, echo=FALSE}
+cd cline
+unzip -l main_project.zip
+```
+
+### Extract 
+
+Using `unzip`, let us now extract files and folders from `zip_example.zip`.
+
+```{bash c95a, eval=FALSE}
+unzip zip_example.zip
+```
+
+```{bash c95b, echo=FALSE}
+cd cline
+unzip zip_example.zip
+```
+
+Using the `-d` option, we can extract the contents of `zip_example.zip` to a specific folder. In the below example, we extract it to a new folder `examples`.
+
+```{bash c96a, eval=FALSE}
+unzip zip_example.zip –d myexamples
+```
+
+```{r unzip_d, echo=FALSE}
+system2("unzip", c("zip_example.zip", "-d", "examples"), TRUE)
+```
+
+### Compress 
+
+Use the `-r` option along with `zip` to create a ZIP archive. In the below example, we create a ZIP archive of `myproject` folder.
+
+```{bash c91a, eval=FALSE}
+zip -r myproject.zip myproject
+ls
+```
+
+```{bash c91b, echo=FALSE}
+cd cline
+zip -r myproject.zip myproject
+```
+
+We can compress multiple directories using `zip`. The names of the directories must be separated by a space as shown in the below example where we compress `myproject` and `mypackage` into a single ZIP archive.
+
+```{bash c92a, eval=FALSE}
+zip -r packproj.zip myproject mypackage
+ls
+```
+
+```{bash c92b, echo=FALSE}
+cd cline
+zip -r packproj.zip myproject mypackage
+```
+
+### Add 
+
+To add a new file/folder to an existing archive, specify the name of the archive followed by the name of the file or the folder. In the below example, we add the `bash.sh` file to the `myproject.zip` archive created in a previous step.
+
+```{bash c93a, eval=FALSE}
+zip myproject.zip bash.sh
+```
+
+```{bash c93b, echo=FALSE}
+cd cline
+zip myproject.zip bash.sh
+```
+
+In R, we can the [zip](https://cran.r-project.org/package=zip) package has the functionalities to handle ZIP archives. The `tar()` and `untar()` functions from the `utils` package can handle GZIP archives.
+
+```{r r_gzip, echo=FALSE}
+cname   <- c("`gzip`", "`gzip -d`", "`gzip -c`", "`zip -r`", "`zip`",                       "`unzip`", "`unzip -d`", "`unzip -l`")
+descrip <- c("`utils::tar(compression = 'gzip'` / `R.utils::gzip()`",
+             "`utils::untar()` / `R.utils::gunzip()`",
+             "`utils::untar(exdir = filename)`",
+             "`zip::zip()`",
+             "`zip::zipr_append()`",
+             "`zip::unzip()`",
+             "`zip::unzip(exdir = dir_name)`",
+             "`zip::zip_list()`")
+data.frame(Command = cname, R = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```

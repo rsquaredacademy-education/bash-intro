@@ -1,0 +1,55 @@
+# Conclusion {#conclusion}
+
+## What we have not covered...
+
+- shell scripting
+- editing files
+- file permissions
+- user information
+- pipes
+- awk
+- sed
+
+## Summary 
+
+- Shell is a text based application for viewing, handling and manipulating files
+- It is also known by the following names
+  - CLI (Command Line Inteface)
+  - Terminal
+  - Bash (Bourne Again Shell)
+- Use `system2()` and `processx::run()` in R to execute shell commands
+- Use `Rscript -e` or `R -e` to execute R scripts from the command line
+- RStudio includes a Terminal (from version 1.1.383)
+- Execute commands from shell script in RStudio using Ctrl + Enter
+- RMarkdown supports `bash`, `sh` and `awk` 
+
+## References
+
+- https://tldr.sh/
+- https://blog.rstudio.com/2017/08/11/rstudio-v1-1-preview-terminal/
+- https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal
+- https://bookdown.org/yihui/rmarkdown/language-engines.html#shell-scripts
+- https://github.com/kirillseva/tldrrr
+- https://fs.r-lib.org/articles/function-comparisons.html
+- https://livefreeordichotomize.com/2017/09/28/r-release-names/
+- https://stackoverflow.com/questions/13478375/is-there-any-authoritative-documentation-on-r-release-nicknames
+- http://www2.imm.dtu.dk/courses/02333/cygwin_tutorial/index.html
+- https://tutorial.djangogirls.org/en/intro_to_command_line/
+- https://ss64.com/
+- https://www.learnenough.com/command-line-tutorial
+
+### Feedback
+
+If you see mistakes or want to suggest changes, please create an issue on the
+<a href="https://github.com/rsquaredacademy-education/bash-intro" target="_blank">source 
+repository</a> or reach out to us at support@rsquaredacademy.com.
+
+<!-- clean up folder structure -->
+
+```{r r99, echo=FALSE}
+system2("rm", c("-r", "cline"))
+```
+
+```{bash c99, echo=FALSE}
+cp -r /mnt/j/R/courses/live/command-line-basics/bash-tutorial /mnt/j/R/ebooks/bash-intro/cline
+``` 

@@ -1,2 +1,224 @@
 # Search & Regular Expression {#regex}
 
+In this chapter, we will explore commands that will
+
+- search for a given string in a file
+- find files using names
+- and search for binary executable files
+
+```{r table_search, echo=FALSE}
+cname   <- c("`grep`", "`find`", "`which`")
+descrip <- c("Search for a given string in a file",
+             "Find files using filenames",
+             "Search for binary executable files")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+## grep
+
+The `grep` command is used for pattern matching. Along with additional options, it can be used to
+
+- match pattern in input text
+- ignore case
+- search recursively for an exact string
+- print filename and line number for each match
+- invert match for excluding specific strings
+
+`grep` processes text line by line, and prints any lines which match a specified pattern. `grep`, which stands for **g**lobal **r**egular **e**xpression **p**rint," is a powerful tool for matching a regular expression against text in a file, multiple files, or a stream of input. 
+
+```{r table_grep, echo=FALSE}
+cname   <- c("`grep`", "`grep -i`", "`grep -RI`", "`grep -E`", "`grep -Hn`", "`grep -v`")
+descrip <- c("Matches pattern in input text",
+             "Ignore case",
+             "Search recursively for an exact string",
+             "Use extended regular expression",
+             "Print file name & corresponding line number for each match",
+             "Invert match for excluding specific strings")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+### Match Pattern in Input Text
+
+Using `grep` let us search for packages that inlcude the letter `R` in their names.
+
+```{bash c57a, eval=FALSE}
+grep R package_names.txt
+```
+
+```{bash c57b, echo=FALSE}
+cd cline
+grep R package_names.txt
+```
+
+### Ignore Case
+
+In the previous case, `grep` returned only those packages whose name included `R` but not `r` i.e. it did not ignore the case of the letter. Using the `-i` option, we will now search while ignoring the case of the letter.
+
+```{bash c58a, eval=FALSE}
+grep -i R package_names.txt
+```
+
+```{bash c58b, echo=FALSE}
+cd cline
+grep -i R package_names.txt
+```
+
+### Highlight
+
+The `--color` option will highlight the matched strings. 
+
+```{bash c85a, eval=FALSE}
+grep -i --color R package_names.txt
+```
+
+```{bash c85b, echo=FALSE}
+cd cline
+grep -i --color R package_names.txt
+```
+
+### Print Filename 
+
+If there is more than one file to search, use the `-H` option to print the filename for each match. 
+
+```{bash c86a, eval=FALSE}
+grep -i --color -H bio package_names.txt
+```
+
+```{bash c86b, echo=FALSE}
+cd cline
+grep -i --color -H bio package_names.txt
+```
+
+### Print Corresponding Line Number
+
+The `-n` option will print the corresponding line number of the match in the file.
+
+```{bash c87a, eval=FALSE}
+grep -i --color -n bio package_names.txt
+```
+
+```{bash c87b, echo=FALSE}
+cd cline
+grep -i --color -n bio package_names.txt
+```
+
+### Print Filename & Line Number
+
+Let us print both the file name and the line number for each match.
+
+```{bash c59a, eval=FALSE}
+grep -i --color -Hn R package_names.txt
+```
+
+```{bash c59b, echo=FALSE}
+cd cline
+grep -i --color -Hn R package_names.txt
+```
+
+### Invert Match
+
+Use the `-v` option to select non-matching lines. In the below example, we search for packages whose name does not include `R` while ignoring the case.
+
+```{bash c60a, eval=FALSE}
+grep -v -i R package_names.txt
+```
+
+```{bash c60b, echo=FALSE}
+cd cline
+grep -v -i R package_names.txt
+```
+
+### Recursive Search
+
+Use the `-r` option to search recursively. In the below example, we search all files with the `.txt` extension for the string `bio` while ignoring the case.
+
+```{bash c88a, eval=FALSE}
+grep -i --color -r bio *.txt
+```
+
+```{bash c88b, echo=FALSE}
+cd cline
+grep -i --color -r bio *.txt
+```
+
+## find
+
+The `find` command can be used for searching files and directories. Using additional options, we can
+
+- search files by extension type
+- ignore case while searching files/directories
+
+`find` powerful tool for working with the files. It can be used on its own to locate files, or in conjunction with other programs to perform operations on those files.
+
+```{r table_find, echo=FALSE}
+cname   <- c("`find`", "`find -name '*.txt'`", "`find -type d -iname`", "`find -type d -name`")
+descrip <- c("Find files or directories under the given directory; recursively",
+             "Find files by extension",
+             "Find directories matching a given name, in case-insensitive mode",
+             "Find directories matching a given name, in case-sensitive mode")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+### Search Recursively
+
+Let us use `find` to search for the file `release_names.txt` recursively. The `-name` option is used to specify the name of the file we are searching.
+
+```{bash c61a, eval=FALSE}
+find -name release_names.txt
+```
+
+```{bash c61b, echo=FALSE}
+cd cline
+find -name release_names.txt
+```
+
+### Search by Extension
+
+Let us search for all files with `.txt` extension in the `r` folder.
+
+```{bash c62a, eval=FALSE}
+find r_releases -name '*.txt'
+```
+
+```{bash c62b, echo=FALSE}
+cd cline
+find r_releases -name '*.txt'
+```
+
+### Case-insensitive Mode
+
+Search for all folders with the name `R` or `r`. Here we use the `-iname` option to ignore case while searching. The `-type` option is used to specify whether we are searching for files or folders. Since we are searching for folder/directory, we use it along with `d` i.e. directory to indicate that we are searching for directories and not files.
+
+```{bash c63a, eval=FALSE}
+find -type d -iname R
+```
+
+```{bash c63b, echo=FALSE}
+cd cline
+find -type d -iname R
+```
+
+### Case-sensitive Mode
+
+Search for all folders with the name `r`. It should exclude any folder with the name `R`.
+
+```{bash c64a, eval=FALSE}
+find -type d -name r
+```
+
+```{bash c64b, echo=FALSE}
+cd cline
+find -type d -name r
+```

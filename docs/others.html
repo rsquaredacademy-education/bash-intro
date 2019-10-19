@@ -24,7 +24,7 @@
 <meta name="author" content="Aravind Hebbali" />
 
 
-<meta name="date" content="2019-10-18" />
+<meta name="date" content="2019-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="sysinfo.html"/>
-<link rel="next" href="rinshell.html"/>
+<link rel="next" href="conclusion.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -128,22 +129,181 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Command Line Basics for R Users</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information"><i class="fa fa-check"></i>Software information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#outline"><i class="fa fa-check"></i>Outline</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#topics-this-book-does-not-cover"><i class="fa fa-check"></i>Topics this book does not cover</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#about-this-book"><i class="fa fa-check"></i>About this book</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#using-code-examples"><i class="fa fa-check"></i>Using code examples</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#software-information"><i class="fa fa-check"></i>Software information</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="navigate.html"><a href="navigate.html"><i class="fa fa-check"></i><b>2</b> Navigating File System</a></li>
-<li class="chapter" data-level="3" data-path="filemanagement.html"><a href="filemanagement.html"><i class="fa fa-check"></i><b>3</b> File Management</a></li>
-<li class="chapter" data-level="4" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4</b> Input/Output</a></li>
-<li class="chapter" data-level="5" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>5</b> Search &amp; Regular Expression</a></li>
-<li class="chapter" data-level="6" data-path="datatransfer.html"><a href="datatransfer.html"><i class="fa fa-check"></i><b>6</b> Data Transfer</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what-is-shellterminal"><i class="fa fa-check"></i><b>1.1</b> What is Shell/Terminal?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#launch-terminal"><i class="fa fa-check"></i><b>1.2</b> Launch Terminal</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#mac"><i class="fa fa-check"></i><b>1.2.1</b> mac</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#windows"><i class="fa fa-check"></i><b>1.2.2</b> Windows</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#linux"><i class="fa fa-check"></i><b>1.2.3</b> Linux</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#windows-subsystem-for-linux"><i class="fa fa-check"></i><b>1.2.4</b> Windows Subsystem for Linux</a></li>
+<li class="chapter" data-level="1.2.5" data-path="intro.html"><a href="intro.html#rstudio-terminal"><i class="fa fa-check"></i><b>1.2.5</b> RStudio Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#prompt"><i class="fa fa-check"></i><b>1.3</b> Prompt</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#get-started"><i class="fa fa-check"></i><b>1.4</b> Get Started</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#helpdocumentation"><i class="fa fa-check"></i><b>1.5</b> Help/Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="navigate.html"><a href="navigate.html"><i class="fa fa-check"></i><b>2</b> Navigating File System</a><ul>
+<li class="chapter" data-level="2.1" data-path="navigate.html"><a href="navigate.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="navigate.html"><a href="navigate.html#r-functions"><i class="fa fa-check"></i><b>2.2</b> R Functions</a></li>
+<li class="chapter" data-level="2.3" data-path="navigate.html"><a href="navigate.html#change-working-directory"><i class="fa fa-check"></i><b>2.3</b> Change Working Directory</a></li>
+<li class="chapter" data-level="2.4" data-path="navigate.html"><a href="navigate.html#list-directory-contents"><i class="fa fa-check"></i><b>2.4</b> List Directory Contents</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="navigate.html"><a href="navigate.html#list-files-one-per-line"><i class="fa fa-check"></i><b>2.4.1</b> List files one per line</a></li>
+<li class="chapter" data-level="2.4.2" data-path="navigate.html"><a href="navigate.html#list-all-files-including-hidden-files"><i class="fa fa-check"></i><b>2.4.2</b> List all files including hidden files</a></li>
+<li class="chapter" data-level="2.4.3" data-path="navigate.html"><a href="navigate.html#display-file-permissions-ownership-size-modification-date"><i class="fa fa-check"></i><b>2.4.3</b> Display file permissions, ownership, size &amp; modification date</a></li>
+<li class="chapter" data-level="2.4.4" data-path="navigate.html"><a href="navigate.html#display-size-in-human-readable-format"><i class="fa fa-check"></i><b>2.4.4</b> Display size in human readable format</a></li>
+<li class="chapter" data-level="2.4.5" data-path="navigate.html"><a href="navigate.html#sort-list-by-size"><i class="fa fa-check"></i><b>2.4.5</b> Sort list by size</a></li>
+<li class="chapter" data-level="2.4.6" data-path="navigate.html"><a href="navigate.html#sort-list-by-modification-date"><i class="fa fa-check"></i><b>2.4.6</b> Sort list by modification date</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="filemanagement.html"><a href="filemanagement.html"><i class="fa fa-check"></i><b>3</b> File Management</a><ul>
+<li class="chapter" data-level="3.1" data-path="filemanagement.html"><a href="filemanagement.html#create-new-file"><i class="fa fa-check"></i><b>3.1</b> Create new file</a></li>
+<li class="chapter" data-level="3.2" data-path="filemanagement.html"><a href="filemanagement.html#copy-filesfolders"><i class="fa fa-check"></i><b>3.2</b> Copy Files/Folders</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="filemanagement.html"><a href="filemanagement.html#copy-files-in-same-folder"><i class="fa fa-check"></i><b>3.2.1</b> Copy files in same folder</a></li>
+<li class="chapter" data-level="3.2.2" data-path="filemanagement.html"><a href="filemanagement.html#copy-files-into-different-folder"><i class="fa fa-check"></i><b>3.2.2</b> Copy files into different folder</a></li>
+<li class="chapter" data-level="3.2.3" data-path="filemanagement.html"><a href="filemanagement.html#copy-folders"><i class="fa fa-check"></i><b>3.2.3</b> Copy folders</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="filemanagement.html"><a href="filemanagement.html#moverename-files"><i class="fa fa-check"></i><b>3.3</b> Move/Rename Files</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="filemanagement.html"><a href="filemanagement.html#move-files-in-verbose-mode"><i class="fa fa-check"></i><b>3.3.1</b> Move files in verbose mode</a></li>
+<li class="chapter" data-level="3.3.2" data-path="filemanagement.html"><a href="filemanagement.html#do-not-overwrite-existing-files"><i class="fa fa-check"></i><b>3.3.2</b> Do not overwrite existing files</a></li>
+<li class="chapter" data-level="3.3.3" data-path="filemanagement.html"><a href="filemanagement.html#do-not-prompt-for-confirmation-before-overwriting-files"><i class="fa fa-check"></i><b>3.3.3</b> Do not prompt for confirmation before overwriting files</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="filemanagement.html"><a href="filemanagement.html#removedelete-files"><i class="fa fa-check"></i><b>3.4</b> Remove/Delete Files</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="filemanagement.html"><a href="filemanagement.html#remove-files"><i class="fa fa-check"></i><b>3.4.1</b> Remove files</a></li>
+<li class="chapter" data-level="3.4.2" data-path="filemanagement.html"><a href="filemanagement.html#recursive-deletion"><i class="fa fa-check"></i><b>3.4.2</b> Recursive Deletion</a></li>
+<li class="chapter" data-level="3.4.3" data-path="filemanagement.html"><a href="filemanagement.html#force-removal"><i class="fa fa-check"></i><b>3.4.3</b> Force Removal</a></li>
+<li class="chapter" data-level="3.4.4" data-path="filemanagement.html"><a href="filemanagement.html#verbose-mode"><i class="fa fa-check"></i><b>3.4.4</b> Verbose Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="filemanagement.html"><a href="filemanagement.html#compare-files"><i class="fa fa-check"></i><b>3.5</b> Compare Files</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="filemanagement.html"><a href="filemanagement.html#compare-files-1"><i class="fa fa-check"></i><b>3.5.1</b> Compare Files</a></li>
+<li class="chapter" data-level="3.5.2" data-path="filemanagement.html"><a href="filemanagement.html#side-by-side"><i class="fa fa-check"></i><b>3.5.2</b> Side By Side</a></li>
+<li class="chapter" data-level="3.5.3" data-path="filemanagement.html"><a href="filemanagement.html#unified-format"><i class="fa fa-check"></i><b>3.5.3</b> Unified Format</a></li>
+<li class="chapter" data-level="3.5.4" data-path="filemanagement.html"><a href="filemanagement.html#compare-recursively"><i class="fa fa-check"></i><b>3.5.4</b> Compare Recursively</a></li>
+<li class="chapter" data-level="3.5.5" data-path="filemanagement.html"><a href="filemanagement.html#file-details"><i class="fa fa-check"></i><b>3.5.5</b> File Details</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4</b> Input/Output</a><ul>
+<li class="chapter" data-level="4.1" data-path="io.html"><a href="io.html#display-messages"><i class="fa fa-check"></i><b>4.1</b> Display Messages</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="io.html"><a href="io.html#print-message"><i class="fa fa-check"></i><b>4.1.1</b> Print Message</a></li>
+<li class="chapter" data-level="4.1.2" data-path="io.html"><a href="io.html#redirect-output"><i class="fa fa-check"></i><b>4.1.2</b> Redirect Output</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="io.html"><a href="io.html#print-concatenate-files"><i class="fa fa-check"></i><b>4.2</b> Print &amp; Concatenate Files</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="io.html"><a href="io.html#print-content"><i class="fa fa-check"></i><b>4.2.1</b> Print Content</a></li>
+<li class="chapter" data-level="4.2.2" data-path="io.html"><a href="io.html#number-all-output-lines"><i class="fa fa-check"></i><b>4.2.2</b> Number All Output Lines</a></li>
+<li class="chapter" data-level="4.2.3" data-path="io.html"><a href="io.html#concatenate-several-files"><i class="fa fa-check"></i><b>4.2.3</b> Concatenate Several Files</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="io.html"><a href="io.html#head"><i class="fa fa-check"></i><b>4.3</b> Head</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="io.html"><a href="io.html#output-the-first-parts-of-a-file"><i class="fa fa-check"></i><b>4.3.1</b> Output the first parts of a file</a></li>
+<li class="chapter" data-level="4.3.2" data-path="io.html"><a href="io.html#output-the-first-n-lines-of-a-file"><i class="fa fa-check"></i><b>4.3.2</b> Output the first n lines of a file</a></li>
+<li class="chapter" data-level="4.3.3" data-path="io.html"><a href="io.html#output-the-first-c-bytes-of-a-file"><i class="fa fa-check"></i><b>4.3.3</b> Output the first c bytes of a file</a></li>
+<li class="chapter" data-level="4.3.4" data-path="io.html"><a href="io.html#output-everything-but-the-last-5-lines-of-a-file"><i class="fa fa-check"></i><b>4.3.4</b> Output everything but the last 5 lines of a file</a></li>
+<li class="chapter" data-level="4.3.5" data-path="io.html"><a href="io.html#output-everything-but-the-last-3-bytes-of-a-file"><i class="fa fa-check"></i><b>4.3.5</b> Output everything but the last 3 bytes of a file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="io.html"><a href="io.html#tail"><i class="fa fa-check"></i><b>4.4</b> Tail</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="io.html"><a href="io.html#display-the-last-parts-of-a-file"><i class="fa fa-check"></i><b>4.4.1</b> Display the last parts of a file</a></li>
+<li class="chapter" data-level="4.4.2" data-path="io.html"><a href="io.html#display-the-last-10-lines-of-a-file"><i class="fa fa-check"></i><b>4.4.2</b> Display the last 10 lines of a file</a></li>
+<li class="chapter" data-level="4.4.3" data-path="io.html"><a href="io.html#display-all-contents-from-line-10"><i class="fa fa-check"></i><b>4.4.3</b> Display all contents from line 10</a></li>
+<li class="chapter" data-level="4.4.4" data-path="io.html"><a href="io.html#display-the-last-10-bytes-of-a-file"><i class="fa fa-check"></i><b>4.4.4</b> Display the last 10 bytes of a file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="io.html"><a href="io.html#more"><i class="fa fa-check"></i><b>4.5</b> More</a></li>
+<li class="chapter" data-level="4.6" data-path="io.html"><a href="io.html#less"><i class="fa fa-check"></i><b>4.6</b> Less</a></li>
+<li class="chapter" data-level="4.7" data-path="io.html"><a href="io.html#sort"><i class="fa fa-check"></i><b>4.7</b> Sort</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="io.html"><a href="io.html#sort-1"><i class="fa fa-check"></i><b>4.7.1</b> Sort</a></li>
+<li class="chapter" data-level="4.7.2" data-path="io.html"><a href="io.html#descending-order"><i class="fa fa-check"></i><b>4.7.2</b> Descending Order</a></li>
+<li class="chapter" data-level="4.7.3" data-path="io.html"><a href="io.html#ignore-case"><i class="fa fa-check"></i><b>4.7.3</b> Ignore case</a></li>
+<li class="chapter" data-level="4.7.4" data-path="io.html"><a href="io.html#numeric-order"><i class="fa fa-check"></i><b>4.7.4</b> Numeric Order</a></li>
+<li class="chapter" data-level="4.7.5" data-path="io.html"><a href="io.html#preserve-only-unique-lines"><i class="fa fa-check"></i><b>4.7.5</b> Preserve Only Unique Lines</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="io.html"><a href="io.html#word-count"><i class="fa fa-check"></i><b>4.8</b> Word Count</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="io.html"><a href="io.html#count-words-bytes-and-lines"><i class="fa fa-check"></i><b>4.8.1</b> Count words, bytes and lines</a></li>
+<li class="chapter" data-level="4.8.2" data-path="io.html"><a href="io.html#count-lines-in-a-file"><i class="fa fa-check"></i><b>4.8.2</b> Count lines in a file</a></li>
+<li class="chapter" data-level="4.8.3" data-path="io.html"><a href="io.html#count-words-in-a-file"><i class="fa fa-check"></i><b>4.8.3</b> Count words in a file</a></li>
+<li class="chapter" data-level="4.8.4" data-path="io.html"><a href="io.html#count-charactersbytes-in-a-file"><i class="fa fa-check"></i><b>4.8.4</b> Count characters(bytes) in a file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regex.html"><a href="regex.html"><i class="fa fa-check"></i><b>5</b> Search &amp; Regular Expression</a><ul>
+<li class="chapter" data-level="5.1" data-path="regex.html"><a href="regex.html#grep"><i class="fa fa-check"></i><b>5.1</b> grep</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="regex.html"><a href="regex.html#match-pattern-in-input-text"><i class="fa fa-check"></i><b>5.1.1</b> Match Pattern in Input Text</a></li>
+<li class="chapter" data-level="5.1.2" data-path="regex.html"><a href="regex.html#ignore-case-1"><i class="fa fa-check"></i><b>5.1.2</b> Ignore Case</a></li>
+<li class="chapter" data-level="5.1.3" data-path="regex.html"><a href="regex.html#highlight"><i class="fa fa-check"></i><b>5.1.3</b> Highlight</a></li>
+<li class="chapter" data-level="5.1.4" data-path="regex.html"><a href="regex.html#print-filename"><i class="fa fa-check"></i><b>5.1.4</b> Print Filename</a></li>
+<li class="chapter" data-level="5.1.5" data-path="regex.html"><a href="regex.html#print-corresponding-line-number"><i class="fa fa-check"></i><b>5.1.5</b> Print Corresponding Line Number</a></li>
+<li class="chapter" data-level="5.1.6" data-path="regex.html"><a href="regex.html#print-filename-line-number"><i class="fa fa-check"></i><b>5.1.6</b> Print Filename &amp; Line Number</a></li>
+<li class="chapter" data-level="5.1.7" data-path="regex.html"><a href="regex.html#invert-match"><i class="fa fa-check"></i><b>5.1.7</b> Invert Match</a></li>
+<li class="chapter" data-level="5.1.8" data-path="regex.html"><a href="regex.html#recursive-search"><i class="fa fa-check"></i><b>5.1.8</b> Recursive Search</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regex.html"><a href="regex.html#find"><i class="fa fa-check"></i><b>5.2</b> find</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="regex.html"><a href="regex.html#search-recursively"><i class="fa fa-check"></i><b>5.2.1</b> Search Recursively</a></li>
+<li class="chapter" data-level="5.2.2" data-path="regex.html"><a href="regex.html#search-by-extension"><i class="fa fa-check"></i><b>5.2.2</b> Search by Extension</a></li>
+<li class="chapter" data-level="5.2.3" data-path="regex.html"><a href="regex.html#case-insensitive-mode"><i class="fa fa-check"></i><b>5.2.3</b> Case-insensitive Mode</a></li>
+<li class="chapter" data-level="5.2.4" data-path="regex.html"><a href="regex.html#case-sensitive-mode"><i class="fa fa-check"></i><b>5.2.4</b> Case-sensitive Mode</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="datatransfer.html"><a href="datatransfer.html"><i class="fa fa-check"></i><b>6</b> Data Transfer</a><ul>
+<li class="chapter" data-level="6.1" data-path="datatransfer.html"><a href="datatransfer.html#wget"><i class="fa fa-check"></i><b>6.1</b> wget</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="datatransfer.html"><a href="datatransfer.html#download-url"><i class="fa fa-check"></i><b>6.1.1</b> Download URL</a></li>
+<li class="chapter" data-level="6.1.2" data-path="datatransfer.html"><a href="datatransfer.html#specify-filename"><i class="fa fa-check"></i><b>6.1.2</b> Specify Filename</a></li>
+<li class="chapter" data-level="6.1.3" data-path="datatransfer.html"><a href="datatransfer.html#download-file"><i class="fa fa-check"></i><b>6.1.3</b> Download File</a></li>
+<li class="chapter" data-level="6.1.4" data-path="datatransfer.html"><a href="datatransfer.html#download-multiple-urls"><i class="fa fa-check"></i><b>6.1.4</b> Download Multiple URLs</a></li>
+<li class="chapter" data-level="6.1.5" data-path="datatransfer.html"><a href="datatransfer.html#quiet"><i class="fa fa-check"></i><b>6.1.5</b> Quiet</a></li>
+<li class="chapter" data-level="6.1.6" data-path="datatransfer.html"><a href="datatransfer.html#no-verbose"><i class="fa fa-check"></i><b>6.1.6</b> No Verbose</a></li>
+<li class="chapter" data-level="6.1.7" data-path="datatransfer.html"><a href="datatransfer.html#check-timestamp"><i class="fa fa-check"></i><b>6.1.7</b> Check Timestamp</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="datatransfer.html"><a href="datatransfer.html#curl"><i class="fa fa-check"></i><b>6.2</b> curl</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="datatransfer.html"><a href="datatransfer.html#download-url-1"><i class="fa fa-check"></i><b>6.2.1</b> Download URL</a></li>
+<li class="chapter" data-level="6.2.2" data-path="datatransfer.html"><a href="datatransfer.html#specify-file"><i class="fa fa-check"></i><b>6.2.2</b> Specify File</a></li>
+<li class="chapter" data-level="6.2.3" data-path="datatransfer.html"><a href="datatransfer.html#download-silently"><i class="fa fa-check"></i><b>6.2.3</b> Download Silently</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="sudo.html"><a href="sudo.html"><i class="fa fa-check"></i><b>7</b> sudo</a></li>
-<li class="chapter" data-level="8" data-path="compress.html"><a href="compress.html"><i class="fa fa-check"></i><b>8</b> File Compression</a></li>
-<li class="chapter" data-level="9" data-path="sysinfo.html"><a href="sysinfo.html"><i class="fa fa-check"></i><b>9</b> System Info</a></li>
-<li class="chapter" data-level="10" data-path="others.html"><a href="others.html"><i class="fa fa-check"></i><b>10</b> Others</a></li>
-<li class="chapter" data-level="11" data-path="rinshell.html"><a href="rinshell.html"><i class="fa fa-check"></i><b>11</b> R in the Shell</a></li>
-<li class="chapter" data-level="12" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>12</b> Summary</a></li>
+<li class="chapter" data-level="8" data-path="compress.html"><a href="compress.html"><i class="fa fa-check"></i><b>8</b> File Compression</a><ul>
+<li class="chapter" data-level="8.1" data-path="compress.html"><a href="compress.html#tar"><i class="fa fa-check"></i><b>8.1</b> tar</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="compress.html"><a href="compress.html#list"><i class="fa fa-check"></i><b>8.1.1</b> List</a></li>
+<li class="chapter" data-level="8.1.2" data-path="compress.html"><a href="compress.html#extract"><i class="fa fa-check"></i><b>8.1.2</b> Extract</a></li>
+<li class="chapter" data-level="8.1.3" data-path="compress.html"><a href="compress.html#create"><i class="fa fa-check"></i><b>8.1.3</b> Create</a></li>
+<li class="chapter" data-level="8.1.4" data-path="compress.html"><a href="compress.html#add"><i class="fa fa-check"></i><b>8.1.4</b> Add</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="compress.html"><a href="compress.html#gzip"><i class="fa fa-check"></i><b>8.2</b> gzip</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="compress.html"><a href="compress.html#compress-1"><i class="fa fa-check"></i><b>8.2.1</b> Compress</a></li>
+<li class="chapter" data-level="8.2.2" data-path="compress.html"><a href="compress.html#decompress"><i class="fa fa-check"></i><b>8.2.2</b> Decompress</a></li>
+<li class="chapter" data-level="8.2.3" data-path="compress.html"><a href="compress.html#specify-filename-1"><i class="fa fa-check"></i><b>8.2.3</b> Specify Filename</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="compress.html"><a href="compress.html#zip-unzip"><i class="fa fa-check"></i><b>8.3</b> zip &amp; unzip</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="compress.html"><a href="compress.html#list-1"><i class="fa fa-check"></i><b>8.3.1</b> List</a></li>
+<li class="chapter" data-level="8.3.2" data-path="compress.html"><a href="compress.html#extract-1"><i class="fa fa-check"></i><b>8.3.2</b> Extract</a></li>
+<li class="chapter" data-level="8.3.3" data-path="compress.html"><a href="compress.html#compress-2"><i class="fa fa-check"></i><b>8.3.3</b> Compress</a></li>
+<li class="chapter" data-level="8.3.4" data-path="compress.html"><a href="compress.html#add-1"><i class="fa fa-check"></i><b>8.3.4</b> Add</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sysinfo.html"><a href="sysinfo.html"><i class="fa fa-check"></i><b>9</b> System Info</a><ul>
+<li class="chapter" data-level="9.1" data-path="sysinfo.html"><a href="sysinfo.html#uname"><i class="fa fa-check"></i><b>9.1</b> uname</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="sysinfo.html"><a href="sysinfo.html#print-all-available-information-about-the-system"><i class="fa fa-check"></i><b>9.1.1</b> Print all available information about the system</a></li>
+<li class="chapter" data-level="9.1.2" data-path="sysinfo.html"><a href="sysinfo.html#display-free-used-swap-memory-in-the-system"><i class="fa fa-check"></i><b>9.1.2</b> Display free, used, swap memory in the system</a></li>
+<li class="chapter" data-level="9.1.3" data-path="sysinfo.html"><a href="sysinfo.html#display-file-system-disk-space-usage"><i class="fa fa-check"></i><b>9.1.3</b> Display file system disk space usage</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="sysinfo.html"><a href="sysinfo.html#others"><i class="fa fa-check"></i><b>9.2</b> Others</a></li>
+<li class="chapter" data-level="9.3" data-path="sysinfo.html"><a href="sysinfo.html#funny-commands"><i class="fa fa-check"></i><b>9.3</b> Funny Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sysinfo.html"><a href="sysinfo.html#others"><i class="fa fa-check"></i><b>10</b> Others</a><ul>
+<li class="chapter" data-level="10.1" data-path="others.html"><a href="others.html"><i class="fa fa-check"></i><b>10.1</b> Execute Commands from R</a></li>
+<li class="chapter" data-level="10.2" data-path="others.html"><a href="others.html#execute-commands-in-rstudio"><i class="fa fa-check"></i><b>10.2</b> Execute Commands in RStudio</a></li>
+<li class="chapter" data-level="10.3" data-path="others.html"><a href="others.html#execute-commands-in-rmarkdown"><i class="fa fa-check"></i><b>10.3</b> Execute Commands in RMarkdown</a></li>
+<li class="chapter" data-level="10.4" data-path="others.html"><a href="others.html#r-in-the-shell"><i class="fa fa-check"></i><b>10.4</b> R in the Shell</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>11</b> Conclusion</a><ul>
+<li class="chapter" data-level="11.1" data-path="conclusion.html"><a href="conclusion.html#what-we-have-not-covered"><i class="fa fa-check"></i><b>11.1</b> What we have not covered…</a></li>
+<li class="chapter" data-level="11.2" data-path="conclusion.html"><a href="conclusion.html#summary"><i class="fa fa-check"></i><b>11.2</b> Summary</a></li>
+<li class="chapter" data-level="11.3" data-path="conclusion.html"><a href="conclusion.html#references"><i class="fa fa-check"></i><b>11.3</b> References</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="conclusion.html"><a href="conclusion.html#feedback"><i class="fa fa-check"></i><b>11.3.1</b> Feedback</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -165,7 +325,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="others" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Others</h1>
+<p>In this chapter, we will learn to</p>
+<ul>
+<li>execute shell commands from R</li>
+<li>execute shell script in RStudio</li>
+<li>execute shell commands in RMarkdown</li>
+<li>execute R commands &amp; script in the shell</li>
+</ul>
+<div id="execute-commands-from-r" class="section level2">
+<h2><span class="header-section-number">10.1</span> Execute Commands from R</h2>
+<p>Now, let us turn our attention to executing commands from R using <code>system2()</code>.
+Here we will focus on the following</p>
+<ul>
+<li>execute a command without arguments</li>
+<li>execute commands with arguments</li>
+<li>redirect output</li>
+</ul>
+<p>Let us try to execute a command without any additional arguments. We will execute the <code>pwd</code> command to list all files and directories. Use <code>system2()</code> and specify the command using the <code>command</code> argument. Whenever you are trying to execute a command from R, the first argument or input should be the command and it must be enclosed in quotes.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">system2</span>(<span class="dt">command =</span> <span class="st">&quot;ls&quot;</span>)</a></code></pre></div>
+<pre><code>##  [1] &quot;01-intro.Rmd&quot;           &quot;02-navigate.Rmd&quot;       
+##  [3] &quot;03-file-management.Rmd&quot; &quot;04-io.Rmd&quot;             
+##  [5] &quot;05-regex.Rmd&quot;           &quot;06-data-transfer.Rmd&quot;  
+##  [7] &quot;07-sudo.Rmd&quot;            &quot;08-file-compress.Rmd&quot;  
+##  [9] &quot;09-sys-info.Rmd&quot;        &quot;10-others.Rmd&quot;         
+## [11] &quot;12-conclusion.Rmd&quot;      &quot;README.md&quot;             
+## [13] &quot;_bookdown.yml&quot;          &quot;_output.yml&quot;           
+## [15] &quot;analysis.R&quot;             &quot;bash-intro.Rmd&quot;        
+## [17] &quot;bash-intro.Rproj&quot;       &quot;cline&quot;                 
+## [19] &quot;docs&quot;                   &quot;examples&quot;              
+## [21] &quot;img&quot;                    &quot;imports_blorr.txt&quot;     
+## [23] &quot;imports_olsrr.txt&quot;      &quot;index.Rmd&quot;             
+## [25] &quot;mypackage&quot;              &quot;myproject&quot;             
+## [27] &quot;style.css&quot;              &quot;zip_example.zip&quot;</code></pre>
+<p>Great! Now, how do we specify the arguments? The additional arguments of a
+command must be stored as a character vector and specified using the <code>args</code>
+argument. In the below example, we delete the <code>examples</code> folder we created earlier while decompressing the <code>zip_example.zip</code> file.</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="kw">system2</span>(<span class="dt">command =</span> <span class="st">&quot;rm&quot;</span>,</a>
+<a class="sourceLine" id="cb204-2" title="2">        <span class="dt">args    =</span> <span class="kw">c</span>(<span class="st">&quot;-r&quot;</span>, <span class="st">&quot;examples&quot;</span>))</a></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<p>In some cases, we might want to redirect the output. Let us say we are writing
+message to a file using the <code>echo</code> command. In this cases, we want the output
+to be redirected to the <code>release.txt</code> file. The <code>stdout</code> argument can be used to redirect output to a file or the R console. In the below example, we redirect the output to a file.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1"><span class="kw">system2</span>(<span class="dt">command =</span> <span class="st">&quot;echo&quot;</span>, </a>
+<a class="sourceLine" id="cb206-2" title="2">        <span class="dt">args    =</span> <span class="kw">c</span>(<span class="st">&quot;Great Truth&quot;</span>), </a>
+<a class="sourceLine" id="cb206-3" title="3">        <span class="dt">stdout  =</span> <span class="st">&quot;release.txt&quot;</span>)</a></code></pre></div>
+<p>In the next example, we redirect the output to the R console by setting the value of the <code>stdout</code> argument to <code>TRUE</code>. If you are curious, set the value to <code>FALSE</code> and see what happens.</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1"><span class="kw">system2</span>(<span class="dt">command =</span> <span class="st">&quot;diff&quot;</span>, </a>
+<a class="sourceLine" id="cb207-2" title="2">        <span class="dt">args    =</span> <span class="kw">c</span>(<span class="st">&quot;imports_olsrr.txt&quot;</span>, <span class="st">&quot;imports_blorr.txt&quot;</span>),  </a>
+<a class="sourceLine" id="cb207-3" title="3">        <span class="dt">stdout  =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## Warning in system2(command = &quot;diff&quot;, args = c(&quot;imports_olsrr.txt&quot;,
+## &quot;imports_blorr.txt&quot;), : running command &#39;&quot;diff&quot; imports_olsrr.txt
+## imports_blorr.txt&#39; had status 1</code></pre>
+<pre><code>##  [1] &quot;1,4c1,5&quot;      &quot;&lt; car &quot;       &quot;&lt; checkmate&quot;  &quot;&lt; cli&quot;       
+##  [5] &quot;&lt; clisymbols&quot; &quot;---&quot;          &quot;&gt; car&quot;        &quot;&gt; checkmate&quot; 
+##  [9] &quot;&gt; cli&quot;        &quot;&gt; clisymbols&quot; &quot;&gt; caret&quot;     
+## attr(,&quot;status&quot;)
+## [1] 1</code></pre>
+<p>The <code>run()</code> command from the <a href="https://processx.r-lib.org/">processx</a> package can be used to execute shell commands as well.</p>
+</div>
+<div id="execute-commands-in-rstudio" class="section level2">
+<h2><span class="header-section-number">10.2</span> Execute Commands in RStudio</h2>
+<p>In RStudio, commands can be executed from shell scripts by pressing <code>Ctrl + Enter</code>. Instead of sending the command to the R console, it is redirected to
+the terminal where it is executed as shown below.</p>
+<p><img src="/img/cline_rstudio_shell.gif" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="execute-commands-in-rmarkdown" class="section level2">
+<h2><span class="header-section-number">10.3</span> Execute Commands in RMarkdown</h2>
+<p>RMarkdown supports <code>bash</code>, <code>sh</code> and <code>awk</code>. This post was initially created using <code>sh</code> as the underlying operating system is Windows. Later, we used <code>bash</code> after installing the Windows subsystem for Linux. Click <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html#shell-scripts">here</a> to learn more.</p>
+<p><img src="/img/cline_shell_markdown.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="r-in-the-shell" class="section level2">
+<h2><span class="header-section-number">10.4</span> R in the Shell</h2>
+<p>In this section, we will learn to execute R commands and scripts in the command line using:</p>
+<ul>
+<li><code>R -e</code></li>
+<li><code>Rscript -e</code></li>
+</ul>
+<p>The <code>-e</code> option allows us to specify R expression(s). <code>R -e</code> will launch R and then execute the code specified within quotes. Use semi-colon to execute multiple commands.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb210-1" title="1"><span class="ex">R</span> -e <span class="st">&quot;head(mtcars); tail(mtcars)&quot;</span></a></code></pre></div>
+<pre><code>## 
+## R version 3.6.1 (2019-07-05) -- &quot;Action of the Toes&quot;
+## Copyright (C) 2019 The R Foundation for Statistical Computing
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## 
+## R is free software and comes with ABSOLUTELY NO WARRANTY.
+## You are welcome to redistribute it under certain conditions.
+## Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.
+## 
+##   Natural language support but running in an English locale
+## 
+## R is a collaborative project with many contributors.
+## Type &#39;contributors()&#39; for more information and
+## &#39;citation()&#39; on how to cite R or R packages in publications.
+## 
+## Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or
+## &#39;help.start()&#39; for an HTML browser interface to help.
+## Type &#39;q()&#39; to quit R.
+## 
+## &gt; head(mtcars); tail(mtcars)
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+##                 mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2
+## &gt; 
+## &gt;</code></pre>
+<p><code>Rscript -e</code> will run code without launching R.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb212-1" title="1"><span class="ex">Rscript</span> -e <span class="st">&quot;head(mtcars)&quot;</span></a></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<p>We can use <code>Rscript</code> to execute a R script as well. In the below example, we execute the code in <code>analysis.R</code> file.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb214-1" title="1"><span class="ex">Rscript</span> analysis.R</a></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<p>If you are more interested, try the <a href="https://cran.r-project.org/package=littler">littler</a> package as well.</p>
 
+</div>
 </div>
             </section>
 
@@ -173,7 +467,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="sysinfo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="rinshell.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

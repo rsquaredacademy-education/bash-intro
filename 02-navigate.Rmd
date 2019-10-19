@@ -1,2 +1,277 @@
 # Navigating File System {#navigate}
 
+## Introduction
+
+In this chapter, we will learn commands that will help us
+
+- navigate between different folders/directories 
+- return current working directory 
+- list all the files & folders in a directory 
+- create and delete directories
+
+```{r table_nav_file_sys, echo=FALSE}
+cname   <- c("`pwd`", "`ls`", "`cd`", "`mkdir`", "`rmdir`")
+descrip <- c("Print working directory",
+             "List directory contents",
+             "Change current working directory", 
+             "Create directory",
+             "Remove/delete directory")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+`pwd` displays the name of the **p**resent **w**orking **d**irectory. 
+
+```{bash c3a, eval=FALSE}
+pwd
+```
+
+```{bash c3b, echo=FALSE}
+cd cline
+pwd
+```
+
+`ls` displays information about files and directories in the current directory along with their associated metadata such as 
+
+- size
+- ownership
+- modification date 
+
+With no options, it will list the files and directories in the current directory, sorted alphabetically.
+
+```{bash c4a, eval=FALSE}
+ls
+```
+
+```{bash c4b, echo=FALSE}
+cd cline
+ls
+```
+
+`cd` (**c**hange **d**irectory) changes the current working directory. It is among the most used commands as it allows the user to move around the file system.
+
+```{bash c6a, eval=FALSE}
+cd r
+pwd
+```
+
+```{bash c6b, echo=FALSE}
+cd cline
+cd r
+pwd
+```
+
+`mkdir` will create new directory. It will allow you to set file mode (permissions associated with the directory) i.e. who can open/modify/delete the directory.
+
+```{bash c5a, eval=FALSE}
+mkdir R
+ls
+```
+
+```{bash c5b, echo=FALSE}
+cd cline
+mkdir R
+ls
+```
+
+`rmdir` will remove empty directories from the file system. It can be used to remove multiple empty directories as well. If the directory is not empty, `rmdir` will not remove it and instead display a warning that the directory is not empty.
+
+```{bash c10a, eval=FALSE}
+rmdir R
+ls
+```
+
+```{bash c10b, echo=FALSE}
+cd cline
+rmdir R
+ls
+```
+
+## R Functions
+
+In R, `getwd()` will return the current working directory. You can use `here()` from the [here](https://here.r-lib.org/) package as well. To change the current
+working directory, use `setwd()`. The [fs](https://fs.r-lib.org/index.html) package provides useful functions for file operations. 
+
+```{r r_nav_file_sys, echo=FALSE}
+cname   <- c("`pwd`", "`ls`", "`cd`", "`mkdir`", "`rmdir`")
+r_map   <- c("`getwd()` / `here::here()`",
+             "`dir()` / `list.files()` / `list.dirs()` / `fs::dir_ls()` / `dir_info()`",
+             "`setwd()`",
+             "`dir.create()` / `fs::dir_create()`",
+             "`fs::dir_delete()`")
+data.frame(Command = cname, R  = r_map) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+## Change Working Directory
+
+Let us focus a bit more on changing working directory. The below table shows commands for changing working directory to
+
+- up one level
+- previous working directory
+- home directory
+- and root directory
+
+```{r table_cd, echo=FALSE}
+cname   <- c("`cd .`", "`cd ..`", "`cd -`", "`cd ~`", "`cd /`")
+descrip <- c("Navigate into directory",
+             "Go up one level",
+             "Go to previous working directory", 
+             "Change directory to home directory",
+             "Change directory to root directory")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+All files and directories stem from one main directory, the root directory. All the other directories in the system are sub-directories of the root directory and the root directory has no parent directory. It is represented by a single slash (`/`). `cd /` will change the current working directory to the root directory.
+
+```{bash c8a, eval=FALSE}
+cd /
+pwd
+```
+
+```{bash c8b, echo=FALSE}
+cd cline
+cd /
+pwd
+```
+
+The parent directory i.e. the directory one level up from the current directory which contains the directory we are in now is represented by two dots (`..`). `cd ..` will change us into the parent directory of the current directory.
+
+```{bash c7a, eval=FALSE}
+cd ..
+pwd
+```
+
+```{bash c7b, echo=FALSE}
+cd cline
+cd ..
+pwd
+```
+
+The home directory is the directory we are placed in, by default, when we launch a new terminal session. It is represented by the tilde (`~`).
+
+```{bash c74a, eval=FALSE}
+cd ~
+pwd
+```
+
+```{bash c74b, echo=FALSE}
+cd cline
+cd ~
+pwd
+```
+
+To change into the previous working directory, use `cd -`.
+
+```{bash c75a, eval=FALSE}
+cd -
+pwd
+```
+
+```{bash c75b, echo=FALSE}
+cd cline
+cd -
+pwd
+```
+
+The current working directory is represented by a single dot (`.`). `cd .` will change us into the current directory i.e. it will do nothing. 
+
+## List Directory Contents
+
+`ls` will list the contents of a directory. Using different arguments, we can
+
+- list hidden files
+- view file permissions, ownership, size & modification date
+- sort by size & modification date
+
+```{r table_ls, echo=FALSE}
+cname   <- c("`ls`", "`ls -l`", "`ls -a`", "`ls -la`", "`ls -lh`", "`ls -lS`", "`ls -ltr`")
+descrip <- c("List directory contents",
+             "List files one per line",
+             "List all files including hidden files", 
+             "Display file permissions, ownership, size & modification date",
+             "Long format list with size displayed in human readable format",
+             "Long format list sorted by size",
+             "Long format list sorted by modification date")
+data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+### List files one per line
+
+```{bash c11a, eval=FALSE}
+ls -l
+```
+
+```{bash c11b, echo=FALSE}
+cd cline
+ls -l
+```
+
+### List all files including hidden files
+
+```{bash c12a, eval=FALSE}
+ls -a
+```
+
+```{bash c12b, echo=FALSE}
+cd cline
+ls -a
+```
+
+### Display file permissions, ownership, size & modification date
+
+```{bash c13a, eval=FALSE}
+ls -la
+```
+
+```{bash c13b, echo=FALSE}
+cd cline
+ls -la
+```
+
+### Display size in human readable format
+
+```{bash c14a, eval=FALSE}
+ls -lh
+```
+
+```{bash c14b, echo=FALSE}
+cd cline
+ls -lh
+```
+
+### Sort list by size
+
+```{bash c15a, eval=FALSE}
+ls -lS
+```
+
+```{bash c15b, echo=FALSE}
+cd cline
+ls -lS
+```
+
+### Sort list by modification date
+
+```{bash c16a, eval=FALSE}
+ls -ltr
+```
+
+```{bash c16b, echo=FALSE}
+cd cline
+ls -ltr
+```
