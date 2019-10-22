@@ -24,7 +24,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 ## Create new file
 
-`touch` modifies file timestamps. Timestamp is information associated with file modification. It can be any of the following:
+`touch` modifies file timestamps which is information associated with file modification. It can be any of the following:
 
 - access time (the last time the file was read)
 - modification time (the last time the contents of the file was changed)
@@ -46,11 +46,11 @@ ls
 ## Copy Files/Folders
 
 `cp` makes copies of files and directories. The general form of the command is 
-**cp source destination**. By default, it will overwrite files without prompting for confirmation so be cautious before copying files or folders.
+**cp source destination**. By default, it will overwrite files without prompting for confirmation so be cautious while copying files or folders.
 
 ### Copy files in same folder
 
-Let us create a copy of the `release_names.txt` file and name it as `release_names_2.txt`.
+Let us create a copy of `release_names.txt` file and name it as `release_names_2.txt`.
 
 ```{bash c19a, eval=FALSE}
 cp release_names.txt release_names_2.txt
@@ -65,7 +65,7 @@ ls
 
 ### Copy files into different folder
 
-To copy a file into a different directory/folder, we need to specify the name of the folder along with the name of the file. Let us copy the `release_names.txt` file into the `r_releases` folder (we will retain the same name for the file as we are copying it into a different folder).
+To copy a file into a different directory/folder, we need to specify the name of the destination folder. If the copied file should have a different name, then we need to specify the new name of the file as well. Let us copy the `release_names.txt` file into the `r_releases` folder (we will retain the same name for the file as we are copying it into a different folder).
 
 ```{bash c21a, eval=FALSE}
 cp release_names.txt r_releases/release_names.txt
@@ -82,7 +82,7 @@ cd cline
 cp release_names.txt r_releases/release_names.txt
 ```
 
-Let us check if the file has been copied by listing the files in the `r` folder using `ls`.
+Let us check if the file has been copied by listing the files in the `r_releases` folder using `ls`.
 
 ```{bash c20a, eval=FALSE}
 ls r_releases
@@ -193,7 +193,7 @@ cat r_releases/release_names_2.txt
 
 In our current working directory, we will create another file of the same name i.e. `release_names_2.txt` but its contents are different from the file in the `r_releases` folder. It contains the string `release_names` and nothing else. We will now move this file into the `r_releases` folder but use the option `-n` to ensure that the file in the `r_releases` folder is not overwritten. We can confirm this by printing the contents of the file in the `r_releases` folder.
 
-The `echo` is used to print text to the terminal or to write to a file. We will explore it in more detail in the next chapter.
+The `echo` command is used to print text to the terminal or to write to a file. We will explore it in more detail in the next chapter.
 
 ```{bash c78a, eval =FALSE}
 echo "release_names" > release_names_2.txt 
@@ -207,6 +207,8 @@ echo "release_names" > release_names_2.txt
 mv -n release_names_2.txt r_releases
 cat r_releases/release_names_2.txt
 ```
+
+As you can observe, the contents of the file in the `r_releases` folder has not changed. In the next section, we will learn to overwrite the contents using the `-f` option.
 
 ### Do not prompt for confirmation before overwriting files
 
@@ -359,7 +361,7 @@ The files contain the names of R packages imported by the [olsrr](https://olsrr.
 - **c** for change
 - **d** for delete
 
-We will ignore white spaces while comparing the files using the `-w` option.
+We will use the `-w` option to ignore white spaces while comparing the files.
 
 ```{bash c30, eval=FALSE}
 diff -w imports_olsrr.txt imports_blorr.txt
@@ -430,6 +432,8 @@ diff -rq mypackage myproject
 ```{r r83, echo=FALSE}
 suppressWarnings(cat(system2('diff', c("-rq", "mypackage", "myproject"), TRUE), sep = "\n"))
 ```
+
+## R Functions
 
 In R, file operations can be performed using functions from both base R and the [fs](https://fs.r-lib.org/index.html) package.
 

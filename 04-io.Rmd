@@ -12,8 +12,8 @@ descrip <- c("Display messages",
              "Print contents of a file",
              "Prints first ten lines of a file by default", 
              "Prints last ten lines of a file by default",
-             "Displays more",
-             "Displays less",
+             "Open a file for interactive reading, scrolling & searching",
+             "Open a file for interactive reading, scrolling & searching",
              "Sort a file in ascending order")
 data.frame(Command = cname, Description = descrip) %>% 
   kable() %>% 
@@ -54,15 +54,6 @@ What if we want to redirect the output? Instead of printing the text to the term
 
 ```{bash c34, eval=FALSE}
 echo Great Truth > release.txt
-```
-
-```{bash 340a, eval=FALSE}
-ls
-```
-
-```{bash 340b, echo=FALSE}
-cd cline
-ls
 ```
 
 ## Print & Concatenate Files
@@ -114,10 +105,11 @@ cat -n release_names.txt
 
 ### Concatenate Several Files
 
-To concatenate the contents of several files into a target file, use `>`. In the below example, we concatenate the contents of the files `release_names_18.txt` and `release_names_19.txt` into a single file `release_names_18_19.txt`. In this case we are not printing the contents of the file to the terminal and instead we read concatenate the contents from both the files and redirect the output to the target file.
+To concatenate the contents of several files into a target file, use `>`. In the below example, we concatenate the contents of the files `release_names_18.txt` and `release_names_19.txt` into a single file `release_names_18_19.txt`. In this case we are not printing the contents of the file to the terminal and instead we concatenate the contents from both the files and redirect the output to the target file.
 
 ```{bash c37a, eval=FALSE}
 cat release_names_18.txt release_names_19.txt > release_names_18_19.txt
+cat release_names_18_19.txt
 ```
 
 ```{bash c37, echo=FALSE}
@@ -132,7 +124,7 @@ cat release_names_18_19.txt
 
 ## Head
 
-The `head` command will display the firt 10 lines of a file(s) by default. It can be used to display the first few lines or bytes of a file. 
+The `head` command will display the firt 10 lines of a file(s) by default. It can be used to display the first few lines or bytes of a file as well. 
 
 ```{r table_head, echo=FALSE}
 cname   <- c("`head`", "`head -n`", "`head -c`", "`head -n -x`", "`head -c -x`")
@@ -150,6 +142,8 @@ data.frame(Command = cname, Description = descrip) %>%
 
 ### Output the first parts of a file
 
+Let us use `head` to display the first 10 lines of the `release_names.txt` file.
+
 ```{bash c39a, eval=FALSE}
 head release_names.txt
 ```
@@ -160,6 +154,8 @@ head release_names.txt
 ```
 
 ### Output the first n lines of a file
+
+Using the `n` option, we can specify the number of lines to be displayed. In the below example, we display the first 5 lines.
 
 ```{bash c40a, eval=FALSE}
 head -n 5 release_names.txt
@@ -172,6 +168,8 @@ head -n 5 release_names.txt
 
 ### Output the first c bytes of a file
 
+The `c` option can be used to display characters or bytes instead of lines. Let us display the first 5 bytes of the `release_names.txt` file.
+
 ```{bash c41a, eval=FALSE}
 head -c 5 release_names.txt
 ```
@@ -183,6 +181,8 @@ head -c 5 release_names.txt
 
 ### Output everything but the last 5 lines of a file
 
+To display the last parts of a file, use `-` while specifying the number of lines. In the below example, we display the last 5 lines of the file.
+
 ```{bash c42a, eval=FALSE}
 head -n -5 release_names.txt
 ```
@@ -193,6 +193,8 @@ head -n -5 release_names.txt
 ```
 
 ### Output everything but the last 3 bytes of a file
+
+In this example, we display the last 3 bytes of the file using the `c` option and `-` while specifying the number of bytes.
 
 ```{bash c43a, eval=FALSE}
 head -c -3 release_names.txt
@@ -224,6 +226,8 @@ data.frame(Command = cname, Description = descrip) %>%
 
 ### Display the last parts of a file
 
+Let us use `tail` to display the last 10 lines of the file.
+
 ```{bash c100a, eval=FALSE}
 tail release_names.txt
 ```
@@ -233,18 +237,22 @@ cd cline
 tail release_names.txt
 ```
 
-### Display the last 10 lines of a file
+### Display the last 5 lines of a file
+
+As we did in the previous section, use `n` to specify the number of lines to be displayed.
 
 ```{bash c101a, eval=FALSE}
-tail -n 10 release_names.txt
+tail -n 5 release_names.txt
 ```
 
 ```{bash c101b, echo=FALSE}
 cd cline
-tail -n 10 release_names.txt
+tail -n 5 release_names.txt
 ```
 
 ### Display all contents from line 10
+
+We can use `tail` to display all contents of a file starting from a specific line. In the below example, we display all contents of the file starting from the 10th line using the `n` option and `+` prefix while specifying the number of lines.
 
 ```{bash c102a, eval=FALSE}
 tail -n +10 release_names.txt
@@ -257,13 +265,15 @@ tail -n +10 release_names.txt
 
 ### Display the last 10 bytes of a file
 
+Use the `c` option to display the last 7 bytes of a file.
+
 ```{bash c103a, eval=FALSE}
-tail -c 10 release_names.txt
+tail -c 7 release_names.txt
 ```
 
 ```{bash c103b, echo=FALSE}
 cd cline
-tail -c 10 release_names.txt
+tail -c 7 release_names.txt
 ```
 
 ## More

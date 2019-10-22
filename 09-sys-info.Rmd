@@ -87,19 +87,6 @@ data.frame(Command = cname, Description = descrip) %>%
   )
 ```
 
-In R, we can use `Sys.sleep()` to delay activity and `history()` to view command history.
-
-```{r r_others, echo=FALSE}
-cname   <- c("`sleep`", "`history`")
-descrip <- c("`Sys.sleep()`",
-             "`history()`")
-data.frame(Command = cname, R = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
-
 ## Funny Commands
 
 Below are a few funny commands for you to try out. Use `sudo apt-get install` to install fortune and banner before trying them.
@@ -110,6 +97,21 @@ descrip <- c("Poignant, inspirational & silly phrases",
              "Output a string repeatedly until killed",
              "ASCII banner", "Reverse each character")
 data.frame(Command = cname, Description = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+## R Functions
+
+In R, we can use `Sys.sleep()` to delay activity and `history()` to view command history.
+
+```{r r_others, echo=FALSE}
+cname   <- c("`sleep`", "`history`")
+descrip <- c("`Sys.sleep()`",
+             "`history()`")
+data.frame(Command = cname, R = descrip) %>% 
   kable() %>% 
   kable_styling(
     bootstrap_options = c("striped", "hover", "condensed", "responsive")

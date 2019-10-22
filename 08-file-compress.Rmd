@@ -17,7 +17,7 @@ The `tar` command is used for file compression. It works with both `tar` and
 - create archives
 - append file to existing archives
 
-`tar` creates, maintains, modifies, and extracts files that are archived in the tar format. Tar stands for tape archive and is an archiving file format.
+`tar` creates, maintains, modifies, and extracts files that are archived in the tar format. Tar stands for **t**ape **ar**chive and is an archiving file format.
 
 ```{r table_tar, echo=FALSE}
 cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
@@ -75,19 +75,6 @@ tar -xvf release_names.tar
 ls
 ```
 
-### Create 
-
-Using the `c` option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.
-
-```{bash c68a, eval=FALSE}
-tar -cvf release_names.tar release_names.txt
-```
-
-```{bash c68b, echo=FALSE}
-cd cline
-tar -cvf release_names.tar release_names.txt
-```
-
 ### Add 
 
 To add a file to an existing archive, use the `r` option. Let us add `release_names_18.txt` and `release_names_19.txt` to the archive we created in the previous step. 
@@ -101,22 +88,17 @@ cd cline
 tar -rvf release_names.tar release_names_18.txt release_names_19.txt
 ```
 
-In R, we can use the `tar()` and `untar()` functions from the `utils` package to handle `.tar` and `.tar.gz` archives.
+### Create 
 
-```{r r_tar, echo=FALSE}
-cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
-             "`tar cvfz`")
-descrip <- c("`utils::untar('archive.tar', list = TRUE)`",
-             "`utils::untar('archive.tar.gz', list = TRUE)`",
-             "`utils::untar('archive.tar')`",
-             "`utils::untar('archive.tar.gz')`",
-             "`utils::tar('archive.tar')`",
-             "`utils::tar('archive.tar', compression = 'gzip')`")
-data.frame(Command = cname, R = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
+Using the `c` option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.
+
+```{bash c68a, eval=FALSE}
+tar -cvf pkg_names.tar pkg_names.txt
+```
+
+```{bash c68b, echo=FALSE}
+cd cline
+tar -cvf pkg_names.tar pkg_names.txt
 ```
 
 ## gzip
@@ -272,7 +254,31 @@ cd cline
 zip myproject.zip bash.sh
 ```
 
-In R, we can the [zip](https://cran.r-project.org/package=zip) package has the functionalities to handle ZIP archives. The `tar()` and `untar()` functions from the `utils` package can handle GZIP archives.
+## R Functions
+
+### tar & tar.gz
+
+In R, we can use the `tar()` and `untar()` functions from the `utils` package to handle `.tar` and `.tar.gz` archives.
+
+```{r r_tar, echo=FALSE}
+cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
+             "`tar cvfz`")
+descrip <- c("`utils::untar('archive.tar', list = TRUE)`",
+             "`utils::untar('archive.tar.gz', list = TRUE)`",
+             "`utils::untar('archive.tar')`",
+             "`utils::untar('archive.tar.gz')`",
+             "`utils::tar('archive.tar')`",
+             "`utils::tar('archive.tar', compression = 'gzip')`")
+data.frame(Command = cname, R = descrip) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
+```
+
+### zip & gzip
+
+The [zip](https://cran.r-project.org/package=zip) package has the functionalities to handle ZIP archives. The `tar()` and `untar()` functions from the `utils` package can handle GZIP archives.
 
 ```{r r_gzip, echo=FALSE}
 cname   <- c("`gzip`", "`gzip -d`", "`gzip -c`", "`zip -r`", "`zip`",                       "`unzip`", "`unzip -d`", "`unzip -l`")

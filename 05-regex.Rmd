@@ -28,7 +28,7 @@ The `grep` command is used for pattern matching. Along with additional options, 
 - print filename and line number for each match
 - invert match for excluding specific strings
 
-`grep` processes text line by line, and prints any lines which match a specified pattern. `grep`, which stands for **g**lobal **r**egular **e**xpression **p**rint," is a powerful tool for matching a regular expression against text in a file, multiple files, or a stream of input. 
+`grep` processes text line by line, and prints any lines which match a specified pattern. `grep`, which stands for **g**lobal **r**egular **e**xpression **p**rint is a powerful tool for matching a regular expression against text in a file, multiple files, or a stream of input. 
 
 ```{r table_grep, echo=FALSE}
 cname   <- c("`grep`", "`grep -i`", "`grep -RI`", "`grep -E`", "`grep -Hn`", "`grep -v`")
@@ -156,7 +156,7 @@ The `find` command can be used for searching files and directories. Using additi
 - search files by extension type
 - ignore case while searching files/directories
 
-`find` powerful tool for working with the files. It can be used on its own to locate files, or in conjunction with other programs to perform operations on those files.
+`find` is a powerful tool for working with the files. It can be used on its own to locate files, or in conjunction with other programs to perform operations on those files.
 
 ```{r table_find, echo=FALSE}
 cname   <- c("`find`", "`find -name '*.txt'`", "`find -type d -iname`", "`find -type d -name`")
@@ -184,9 +184,11 @@ cd cline
 find -name release_names.txt
 ```
 
+There are two files with the name `release_names.txt` present in the current working directory and in `r_releases` directory.
+
 ### Search by Extension
 
-Let us search for all files with `.txt` extension in the `r` folder.
+Let us search for all files with `.txt` extension in the `r_releases` folder.
 
 ```{bash c62a, eval=FALSE}
 find r_releases -name '*.txt'
@@ -196,6 +198,8 @@ find r_releases -name '*.txt'
 cd cline
 find r_releases -name '*.txt'
 ```
+
+There are 3 files with the `.txt` extension in `r_releases` folder.
 
 ### Case-insensitive Mode
 

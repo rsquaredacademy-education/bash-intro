@@ -17,6 +17,8 @@ data.frame(Command = cname, Description = descrip) %>%
   )
 ```
 
+We have not executed the commands in this ebook as downloading multiple files from the internet will take a lot of time or result in errors but we have checked all the commands offline to ensure that they work.
+
 ## wget
 
 The `wget` command will download contents of a URL and files from the internet. 
@@ -54,7 +56,6 @@ Let us first use `wget` to download contents of a URL. Note, we are not download
 
 ```{bash c113a, eval=FALSE}
 wget https://www.r-project.org/
-ls
 ```
 
 ```{bash c113b, echo=FALSE, eval=FALSE}
@@ -71,7 +72,6 @@ In this example, we download contents from the same URL and in addition specify 
 
 ```{bash c114a, eval=FALSE}
 wget -o rhomepage.html https://www.r-project.org/
-ls
 ```
 
 ```{bash c114b, echo=FALSE, eval=FALSE}
@@ -101,7 +101,7 @@ How do we download multiple URLs? One way is to specify the URLs one after the o
 cat urls.txt
 ```
 
-```{bash c115b, echo=FALSE, eval=FALSE}
+```{bash c115b, echo=FALSE}
 cd cline
 cat urls.txt
 ```
@@ -135,7 +135,7 @@ wget –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz
 
 ### Check Timestamp
 
-Let us say we have already downloaded a file from a URL. The file is update from time to time and we intend to keep the local copy updated as well. Using the `--timestamping` option, the local file will have timestamp matching the remote file; if the remote file is not newer (not updated), no download will occur i.e. if the timestamp of the remote file has not changed it will not be downloaded. This is very useful in case of large files where you do not want to download them unless they have been updated.
+Let us say we have already downloaded a file from a URL. The file is updated from time to time and we intend to keep the local copy updated as well. Using the `--timestamping` option, the local file will have timestamp matching the remote file; if the remote file is not newer (not updated), no download will occur i.e. if the timestamp of the remote file has not changed it will not be downloaded. This is very useful in case of large files where you do not want to download them unless they have been updated.
 
 ```{bash c112a, eval=FALSE}
 wget –-timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz
@@ -209,6 +209,8 @@ cd cline
 curl http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz -o sept_01.csv.gz -s
 ls
 ```
+
+## R Functions
 
 In R, we can use `download.file()` to download files from the internet. The following packages offer functionalities that you will find useful.
 

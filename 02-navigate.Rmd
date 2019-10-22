@@ -67,46 +67,27 @@ pwd
 `mkdir` will create new directory. It will allow you to set file mode (permissions associated with the directory) i.e. who can open/modify/delete the directory.
 
 ```{bash c5a, eval=FALSE}
-mkdir R
+mkdir rfiles
 ls
 ```
 
 ```{bash c5b, echo=FALSE}
 cd cline
-mkdir R
+mkdir rfiles
 ls
 ```
 
 `rmdir` will remove empty directories from the file system. It can be used to remove multiple empty directories as well. If the directory is not empty, `rmdir` will not remove it and instead display a warning that the directory is not empty.
 
 ```{bash c10a, eval=FALSE}
-rmdir R
+rmdir rfiles
 ls
 ```
 
 ```{bash c10b, echo=FALSE}
 cd cline
-rmdir R
+rmdir rfiles
 ls
-```
-
-## R Functions
-
-In R, `getwd()` will return the current working directory. You can use `here()` from the [here](https://here.r-lib.org/) package as well. To change the current
-working directory, use `setwd()`. The [fs](https://fs.r-lib.org/index.html) package provides useful functions for file operations. 
-
-```{r r_nav_file_sys, echo=FALSE}
-cname   <- c("`pwd`", "`ls`", "`cd`", "`mkdir`", "`rmdir`")
-r_map   <- c("`getwd()` / `here::here()`",
-             "`dir()` / `list.files()` / `list.dirs()` / `fs::dir_ls()` / `dir_info()`",
-             "`setwd()`",
-             "`dir.create()` / `fs::dir_create()`",
-             "`fs::dir_delete()`")
-data.frame(Command = cname, R  = r_map) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
 ```
 
 ## Change Working Directory
@@ -274,4 +255,23 @@ ls -ltr
 ```{bash c16b, echo=FALSE}
 cd cline
 ls -ltr
+```
+
+## R Functions
+
+In R, `getwd()` will return the current working directory. You can use `here()` from the [here](https://here.r-lib.org/) package as well. To change the current
+working directory, use `setwd()`. The [fs](https://fs.r-lib.org/index.html) package provides useful functions for file operations. 
+
+```{r r_nav_file_sys, echo=FALSE}
+cname   <- c("`pwd`", "`ls`", "`cd`", "`mkdir`", "`rmdir`")
+r_map   <- c("`getwd()` / `here::here()`",
+             "`dir()` / `list.files()` / `list.dirs()` / `fs::dir_ls()` / `dir_info()`",
+             "`setwd()`",
+             "`dir.create()` / `fs::dir_create()`",
+             "`fs::dir_delete()`")
+data.frame(Command = cname, R  = r_map) %>% 
+  kable() %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
 ```
