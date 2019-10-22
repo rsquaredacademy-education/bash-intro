@@ -67,7 +67,7 @@ In RStudio, commands can be executed from shell scripts by pressing `Ctrl + Ente
 the terminal where it is executed as shown below.
 
 ```{r rstudio_shell, echo=FALSE, fig.align="center", out.width="90%"}
-knitr::include_graphics("/img/cline_rstudio_shell.gif")
+knitr::include_graphics("img/cline_rstudio_shell.gif")
 ```
 
 ## RMarkdown 
@@ -75,7 +75,7 @@ knitr::include_graphics("/img/cline_rstudio_shell.gif")
 RMarkdown supports `bash`, `sh` and `awk`. This post was initially  created using `sh` as the underlying operating system is Windows. Later, we used `bash` after installing the Windows subsystem for Linux. Click [here](https://bookdown.org/yihui/rmarkdown/language-engines.html#shell-scripts) to learn more.
 
 ```{r shell_rmarkdown, echo=FALSE, fig.align="center", out.width="90%"}
-knitr::include_graphics("/img/cline_shell_markdown.png")
+knitr::include_graphics("img/cline_shell_markdown.png")
 ```
 
 ## Rscript

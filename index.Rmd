@@ -29,7 +29,7 @@ In this book, you will be introduced to shell commands. We have selected a set o
 - execute shell commands in RMarkdown
 - execute R scripts in the shell 
 
-If you want a deeper understanding of using command line for data science, we suggest you read [Data Science at the Command Line](https://www.datascienceatthecommandline.com/). [Software Carpentry](https://software-carpentry.org/) too has a lesson on [shell](https://swcarpentry.github.io/shell-novice/). We have listed more references at the end of the tutorial for the benefit of the readers.
+If you want a deeper understanding of using command line for data science, we suggest you read [Data Science at the Command Line](https://www.datascienceatthecommandline.com/). [Software Carpentry](https://software-carpentry.org/) too has a lesson on [shell](https://swcarpentry.github.io/shell-novice/). We have listed more references at the end of the book for the benefit of the readers.
 
 ## Outline {-}
 

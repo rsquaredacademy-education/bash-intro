@@ -158,7 +158,7 @@ sudo apt-get autoremove                               # remove any dependencies 
 tar -tvf release_names.tar                                              # list an archive 
 tar -xvf release_names.tar                                              # extract an archive using tar 
 tar -rvf release_names.tar release_names_18.txt release_names_19.txt    # add a file to an existing archive
-tar -cvf pkg_names.tar pkg_names.txt                            # create an uncompressed tar archive
+tar -cvf pkg_names.tar pkg_names.txt                                    # create an uncompressed tar archive
 
 # gz
 gzip release_names.txt                                # compress a file
