@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Input/Output | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Input/Output | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Aravind Hebbali" />
 
 
-<meta name="date" content="2019-10-22" />
+<meta name="date" content="2020-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -48,12 +51,21 @@
 
 
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57270671-37"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-57270671-37');
+</script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +74,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +92,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -468,12 +482,12 @@ Enable interpretation of special characters
 <div id="print-message" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Print Message</h3>
 <p>Let us start with a simple example. We will print the text <code>Action of the Toes</code> to the terminal. It is the release name for R version 3.6.1.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb89-1" title="1"><span class="bu">echo</span> Action of the Toes</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="io.html#cb83-1"></a><span class="bu">echo</span> Action of the Toes</span></code></pre></div>
 </div>
 <div id="redirect-output" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Redirect Output</h3>
 <p>What if we want to redirect the output? Instead of printing the text to the terminal, we want to write it to a file. In such cases, use <code>&gt;</code> along with the file name to redirect the output to the file. Keep in mind that <code>&gt;</code> will overwrite files. If you want to append to files instead of overwriting, use <code>&gt;&gt;</code>.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb90-1" title="1"><span class="bu">echo</span> Great Truth <span class="op">&gt;</span> release.txt</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="io.html#cb84-1"></a><span class="bu">echo</span> Great Truth <span class="op">&gt;</span> release.txt</span></code></pre></div>
 </div>
 </div>
 <div id="print-concatenate-files" class="section level2">
@@ -533,7 +547,7 @@ Number all output lines
 <div id="print-content" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Print Content</h3>
 <p>Let us print the content of the <code>release_names.txt</code> file (it contains R release names).</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb91-1" title="1"><span class="fu">cat</span> release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="io.html#cb85-1"></a><span class="fu">cat</span> release_names.txt</span></code></pre></div>
 <pre><code>## Unsuffered Consequences
 ## Great Pumpkin
 ## December Snowflakes
@@ -568,7 +582,7 @@ Number all output lines
 <div id="number-all-output-lines" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Number All Output Lines</h3>
 <p>If you want to number the output line, use the <code>-n</code> option.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb93-1" title="1"><span class="fu">cat</span> -n release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="io.html#cb87-1"></a><span class="fu">cat</span> -n release_names.txt</span></code></pre></div>
 <pre><code>##      1   Unsuffered Consequences
 ##      2   Great Pumpkin
 ##      3   December Snowflakes
@@ -603,8 +617,8 @@ Number all output lines
 <div id="concatenate-several-files" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Concatenate Several Files</h3>
 <p>To concatenate the contents of several files into a target file, use <code>&gt;</code>. In the below example, we concatenate the contents of the files <code>release_names_18.txt</code> and <code>release_names_19.txt</code> into a single file <code>release_names_18_19.txt</code>. In this case we are not printing the contents of the file to the terminal and instead we concatenate the contents from both the files and redirect the output to the target file.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb95-1" title="1"><span class="fu">cat</span> release_names_18.txt release_names_19.txt <span class="op">&gt;</span> release_names_18_19.txt</a>
-<a class="sourceLine" id="cb95-2" title="2"><span class="fu">cat</span> release_names_18_19.txt</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="io.html#cb89-1"></a><span class="fu">cat</span> release_names_18.txt release_names_19.txt <span class="op">&gt;</span> release_names_18_19.txt</span>
+<span id="cb89-2"><a href="io.html#cb89-2"></a><span class="fu">cat</span> release_names_18_19.txt</span></code></pre></div>
 <pre><code>## Someone to Lean On
 ## Joy in Playing
 ## Feather Spray
@@ -673,7 +687,7 @@ Output everything but the last x bytes of a file
 <div id="output-the-first-parts-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Output the first parts of a file</h3>
 <p>Let us use <code>head</code> to display the first 10 lines of the <code>release_names.txt</code> file.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb97-1" title="1"><span class="fu">head</span> release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="io.html#cb91-1"></a><span class="fu">head</span> release_names.txt</span></code></pre></div>
 <pre><code>## Unsuffered Consequences
 ## Great Pumpkin
 ## December Snowflakes
@@ -688,7 +702,7 @@ Output everything but the last x bytes of a file
 <div id="output-the-first-n-lines-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Output the first n lines of a file</h3>
 <p>Using the <code>n</code> option, we can specify the number of lines to be displayed. In the below example, we display the first 5 lines.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb99-1" title="1"><span class="fu">head</span> -n 5 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="io.html#cb93-1"></a><span class="fu">head</span> -n 5 release_names.txt</span></code></pre></div>
 <pre><code>## Unsuffered Consequences
 ## Great Pumpkin
 ## December Snowflakes
@@ -698,13 +712,13 @@ Output everything but the last x bytes of a file
 <div id="output-the-first-c-bytes-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> Output the first c bytes of a file</h3>
 <p>The <code>c</code> option can be used to display characters or bytes instead of lines. Let us display the first 5 bytes of the <code>release_names.txt</code> file.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb101-1" title="1"><span class="fu">head</span> -c 5 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="io.html#cb95-1"></a><span class="fu">head</span> -c 5 release_names.txt</span></code></pre></div>
 <pre><code>## Unsuf</code></pre>
 </div>
 <div id="output-everything-but-the-last-5-lines-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.3.4</span> Output everything but the last 5 lines of a file</h3>
 <p>To display the last parts of a file, use <code>-</code> while specifying the number of lines. In the below example, we display the last 5 lines of the file.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb103-1" title="1"><span class="fu">head</span> -n -5 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="io.html#cb97-1"></a><span class="fu">head</span> -n -5 release_names.txt</span></code></pre></div>
 <pre><code>## Unsuffered Consequences
 ## Great Pumpkin
 ## December Snowflakes
@@ -734,7 +748,7 @@ Output everything but the last x bytes of a file
 <div id="output-everything-but-the-last-3-bytes-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.3.5</span> Output everything but the last 3 bytes of a file</h3>
 <p>In this example, we display the last 3 bytes of the file using the <code>c</code> option and <code>-</code> while specifying the number of bytes.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb105-1" title="1"><span class="fu">head</span> -c -3 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="io.html#cb99-1"></a><span class="fu">head</span> -c -3 release_names.txt</span></code></pre></div>
 <pre><code>## Unsuffered Consequences
 ## Great Pumpkin
 ## December Snowflakes
@@ -835,7 +849,7 @@ Keep reading file until Ctrl + C; even if the file is rotated
 <div id="display-the-last-parts-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Display the last parts of a file</h3>
 <p>Let us use <code>tail</code> to display the last 10 lines of the file.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb107-1" title="1"><span class="fu">tail</span> release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="io.html#cb101-1"></a><span class="fu">tail</span> release_names.txt</span></code></pre></div>
 <pre><code>## Very Secure Dishes
 ## Very, Very Secure Dishes
 ## Supposedly Educational
@@ -850,7 +864,7 @@ Keep reading file until Ctrl + C; even if the file is rotated
 <div id="display-the-last-5-lines-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Display the last 5 lines of a file</h3>
 <p>As we did in the previous section, use <code>n</code> to specify the number of lines to be displayed.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb109-1" title="1"><span class="fu">tail</span> -n 5 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="io.html#cb103-1"></a><span class="fu">tail</span> -n 5 release_names.txt</span></code></pre></div>
 <pre><code>## Another Canoe
 ## You Stupid Darkness
 ## Single Candle
@@ -860,7 +874,7 @@ Keep reading file until Ctrl + C; even if the file is rotated
 <div id="display-all-contents-from-line-10" class="section level3">
 <h3><span class="header-section-number">4.4.3</span> Display all contents from line 10</h3>
 <p>We can use <code>tail</code> to display all contents of a file starting from a specific line. In the below example, we display all contents of the file starting from the 10th line using the <code>n</code> option and <code>+</code> prefix while specifying the number of lines.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb111-1" title="1"><span class="fu">tail</span> -n +10 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="io.html#cb105-1"></a><span class="fu">tail</span> -n +10 release_names.txt</span></code></pre></div>
 <pre><code>## Good Sport
 ## Frisbee Sailing
 ## Warm Puppy
@@ -886,7 +900,7 @@ Keep reading file until Ctrl + C; even if the file is rotated
 <div id="display-the-last-10-bytes-of-a-file" class="section level3">
 <h3><span class="header-section-number">4.4.4</span> Display the last 10 bytes of a file</h3>
 <p>Use the <code>c</code> option to display the last 7 bytes of a file.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb113-1" title="1"><span class="fu">tail</span> -c 7 release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="io.html#cb107-1"></a><span class="fu">tail</span> -c 7 release_names.txt</span></code></pre></div>
 <pre><code>##  Tree</code></pre>
 </div>
 </div>
@@ -1119,7 +1133,7 @@ Preserve only unique lines while sorting
 <div id="sort-1" class="section level3">
 <h3><span class="header-section-number">4.7.1</span> Sort</h3>
 <p>Let us sort the contents of the <code>pkg_names.txt</code> file. It contains names R packages randomly selected from CRAN.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb115-1" title="1"><span class="fu">sort</span> pkg_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="io.html#cb109-1"></a><span class="fu">sort</span> pkg_names.txt</span></code></pre></div>
 <pre><code>## ASIP
 ## AdMit
 ## AnalyzeTS
@@ -1233,7 +1247,7 @@ Preserve only unique lines while sorting
 <div id="descending-order" class="section level3">
 <h3><span class="header-section-number">4.7.2</span> Descending Order</h3>
 <p>Using the <code>-r</code> option which stands for <code>--reverse</code> the contents of the file can be sorted in descending/reverse order. Let us now sort the contents of the <code>pkg_names.txt</code> file in reverse order.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb117-1" title="1"><span class="fu">sort</span> -r pkg_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="io.html#cb111-1"></a><span class="fu">sort</span> -r pkg_names.txt</span></code></pre></div>
 <pre><code>## widyr
 ## widyr
 ## vqtl
@@ -1347,7 +1361,7 @@ Preserve only unique lines while sorting
 <div id="ignore-case" class="section level3">
 <h3><span class="header-section-number">4.7.3</span> Ignore case</h3>
 <p>To ignore case while sorting contents, use the <code>--ignore-case</code> option. Time to sort the <code>pkg_names.txt</code> file while ignoring case.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb119-1" title="1"><span class="fu">sort</span> --ignore-case pkg_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb113-1"><a href="io.html#cb113-1"></a><span class="fu">sort</span> --ignore-case pkg_names.txt</span></code></pre></div>
 <pre><code>## accept
 ## accept
 ## addhaz
@@ -1461,7 +1475,7 @@ Preserve only unique lines while sorting
 <div id="numeric-order" class="section level3">
 <h3><span class="header-section-number">4.7.4</span> Numeric Order</h3>
 <p>To sort numerically, use the <code>-n</code> option which stands for <code>--numeric-sort</code>. In this example, we will use a different file, <code>package_names.txt</code> where the package names are prefixed by random numbers between 1 and 100.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb121-1" title="1"><span class="fu">sort</span> -n package_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb115-1"><a href="io.html#cb115-1"></a><span class="fu">sort</span> -n package_names.txt</span></code></pre></div>
 <pre><code>## 1. cyclocomp
 ## 2. odk
 ## 3. redcapAPI
@@ -1574,7 +1588,7 @@ Preserve only unique lines while sorting
 <div id="preserve-only-unique-lines" class="section level3">
 <h3><span class="header-section-number">4.7.5</span> Preserve Only Unique Lines</h3>
 <p>The <code>-u</code> option which stands for <code>--unique</code> will preserve only unique lines while sorting the contents of the file. In the below example, we remove all duplicate lines from the <code>pkg_names.txt</code> while sorting.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb123-1" title="1"><span class="fu">sort</span> -u pkg_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="io.html#cb117-1"></a><span class="fu">sort</span> -u pkg_names.txt</span></code></pre></div>
 <pre><code>## ASIP
 ## AdMit
 ## AnalyzeTS
@@ -1683,22 +1697,22 @@ Preserve only unique lines while sorting
 <p><code>wc</code> will print newline, word, and byte counts for file(s). If more than one file is specified, it will also print total line.</p>
 <div id="count-words-bytes-and-lines" class="section level3">
 <h3><span class="header-section-number">4.8.1</span> Count words, bytes and lines</h3>
-<div class="sourceCode" id="cb125"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb125-1" title="1"><span class="fu">wc</span> release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb119-1"><a href="io.html#cb119-1"></a><span class="fu">wc</span> release_names.txt</span></code></pre></div>
 <pre><code>##  30  73 546 release_names.txt</code></pre>
 </div>
 <div id="count-lines-in-a-file" class="section level3">
 <h3><span class="header-section-number">4.8.2</span> Count lines in a file</h3>
-<div class="sourceCode" id="cb127"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb127-1" title="1"><span class="fu">wc</span> -l release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb121-1"><a href="io.html#cb121-1"></a><span class="fu">wc</span> -l release_names.txt</span></code></pre></div>
 <pre><code>## 30 release_names.txt</code></pre>
 </div>
 <div id="count-words-in-a-file" class="section level3">
 <h3><span class="header-section-number">4.8.3</span> Count words in a file</h3>
-<div class="sourceCode" id="cb129"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb129-1" title="1"><span class="fu">wc</span> -w release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb123-1"><a href="io.html#cb123-1"></a><span class="fu">wc</span> -w release_names.txt</span></code></pre></div>
 <pre><code>## 73 release_names.txt</code></pre>
 </div>
 <div id="count-charactersbytes-in-a-file" class="section level3">
 <h3><span class="header-section-number">4.8.4</span> Count characters(bytes) in a file</h3>
-<div class="sourceCode" id="cb131"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb131-1" title="1"><span class="fu">wc</span> -c release_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb125-1"><a href="io.html#cb125-1"></a><span class="fu">wc</span> -c release_names.txt</span></code></pre></div>
 <pre><code>## 546 release_names.txt</code></pre>
 
 </div>
@@ -1715,11 +1729,13 @@ Preserve only unique lines while sorting
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1727,12 +1743,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1744,6 +1759,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

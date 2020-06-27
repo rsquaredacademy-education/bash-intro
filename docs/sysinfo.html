@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 System Info | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 System Info | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Aravind Hebbali" />
 
 
-<meta name="date" content="2019-10-22" />
+<meta name="date" content="2020-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -48,12 +51,21 @@
 
 
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57270671-37"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-57270671-37');
+</script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +74,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +92,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -466,33 +480,33 @@ Print all available information system
 </table>
 <div id="print-all-available-information-about-the-system" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Print all available information about the system</h3>
-<div class="sourceCode" id="cb196"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb196-1" title="1"><span class="fu">uname</span> -a</a></code></pre></div>
-<pre><code>## Linux Aravind 4.4.0-18362-Microsoft #1-Microsoft Mon Mar 18 12:02:00 PST 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb188-1"><a href="sysinfo.html#cb188-1"></a><span class="fu">uname</span> -a</span></code></pre></div>
+<pre><code>## Linux Aravind 4.4.0-18362-Microsoft #836-Microsoft Mon May 05 16:04:00 PST 2020 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
 </div>
 <div id="display-free-used-swap-memory-in-the-system" class="section level3">
 <h3><span class="header-section-number">9.1.2</span> Display free, used, swap memory in the system</h3>
-<div class="sourceCode" id="cb198"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb198-1" title="1"><span class="fu">free</span></a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb190-1"><a href="sysinfo.html#cb190-1"></a><span class="fu">free</span></span></code></pre></div>
 <pre><code>##               total        used        free      shared  buff/cache   available
-## Mem:        3621900     3028692      363856       17720      229352      459476
-## Swap:      11010048      431892    10578156</code></pre>
+## Mem:        3621900     3011372      381176       17720      229352      476796
+## Swap:      11010048      214756    10795292</code></pre>
 </div>
 <div id="display-file-system-disk-space-usage" class="section level3">
 <h3><span class="header-section-number">9.1.3</span> Display file system disk space usage</h3>
-<div class="sourceCode" id="cb200"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb200-1" title="1"><span class="fu">df</span></a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb192-1"><a href="sysinfo.html#cb192-1"></a><span class="fu">df</span></span></code></pre></div>
 <pre><code>## Filesystem     1K-blocks      Used Available Use% Mounted on
-## rootfs         188482144 133682612  54799532  71% /
-## none           188482144 133682612  54799532  71% /dev
-## none           188482144 133682612  54799532  71% /run
-## none           188482144 133682612  54799532  71% /run/lock
-## none           188482144 133682612  54799532  71% /run/shm
-## none           188482144 133682612  54799532  71% /run/user
-## cgroup         188482144 133682612  54799532  71% /sys/fs/cgroup
-## C:\            188482144 133682612  54799532  71% /mnt/c
-## D:\             18660348  17154376   1505972  92% /mnt/d
-## F:\              3196924    231760   2965164   8% /mnt/f
-## G:\             86383612  29503152  56880460  35% /mnt/g
-## H:\             86383612  14755908  71627704  18% /mnt/h
-## J:\             83185660  16603352  66582308  20% /mnt/j</code></pre>
+## rootfs         188482144 113927232  74554912  61% /
+## none           188482144 113927232  74554912  61% /dev
+## none           188482144 113927232  74554912  61% /run
+## none           188482144 113927232  74554912  61% /run/lock
+## none           188482144 113927232  74554912  61% /run/shm
+## none           188482144 113927232  74554912  61% /run/user
+## cgroup         188482144 113927232  74554912  61% /sys/fs/cgroup
+## C:\            188482144 113927232  74554912  61% /mnt/c
+## D:\             18660348  17154308   1506040  92% /mnt/d
+## F:\              3196924    231756   2965168   8% /mnt/f
+## G:\             86383612  24564056  61819556  29% /mnt/g
+## H:\             86383612  14755968  71627644  18% /mnt/h
+## J:\             83185660  19307644  63878016  24% /mnt/j</code></pre>
 </div>
 </div>
 <div id="others" class="section level2">
@@ -664,11 +678,13 @@ R
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -676,12 +692,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -693,6 +708,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

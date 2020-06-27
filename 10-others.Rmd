@@ -22,7 +22,7 @@ Let us try to execute a command without any additional arguments. We will execut
 system2(command = "ls")
 ```
 
-```{r system2_1b, echo=FALSE}
+```{r system2_1b, echo=FALSE, eval=FALSE}
 system2(command = "ls", stdout = TRUE)
 ```
 
@@ -35,7 +35,7 @@ system2(command = "rm",
         args    = c("-r", "examples"))
 ```
 
-```{r system2_2b, echo=FALSE}
+```{r system2_2b, echo=FALSE, eval=FALSE}
 system2(command = "rm",
         args    = c("-r", "examples"),
         stdout  = TRUE)
@@ -45,7 +45,7 @@ In some cases, we might want to redirect the output. Let us say we are writing
 message to a file using the `echo` command. In this cases, we want the output 
 to be redirected to the `release.txt` file. The `stdout` argument can be used to redirect output to a file or the R console. In the below example, we redirect the output to a file.
 
-```{r system2_3a}
+```{r system2_3a, eval=FALSE}
 system2(command = "echo", 
         args    = c("Great Truth"), 
         stdout  = "release.txt")
@@ -53,7 +53,7 @@ system2(command = "echo",
 
 In the next example, we redirect the output to the R console by setting the value of the `stdout` argument to `TRUE`. If you are curious, set the value to `FALSE` and see what happens.
 
-```{r system2_4a}
+```{r system2_4a, eval=FALSE}
 system2(command = "diff", 
         args    = c("imports_olsrr.txt", "imports_blorr.txt"),  
         stdout  = TRUE)
@@ -88,19 +88,19 @@ In this section, we will learn to execute R commands and scripts in the command 
 
 The `-e` option allows us to specify R expression(s). `R -e` will launch R and then execute the code specified within quotes. Use semi-colon to execute multiple expressions as shown below. You will be able to run the below commands only if you are able to launch R from the command line. Windows users need to ensure that R is added to the path environment.
 
-```{sh c118a}
+```{sh c118a, eval=FALSE}
 R -e "head(mtcars); tail(mtcars)"
 ```
 
 `Rscript -e` will run code without launching R.
 
-```{sh c119a}
+```{sh c119a, eval=FALSE}
 Rscript -e "head(mtcars)"
 ```
 
 We can use `Rscript` to execute a R script as well. In the below example, we execute the code in `analysis.R` file. 
 
-```{sh c120a}
+```{sh c120a, eval=FALSE}
 Rscript analysis.R
 ```
 

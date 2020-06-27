@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Data Transfer | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Data Transfer | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Aravind Hebbali" />
 
 
-<meta name="date" content="2019-10-22" />
+<meta name="date" content="2020-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -48,12 +51,21 @@
 
 
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57270671-37"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-57270671-37');
+</script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +74,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +92,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -504,28 +518,28 @@ Wait between retrievals
 <div id="download-url" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Download URL</h3>
 <p>Let us first use <code>wget</code> to download contents of a URL. Note, we are not downloading file as such but just the content of the URL. We will use the URL of the home page of <a href="https://www.r-project.org/">R</a> project.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb157-1" title="1"><span class="fu">wget</span> https://www.r-project.org/</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="datatransfer.html#cb151-1"></a><span class="fu">wget</span> https://www.r-project.org/</span></code></pre></div>
 <p>If you look at the list of files, you can see a new file, <code>index.html</code> which we just downloaded using <code>wget</code>. Downloading contents this way will lead to confusion if we are dealing with multiple URLs. Let us learn to save the contents to a file (we can specify the name of the file which should help avoid confusion.)</p>
 </div>
 <div id="specify-filename" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Specify Filename</h3>
 <p>In this example, we download contents from the same URL and in addition specify the name of the file in which the content must be saved. Here we save it in a new file, <code>rhomepage.html</code> using the <code>-o</code> option followed by the filename.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb158-1" title="1"><span class="fu">wget</span> -o rhomepage.html https://www.r-project.org/</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb152-1"><a href="datatransfer.html#cb152-1"></a><span class="fu">wget</span> -o rhomepage.html https://www.r-project.org/</span></code></pre></div>
 </div>
 <div id="download-file" class="section level3">
 <h3><span class="header-section-number">6.1.3</span> Download File</h3>
 <p>How about downloading a file instead of a URL? In this example, we will download a logfile from the <a href="http://cran-logs.rstudio.com/">RStudio CRAN</a> mirror. It contains the details of R downloads and individual package downloads. If you are a package developer and would want to know the countries in which your packages are downloaded, you will find this useful. We will download the file for 29th September and save it as <code>sep_29.csv.gz</code>.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb159-1" title="1"><span class="fu">wget</span> -o sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb153-1"><a href="datatransfer.html#cb153-1"></a><span class="fu">wget</span> -o sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz</span></code></pre></div>
 </div>
 <div id="download-multiple-urls" class="section level3">
 <h3><span class="header-section-number">6.1.4</span> Download Multiple URLs</h3>
 <p>How do we download multiple URLs? One way is to specify the URLs one after the other separated by a space or save all URLs in a file and read them one by one. In the below example, we have saved multiple URLs in the file <code>urls.txt</code>.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb160-1" title="1"><span class="fu">cat</span> urls.txt</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb154-1"><a href="datatransfer.html#cb154-1"></a><span class="fu">cat</span> urls.txt</span></code></pre></div>
 <pre><code>## http://cran-logs.rstudio.com/2019/2019-09-26.csv.gz
 ## http://cran-logs.rstudio.com/2019/2019-09-27.csv.gz
 ## http://cran-logs.rstudio.com/2019/2019-09-28.csv.gz</code></pre>
 <p>We will download all the above URLs and save them in a new folder <code>downloads</code>. The <code>-i</code> indicates that the URLs must be read from a file (local or external). The <code>-P</code> option allows us to specify the directory into which all the files will be downloaded.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb162-1" title="1"><span class="fu">wget</span> -P downloads -i urls.txt     </a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb156-1"><a href="datatransfer.html#cb156-1"></a><span class="fu">wget</span> -P downloads -i urls.txt     </span></code></pre></div>
 </div>
 <div id="quiet" class="section level3">
 <h3><span class="header-section-number">6.1.5</span> Quiet</h3>
@@ -536,17 +550,17 @@ Wait between retrievals
 <li>download speed</li>
 <li>eta etc.</li>
 </ul>
-<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb163-1" title="1"><span class="fu">wget</span> –-quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb157-1"><a href="datatransfer.html#cb157-1"></a><span class="fu">wget</span> –-quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz</span></code></pre></div>
 </div>
 <div id="no-verbose" class="section level3">
 <h3><span class="header-section-number">6.1.6</span> No Verbose</h3>
 <p>Using the <code>-nv</code> or <code>--no-verbose</code> option, we can turn off verbose without being completely quiet (as we did in the previous example). Any error messages and basic information will still be printed.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb164-1" title="1"><span class="fu">wget</span> –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz    </a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb158-1"><a href="datatransfer.html#cb158-1"></a><span class="fu">wget</span> –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz    </span></code></pre></div>
 </div>
 <div id="check-timestamp" class="section level3">
 <h3><span class="header-section-number">6.1.7</span> Check Timestamp</h3>
 <p>Let us say we have already downloaded a file from a URL. The file is updated from time to time and we intend to keep the local copy updated as well. Using the <code>--timestamping</code> option, the local file will have timestamp matching the remote file; if the remote file is not newer (not updated), no download will occur i.e. if the timestamp of the remote file has not changed it will not be downloaded. This is very useful in case of large files where you do not want to download them unless they have been updated.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb165-1" title="1"><span class="fu">wget</span> –-timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb159-1"><a href="datatransfer.html#cb159-1"></a><span class="fu">wget</span> –-timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz</span></code></pre></div>
 </div>
 </div>
 <div id="curl" class="section level2">
@@ -602,19 +616,19 @@ Download in silent or quiet mode
 <div id="download-url-1" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Download URL</h3>
 <p>Let us download the home page of the <a href="https://www.r-project.org/">R</a> project using <code>curl</code>.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb166-1" title="1"><span class="ex">curl</span> https://www.r-project.org/</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb160-1"><a href="datatransfer.html#cb160-1"></a><span class="ex">curl</span> https://www.r-project.org/</span></code></pre></div>
 </div>
 <div id="specify-file" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Specify File</h3>
 <p>Let us download another log file from the <a href="http://cran-logs.rstudio.com/">RStudio CRAN</a> mirror and save it into a file using the <code>-o</code> option.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb167-1" title="1"><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-08.csv.gz -o sept_08.csv.gz </a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb161-1"><a href="datatransfer.html#cb161-1"></a><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-08.csv.gz -o sept_08.csv.gz </span></code></pre></div>
 <p>Another way to save a downloaded file is to use <code>&gt;</code> followed by the name of the file as shown in the below example.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb168-1" title="1"><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz <span class="op">&gt;</span> sep_01.csv.gz</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb162-1"><a href="datatransfer.html#cb162-1"></a><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz <span class="op">&gt;</span> sep_01.csv.gz</span></code></pre></div>
 </div>
 <div id="download-silently" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Download Silently</h3>
 <p>The <code>-s</code> option will allow you to download files silently. It will mute <code>curl</code> and will not display progress meter or error messages.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb169-1" title="1"><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz -o sept_01.csv.gz -s</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb163-1"><a href="datatransfer.html#cb163-1"></a><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz -o sept_01.csv.gz -s</span></code></pre></div>
 </div>
 </div>
 <div id="r-functions-2" class="section level2">
@@ -693,11 +707,13 @@ R
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -705,12 +721,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -722,6 +737,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

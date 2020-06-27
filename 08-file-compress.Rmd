@@ -200,7 +200,7 @@ Using `unzip`, let us now extract files and folders from `zip_example.zip`.
 unzip zip_example.zip
 ```
 
-```{bash c95b, echo=FALSE}
+```{bash c95b, echo=FALSE, eval=FALSE}
 cd cline
 unzip zip_example.zip
 ```
@@ -211,7 +211,7 @@ Using the `-d` option, we can extract the contents of `zip_example.zip` to a spe
 unzip zip_example.zip –d myexamples
 ```
 
-```{r unzip_d, echo=FALSE}
+```{r unzip_d, echo=FALSE, eval=FALSE}
 system2("unzip", c("zip_example.zip", "-d", "examples"), TRUE)
 ```
 

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 File Compression | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 File Compression | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Aravind Hebbali" />
 
 
-<meta name="date" content="2019-10-22" />
+<meta name="date" content="2020-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -48,12 +51,21 @@
 
 
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57270671-37"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-57270671-37');
+</script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -62,14 +74,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +92,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -439,7 +453,7 @@ Add a file to an existing gzipped archive
 <div id="list" class="section level3">
 <h3><span class="header-section-number">8.1.1</span> List</h3>
 <p>Let us list all the files &amp; folders in <code>release_names.tar</code>. As mentioned above. to list the files in the archive, we use the <code>t</code> option.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb170-1" title="1"><span class="fu">tar</span> -tvf release_names.tar </a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb164-1"><a href="compress.html#cb164-1"></a><span class="fu">tar</span> -tvf release_names.tar </span></code></pre></div>
 <pre><code>## -rwxrwxrwx aravind/aravind 546 2019-09-16 15:59 release_names.txt
 ## -rwxrwxrwx aravind/aravind  65 2019-09-16 15:58 release_names_18.txt
 ## -rwxrwxrwx aravind/aravind  53 2019-09-16 15:59 release_names_19.txt</code></pre>
@@ -447,12 +461,13 @@ Add a file to an existing gzipped archive
 <div id="extract" class="section level3">
 <h3><span class="header-section-number">8.1.2</span> Extract</h3>
 <p>Let us extract files from <code>release_names.tar</code> using the <code>x</code> option in addition to <code>vf</code>.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb172-1" title="1"><span class="fu">tar</span> -xvf release_names.tar </a>
-<a class="sourceLine" id="cb172-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb166-1"><a href="compress.html#cb166-1"></a><span class="fu">tar</span> -xvf release_names.tar </span>
+<span id="cb166-2"><a href="compress.html#cb166-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## release_names.txt
 ## release_names_18.txt
 ## release_names_19.txt
 ## analysis.R
+## bash-tutorial
 ## bash.R
 ## bash.Rmd
 ## bash.sh
@@ -483,14 +498,14 @@ Add a file to an existing gzipped archive
 <div id="add" class="section level3">
 <h3><span class="header-section-number">8.1.3</span> Add</h3>
 <p>To add a file to an existing archive, use the <code>r</code> option. Let us add <code>release_names_18.txt</code> and <code>release_names_19.txt</code> to the archive we created in the previous step.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb174-1" title="1"><span class="fu">tar</span> -rvf release_names.tar release_names_18.txt release_names_19.txt</a></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb168-1"><a href="compress.html#cb168-1"></a><span class="fu">tar</span> -rvf release_names.tar release_names_18.txt release_names_19.txt</span></code></pre></div>
 <pre><code>## release_names_18.txt
 ## release_names_19.txt</code></pre>
 </div>
 <div id="create" class="section level3">
 <h3><span class="header-section-number">8.1.4</span> Create</h3>
 <p>Using the <code>c</code> option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb176-1" title="1"><span class="fu">tar</span> -cvf pkg_names.tar pkg_names.txt</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb170-1"><a href="compress.html#cb170-1"></a><span class="fu">tar</span> -cvf pkg_names.tar pkg_names.txt</span></code></pre></div>
 <pre><code>## pkg_names.txt</code></pre>
 </div>
 </div>
@@ -578,9 +593,10 @@ List contents of a zip file
 <div id="compress-1" class="section level3">
 <h3><span class="header-section-number">8.2.1</span> Compress</h3>
 <p>Let us compress <code>release_names.txt</code> file using <code>gzip</code>.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb178-1" title="1"><span class="fu">gzip</span> release_names.txt</a>
-<a class="sourceLine" id="cb178-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb172-1"><a href="compress.html#cb172-1"></a><span class="fu">gzip</span> release_names.txt</span>
+<span id="cb172-2"><a href="compress.html#cb172-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## analysis.R
+## bash-tutorial
 ## bash.R
 ## bash.Rmd
 ## bash.sh
@@ -612,9 +628,10 @@ List contents of a zip file
 <div id="decompress" class="section level3">
 <h3><span class="header-section-number">8.2.2</span> Decompress</h3>
 <p>Use the <code>-d</code> option with <code>gzip</code> to decompress a file. In the below example, we decompress the <code>sept_15.csv.gz</code> file (downloaded using <code>wget</code> or <code>curl</code> earlier). You can also use <code>gunzip</code> for the same result.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb180-1" title="1"><span class="fu">gzip</span> -d sept_15.csv.gz</a>
-<a class="sourceLine" id="cb180-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb174-1"><a href="compress.html#cb174-1"></a><span class="fu">gzip</span> -d sept_15.csv.gz</span>
+<span id="cb174-2"><a href="compress.html#cb174-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## analysis.R
+## bash-tutorial
 ## bash.R
 ## bash.Rmd
 ## bash.sh
@@ -646,9 +663,10 @@ List contents of a zip file
 <div id="specify-filename-1" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Specify Filename</h3>
 <p>Use <code>-c</code> and <code>&gt;</code> to specify a different file name while compressing using <code>gzip</code>. In the below example, <code>gzip</code> will create <code>releases.txt.gz</code> instead of <code>release_names.txt.gz</code>.</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb182-1" title="1"><span class="fu">gzip</span> -c release_names.txt <span class="op">&gt;</span> releases.txt.gz</a>
-<a class="sourceLine" id="cb182-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb176-1"><a href="compress.html#cb176-1"></a><span class="fu">gzip</span> -c release_names.txt <span class="op">&gt;</span> releases.txt.gz</span>
+<span id="cb176-2"><a href="compress.html#cb176-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## analysis.R
+## bash-tutorial
 ## bash.R
 ## bash.Rmd
 ## bash.sh
@@ -685,7 +703,7 @@ List contents of a zip file
 <div id="list-1" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> List</h3>
 <p>Let us list all the files and folders in <code>main_project.zip()</code> using <code>unzip</code> and the <code>-l</code> option.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb184-1" title="1"><span class="fu">unzip</span> -l main_project.zip</a></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb178-1"><a href="compress.html#cb178-1"></a><span class="fu">unzip</span> -l main_project.zip</span></code></pre></div>
 <pre><code>## Archive:  main_project.zip
 ##   Length      Date    Time    Name
 ## ---------  ---------- -----   ----
@@ -729,23 +747,15 @@ List contents of a zip file
 <div id="extract-1" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Extract</h3>
 <p>Using <code>unzip</code>, let us now extract files and folders from <code>zip_example.zip</code>.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb186-1" title="1"><span class="fu">unzip</span> zip_example.zip</a></code></pre></div>
-<pre><code>## Archive:  zip_example.zip
-##    creating: zip_example/
-##   inflating: zip_example/bash.sh     
-##   inflating: zip_example/pkg_names.txt</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb180-1"><a href="compress.html#cb180-1"></a><span class="fu">unzip</span> zip_example.zip</span></code></pre></div>
 <p>Using the <code>-d</code> option, we can extract the contents of <code>zip_example.zip</code> to a specific folder. In the below example, we extract it to a new folder <code>examples</code>.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb188-1" title="1"><span class="fu">unzip</span> zip_example.zip –d myexamples</a></code></pre></div>
-<pre><code>## [1] &quot;Archive:  zip_example.zip&quot;                        
-## [2] &quot;   creating: examples/zip_example/&quot;               
-## [3] &quot;  inflating: examples/zip_example/bash.sh  &quot;      
-## [4] &quot;  inflating: examples/zip_example/pkg_names.txt  &quot;</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb181-1"><a href="compress.html#cb181-1"></a><span class="fu">unzip</span> zip_example.zip –d myexamples</span></code></pre></div>
 </div>
 <div id="compress-2" class="section level3">
 <h3><span class="header-section-number">8.3.3</span> Compress</h3>
 <p>Use the <code>-r</code> option along with <code>zip</code> to create a ZIP archive. In the below example, we create a ZIP archive of <code>myproject</code> folder.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb190-1" title="1"><span class="fu">zip</span> -r myproject.zip myproject</a>
-<a class="sourceLine" id="cb190-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb182-1"><a href="compress.html#cb182-1"></a><span class="fu">zip</span> -r myproject.zip myproject</span>
+<span id="cb182-2"><a href="compress.html#cb182-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>##   adding: myproject/ (stored 0%)
 ##   adding: myproject/.gitignore (stored 0%)
 ##   adding: myproject/data/ (stored 0%)
@@ -756,8 +766,8 @@ List contents of a zip file
 ##   adding: myproject/run_analysis.R (stored 0%)
 ##   adding: myproject/src/ (stored 0%)</code></pre>
 <p>We can compress multiple directories using <code>zip</code>. The names of the directories must be separated by a space as shown in the below example where we compress <code>myproject</code> and <code>mypackage</code> into a single ZIP archive.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb192-1" title="1"><span class="fu">zip</span> -r packproj.zip myproject mypackage</a>
-<a class="sourceLine" id="cb192-2" title="2"><span class="fu">ls</span></a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb184-1"><a href="compress.html#cb184-1"></a><span class="fu">zip</span> -r packproj.zip myproject mypackage</span>
+<span id="cb184-2"><a href="compress.html#cb184-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>##   adding: myproject/ (stored 0%)
 ##   adding: myproject/.gitignore (stored 0%)
 ##   adding: myproject/data/ (stored 0%)
@@ -786,7 +796,7 @@ List contents of a zip file
 <div id="add-1" class="section level3">
 <h3><span class="header-section-number">8.3.4</span> Add</h3>
 <p>To add a new file/folder to an existing archive, specify the name of the archive followed by the name of the file or the folder. In the below example, we add the <code>bash.sh</code> file to the <code>myproject.zip</code> archive created in a previous step.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb194-1" title="1"><span class="fu">zip</span> myproject.zip bash.sh</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb186-1"><a href="compress.html#cb186-1"></a><span class="fu">zip</span> myproject.zip bash.sh</span></code></pre></div>
 <pre><code>##   adding: bash.sh (deflated 78%)</code></pre>
 </div>
 </div>
@@ -954,11 +964,13 @@ R
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -966,12 +978,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -983,6 +994,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
