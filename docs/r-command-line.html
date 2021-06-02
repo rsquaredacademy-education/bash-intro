@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Command Line Basics for R Users</title>
+  <title>Chapter 10 R &amp; the Shell | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Command Line Basics for R Users" />
+  <meta property="og:title" content="Chapter 10 R &amp; the Shell | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Command Line Basics for R Users" />
+  <meta name="twitter:title" content="Chapter 10 R &amp; the Shell | Command Line Basics for R Users" />
   
   <meta name="twitter:description" content="A gentle introduction to the command line." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preface.html"/>
+<link rel="prev" href="command-line-sysinfo.html"/>
+<link rel="next" href="conclusion.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -382,24 +382,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Command Line Basics for R Users</h1>
-<p class="author"><em>Aravind Hebbali</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-02</em></p>
+<div id="r-command-line" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> R &amp; the Shell</h1>
+<p>In this chapter, we will learn to</p>
+<ul>
+<li>execute shell commands from R</li>
+<li>execute shell script in RStudio</li>
+<li>execute shell commands in RMarkdown</li>
+<li>execute R commands &amp; script in the shell</li>
+</ul>
+<div id="r" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> R</h2>
+<p>Now, let us turn our attention to executing commands from R using <code>system2()</code>.
+Here we will focus on the following</p>
+<ul>
+<li>execute a command without arguments</li>
+<li>execute commands with arguments</li>
+<li>redirect output</li>
+</ul>
+<p>Let us try to execute a command without any additional arguments. We will execute the <code>ls</code> command to list all files and directories. Use <code>system2()</code> and specify the command using the <code>command</code> argument. Whenever you are trying to execute a command from R, the first argument or input should be the command and it must be enclosed in quotes.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="r-command-line.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="at">command =</span> <span class="st">&quot;ls&quot;</span>)</span></code></pre></div>
+<p>Great! Now, how do we specify the options? The additional options of a
+command must be stored as a character vector and specified using the <code>args</code>
+argument. In the below example, we delete the <code>examples</code> folder we created earlier while decompressing the <code>zip_example.zip</code> file.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="r-command-line.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="at">command =</span> <span class="st">&quot;rm&quot;</span>,</span>
+<span id="cb196-2"><a href="r-command-line.html#cb196-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">args    =</span> <span class="fu">c</span>(<span class="st">&quot;-r&quot;</span>, <span class="st">&quot;examples&quot;</span>))</span></code></pre></div>
+<p>In some cases, we might want to redirect the output. Let us say we are writing
+message to a file using the <code>echo</code> command. In this cases, we want the output
+to be redirected to the <code>release.txt</code> file. The <code>stdout</code> argument can be used to redirect output to a file or the R console. In the below example, we redirect the output to a file.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="r-command-line.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="at">command =</span> <span class="st">&quot;echo&quot;</span>, </span>
+<span id="cb197-2"><a href="r-command-line.html#cb197-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">args    =</span> <span class="fu">c</span>(<span class="st">&quot;Great Truth&quot;</span>), </span>
+<span id="cb197-3"><a href="r-command-line.html#cb197-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">stdout  =</span> <span class="st">&quot;release.txt&quot;</span>)</span></code></pre></div>
+<p>In the next example, we redirect the output to the R console by setting the value of the <code>stdout</code> argument to <code>TRUE</code>. If you are curious, set the value to <code>FALSE</code> and see what happens.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="r-command-line.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="at">command =</span> <span class="st">&quot;diff&quot;</span>, </span>
+<span id="cb198-2"><a href="r-command-line.html#cb198-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">args    =</span> <span class="fu">c</span>(<span class="st">&quot;imports_olsrr.txt&quot;</span>, <span class="st">&quot;imports_blorr.txt&quot;</span>),  </span>
+<span id="cb198-3"><a href="r-command-line.html#cb198-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">stdout  =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The <code>run()</code> command from the <a href="https://processx.r-lib.org/">processx</a> package can be used to execute shell commands as well.</p>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p><img src="img/ebook-bash-intro.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>This is the website for Command Line Basics for R Users. Visit the <a href="https://github.com/rsquaredacademy-education/bash-intro">GitHub repository for this site</a>.</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://www.aravindhebbali.com/">Aravind Hebbali</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="rstudio" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> RStudio</h2>
+<p>In RStudio, commands can be executed from shell scripts by pressing <code>Ctrl + Enter</code>. Instead of sending the command to the R console, it is redirected to
+the terminal where it is executed as shown below.</p>
+<p><img src="img/cline_rstudio_shell.gif" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="rmarkdown" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> RMarkdown</h2>
+<p>RMarkdown supports <code>bash</code>, <code>sh</code> and <code>awk</code>. This post was initially created using <code>sh</code> as the underlying operating system is Windows. Later, we used <code>bash</code> after installing the Windows subsystem for Linux. Click <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html#shell-scripts">here</a> to learn more.</p>
+<p><img src="img/cline_shell_markdown.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="rscript" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Rscript</h2>
+<p>In this section, we will learn to execute R commands and scripts in the command line using:</p>
+<ul>
+<li><code>R -e</code></li>
+<li><code>Rscript -e</code></li>
+<li><code>R CMD BATCH</code></li>
+</ul>
+<p>The <code>-e</code> option allows us to specify R expression(s). <code>R -e</code> will launch R and then execute the code specified within quotes. Use semi-colon to execute multiple expressions as shown below. You will be able to run the below commands only if you are able to launch R from the command line. Windows users need to ensure that R is added to the path environment.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb199-1"><a href="r-command-line.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&quot;head(mtcars); tail(mtcars)&quot;</span></span></code></pre></div>
+<p><code>Rscript -e</code> will run code without launching R.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb200-1"><a href="r-command-line.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
+<p>We can use <code>Rscript</code> to execute a R script as well. In the below example, we execute the code in <code>analysis.R</code> file.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb201-1"><a href="r-command-line.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> analysis.R</span></code></pre></div>
+<p>If you are more interested, try the <a href="https://cran.r-project.org/package=littler">littler</a> package as well.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="command-line-sysinfo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

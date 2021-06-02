@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Command Line Basics for R Users</title>
+  <title>Chapter 3 File Management | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Command Line Basics for R Users" />
+  <meta property="og:title" content="Chapter 3 File Management | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Command Line Basics for R Users" />
+  <meta name="twitter:title" content="Chapter 3 File Management | Command Line Basics for R Users" />
   
   <meta name="twitter:description" content="A gentle introduction to the command line." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preface.html"/>
+<link rel="prev" href="navigating-files-and-directories.html"/>
+<link rel="next" href="command-line-input-output.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -382,24 +382,814 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Command Line Basics for R Users</h1>
-<p class="author"><em>Aravind Hebbali</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-02</em></p>
+<div id="command-line-file-management" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> File Management</h1>
+<p>In this chapter, we will explore commands for file management including:</p>
+<ul>
+<li>create new file/change timestamps</li>
+<li>copying files</li>
+<li>renaming/moving files</li>
+<li>deleting files</li>
+<li>comparing files</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>touch</code>
+</td>
+<td style="text-align:left;">
+Create empty file(s)/change timestamp
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>cp</code>
+</td>
+<td style="text-align:left;">
+Copy files &amp; folders
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>mv</code>
+</td>
+<td style="text-align:left;">
+Rename/move file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rm</code>
+</td>
+<td style="text-align:left;">
+Remove/delete file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff</code>
+</td>
+<td style="text-align:left;">
+Compare files
+</td>
+</tr>
+</tbody>
+</table>
+<div id="create-new-file" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Create new file</h2>
+<p><code>touch</code> modifies file timestamps which is information associated with file modification. It can be any of the following:</p>
+<ul>
+<li>access time (the last time the file was read)</li>
+<li>modification time (the last time the contents of the file was changed)</li>
+<li>change time (the last time the file’s metadata was changed)</li>
+</ul>
+<p>If the file does not exist, it will create an empty file of the same name. Let us use <code>touch</code> to create a new file <code>myanalysis.R</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="command-line-file-management.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> myanalysis.R</span>
+<span id="cb45-2"><a href="command-line-file-management.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myanalysis.R
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject1
+## myproject2
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p><img src="img/ebook-bash-intro.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>This is the website for Command Line Basics for R Users. Visit the <a href="https://github.com/rsquaredacademy-education/bash-intro">GitHub repository for this site</a>.</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://www.aravindhebbali.com/">Aravind Hebbali</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="copy-filesfolders" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Copy Files/Folders</h2>
+<p><code>cp</code> makes copies of files and directories. The general form of the command is
+<strong>cp source destination</strong>. By default, it will overwrite files without prompting for confirmation so be cautious while copying files or folders.</p>
+<div id="copy-files-in-same-folder" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Copy files in same folder</h3>
+<p>Let us create a copy of <code>release_names.txt</code> file and name it as <code>release_names_2.txt</code>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="command-line-file-management.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> release_names.txt release_names_2.txt</span>
+<span id="cb47-2"><a href="command-line-file-management.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myanalysis.R
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject1
+## myproject2
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## release_names_2.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="copy-files-into-different-folder" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Copy files into different folder</h3>
+<p>To copy a file into a different directory/folder, we need to specify the name of the destination folder. If the copied file should have a different name, then we need to specify the new name of the file as well. Let us copy the <code>release_names.txt</code> file into the <code>r_releases</code> folder (we will retain the same name for the file as we are copying it into a different folder).</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="command-line-file-management.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> release_names.txt r_releases/release_names.txt</span></code></pre></div>
+<pre><code>## mkdir: cannot create directory â€˜r_releasesâ€™: File exists</code></pre>
+<p>Let us check if the file has been copied by listing the files in the <code>r_releases</code> folder using <code>ls</code>.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="command-line-file-management.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> r_releases</span></code></pre></div>
+<pre><code>## release_names.txt
+## release_names_2.txt
+## release_names_3.txt</code></pre>
+</div>
+<div id="copy-folders" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Copy folders</h3>
+<p>How about making copies of folders? Use the <code>-r</code> option to copy entire folders. Let us create a copy of the <code>r</code> folder and name it as <code>r2</code>. The <code>-r</code> option stands for <code>--recursive</code> i.e. copy directories recursively.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="command-line-file-management.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> r r2</span>
+<span id="cb53-2"><a href="command-line-file-management.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myanalysis.R
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject1
+## myproject2
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## release_names_2.txt
+## release_names_3.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+</div>
+<div id="moverename-files" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Move/Rename Files</h2>
+<p><code>mv</code> moves and renames files and directories. Using different options, we can ensure</p>
+<ul>
+<li>files are not overwritten</li>
+<li>user is prompted for confirmation before overwriting files</li>
+<li>details of files being moved is displayed</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>mv</code>
+</td>
+<td style="text-align:left;">
+Move or rename files/directories
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>mv -f</code>
+</td>
+<td style="text-align:left;">
+Do not prompt for confirmation before overwriting files
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>mv -i</code>
+</td>
+<td style="text-align:left;">
+Prompt for confirmation before overwriting files
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>mv -n</code>
+</td>
+<td style="text-align:left;">
+Do not overwrite existing files
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>mv -v</code>
+</td>
+<td style="text-align:left;">
+Move files in verbose mode
+</td>
+</tr>
+</tbody>
+</table>
+<p>Let us move the <code>release_names_2.txt</code> file to the <code>r_releases</code> folder.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="command-line-file-management.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> release_names_2.txt r_releases</span></code></pre></div>
+<p>Use <code>ls</code> to verfiy if the file has been moved. As you can see, <code>release_names_2.txt</code> is not present in the current working directory.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="command-line-file-management.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myanalysis.R
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject1
+## myproject2
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## release_names_3.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+<p>Let us check if <code>release_names_2.txt</code> is present in the <code>r_releases</code> folder. Great! We have successfully moved the file into a different folder.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="command-line-file-management.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> r_releases</span></code></pre></div>
+<pre><code>## release_names.txt
+## release_names_2.txt
+## release_names_3.txt</code></pre>
+<div id="move-files-in-verbose-mode" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Move files in verbose mode</h3>
+<p>To view the details of the files being moved/renamed, use the <code>-v</code> option. In the below example, we move the <code>release_names_3.txt</code> file into the <code>r_releases</code> folder using <code>mv</code>.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="command-line-file-management.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="at">-v</span> release_names_3.txt r_releases</span></code></pre></div>
+<pre><code>## renamed &#39;release_names_3.txt&#39; -&gt; &#39;r_releases/release_names_3.txt&#39;</code></pre>
+</div>
+<div id="do-not-overwrite-existing-files" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Do not overwrite existing files</h3>
+<p>How do we ensure that files are not overwritten without prompting the user first? In the below example, we will try to overwrite the <code>release_names_2.txt</code> in the <code>r_releases</code> folder using <code>mv</code> and see what happens. But first, let us look at the contents of the <code>release_names_2.txt</code> file using the <code>cat</code> command.</p>
+<p>We will look into the <code>cat</code> command in more detail in the next chapter but for the time being it is sufficient to know that it prints contents of a file. The file contains release names of different R versions.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="command-line-file-management.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> r_releases/release_names_2.txt</span></code></pre></div>
+<pre><code>## Unsuffered Consequences
+## Great Pumpkin
+## December Snowflakes
+## Gift-Getting Season
+## Easter Beagle
+## Roasted Marshmallows
+## Trick or Treat
+## Security Blanket
+## Masked Marvel
+## Good Sport
+## Frisbee Sailing
+## Warm Puppy
+## Spring Dance
+## Sock it to Me
+## Pumpkin Helmet
+## Smooth Sidewalk
+## Full of Ingredients
+## World-Famous Astronaut
+## Fire Safety
+## Wooden Christmas Tree
+## Very Secure Dishes
+## Very, Very Secure Dishes
+## Supposedly Educational
+## Bug in Your Hair
+## Sincere Pumpkin Patch
+## Another Canoe
+## You Stupid Darkness
+## Single Candle
+## Short Summer
+## Kite Eating Tree</code></pre>
+<p>In our current working directory, we will create another file of the same name i.e. <code>release_names_2.txt</code> but its contents are different from the file in the <code>r_releases</code> folder. It contains the string <code>release_names</code> and nothing else. We will now move this file into the <code>r_releases</code> folder but use the option <code>-n</code> to ensure that the file in the <code>r_releases</code> folder is not overwritten. We can confirm this by printing the contents of the file in the <code>r_releases</code> folder.</p>
+<p>The <code>echo</code> command is used to print text to the terminal or to write to a file. We will explore it in more detail in the next chapter.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="command-line-file-management.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;release_names&quot;</span> <span class="op">&gt;</span> release_names_2.txt </span>
+<span id="cb64-2"><a href="command-line-file-management.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="at">-n</span> release_names_2.txt r_releases</span>
+<span id="cb64-3"><a href="command-line-file-management.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> r_releases/release_names_2.txt</span></code></pre></div>
+<pre><code>## Unsuffered Consequences
+## Great Pumpkin
+## December Snowflakes
+## Gift-Getting Season
+## Easter Beagle
+## Roasted Marshmallows
+## Trick or Treat
+## Security Blanket
+## Masked Marvel
+## Good Sport
+## Frisbee Sailing
+## Warm Puppy
+## Spring Dance
+## Sock it to Me
+## Pumpkin Helmet
+## Smooth Sidewalk
+## Full of Ingredients
+## World-Famous Astronaut
+## Fire Safety
+## Wooden Christmas Tree
+## Very Secure Dishes
+## Very, Very Secure Dishes
+## Supposedly Educational
+## Bug in Your Hair
+## Sincere Pumpkin Patch
+## Another Canoe
+## You Stupid Darkness
+## Single Candle
+## Short Summer
+## Kite Eating Tree</code></pre>
+<p>As you can observe, the contents of the file in the <code>r_releases</code> folder has not changed. In the next section, we will learn to overwrite the contents using the <code>-f</code> option.</p>
+</div>
+<div id="do-not-prompt-for-confirmation-before-overwriting-files" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Do not prompt for confirmation before overwriting files</h3>
+<p>What if we actually intend to overwrite a file and do not want to be prompted for confirming the same. In this case, we can use the <code>-f</code> option which stands for <code>--force</code> i.e. do not prompt before overwriting. Let us first print the contents of the <code>release_names_2.txt</code> file in the <code>r_releases</code> folder.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="command-line-file-management.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> r_releases/release_names_2.txt</span></code></pre></div>
+<pre><code>## Unsuffered Consequences
+## Great Pumpkin
+## December Snowflakes
+## Gift-Getting Season
+## Easter Beagle
+## Roasted Marshmallows
+## Trick or Treat
+## Security Blanket
+## Masked Marvel
+## Good Sport
+## Frisbee Sailing
+## Warm Puppy
+## Spring Dance
+## Sock it to Me
+## Pumpkin Helmet
+## Smooth Sidewalk
+## Full of Ingredients
+## World-Famous Astronaut
+## Fire Safety
+## Wooden Christmas Tree
+## Very Secure Dishes
+## Very, Very Secure Dishes
+## Supposedly Educational
+## Bug in Your Hair
+## Sincere Pumpkin Patch
+## Another Canoe
+## You Stupid Darkness
+## Single Candle
+## Short Summer
+## Kite Eating Tree</code></pre>
+<p>Now we will create another file of the same name in the current working directory but with different content and use the <code>-f</code> option to overwrite the file in the <code>r_releases</code> folder. You can see that the contents of the file in the <code>r_releases</code> folder has changed.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="command-line-file-management.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;release_names&quot;</span> <span class="op">&gt;</span> release_names_2.txt </span>
+<span id="cb68-2"><a href="command-line-file-management.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="at">-f</span> release_names_2.txt r_releases</span>
+<span id="cb68-3"><a href="command-line-file-management.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> r_releases/release_names_2.txt</span></code></pre></div>
+<pre><code>## release_names</code></pre>
+</div>
+</div>
+<div id="removedelete-files" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Remove/Delete Files</h2>
+<p>The <code>rm</code> command is used to delete/remove files &amp; folders. Using additional options, we can</p>
+<ul>
+<li>remove directories &amp; sub-directories</li>
+<li>forcibly remove directories</li>
+<li>interactively remove multiple files</li>
+<li>display information about files removed/deleted</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>rm</code>
+</td>
+<td style="text-align:left;">
+Remove files/directories
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rm -r</code>
+</td>
+<td style="text-align:left;">
+Recursively remove a directory &amp; all its subdirectories
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rm -rf</code>
+</td>
+<td style="text-align:left;">
+Forcibly remove directory without prompting for confirmation or showing error messages
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rm -i</code>
+</td>
+<td style="text-align:left;">
+Interactively remove multiple files, with a prompt before every removal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rm -v</code>
+</td>
+<td style="text-align:left;">
+Remove files in verbose mode, printing a message for each removed file
+</td>
+</tr>
+</tbody>
+</table>
+<div id="remove-files" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Remove files</h3>
+<p>Let us use <code>rm</code> to remove the file <code>myanalysis.R</code> (we created it earlier using the <code>touch</code> command).</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="command-line-file-management.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> myanalysis.R</span>
+<span id="cb70-2"><a href="command-line-file-management.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject1
+## myproject2
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="recursive-deletion" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Recursive Deletion</h3>
+<p>How about folders or directories? We can remove a directory and all its contents including sub-directories using the option <code>-r</code> which stands for <code>--recursive</code> and removes directories and their contents recursively. Let us remove the <code>myproject1</code> folder and all its contents.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="command-line-file-management.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> myproject1</span>
+<span id="cb72-2"><a href="command-line-file-management.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject2
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="force-removal" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Force Removal</h3>
+<p>Use the <code>-f</code> option which stands for <code>--force</code> to forciby remove directory and all its contents without prompting for confirmation or showing error messages. Let us remove the <code>myproject2</code> folder and all its contents.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="command-line-file-management.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> myproject2</span>
+<span id="cb74-2"><a href="command-line-file-management.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="verbose-mode" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Verbose Mode</h3>
+<p>Remove files in verbose mode, printing a message for each removed file. This is useful when you want to see the details of the files being removed. In the below example, we will remove all files with <code>.txt</code> extension from the <code>myfiles</code> folder. Instead of specifying the name of each text file, we use the wildcard <code>*</code> along with <code>.txt</code> i.e. any file with the extension <code>.txt</code> will be removed.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="command-line-file-management.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myfiles</span>
+<span id="cb76-2"><a href="command-line-file-management.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-v</span> <span class="pp">*</span>.txt</span></code></pre></div>
+<pre><code>## removed &#39;release_names.txt&#39;
+## removed &#39;release_names_18.txt&#39;
+## removed &#39;release_names_19.txt&#39;</code></pre>
+</div>
+</div>
+<div id="compare-files" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Compare Files</h2>
+<p><code>diff</code> stands for difference. It is used to compare files line by line and display differences. It also indicates which lines in one file must be changed to make the files identical. Using additional options, we can</p>
+<ul>
+<li>ignore white spaces while comparing files</li>
+<li>show differences sidy by side</li>
+<li>show differences in unified format</li>
+<li>compare directories recursively</li>
+<li>display names of files that differ</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>diff</code>
+</td>
+<td style="text-align:left;">
+Compare files &amp; directories
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff -w</code>
+</td>
+<td style="text-align:left;">
+Compare files; ignoring white spaces
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff -y</code>
+</td>
+<td style="text-align:left;">
+Compare files; showing differences side by side
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff -u</code>
+</td>
+<td style="text-align:left;">
+Compare files; show differences in unified format
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff -r</code>
+</td>
+<td style="text-align:left;">
+Compare directories recursively
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff -rq</code>
+</td>
+<td style="text-align:left;">
+Compare directories; show the names of files that differ
+</td>
+</tr>
+</tbody>
+</table>
+<div id="compare-files-1" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Compare Files</h3>
+<p>Let us compare the contents of the following files</p>
+<ul>
+<li><code>imports_olsrr.txt</code></li>
+<li><code>imports_blorr.txt</code></li>
+</ul>
+<p>The files contain the names of R packages imported by the <a href="https://olsrr.rsquaredacademy.com/">olsrr</a> and <a href="https://blorr.rsquaredacademy.com/">blorr</a> packages respectively (<strong>Full disclosure: both the above R pakages are developed by Rsquared Academy.</strong>).</p>
+<p><code>diff</code> uses certain special symbols and gives instructions to make the files identical. The instructions are on how to change the first file to make it identical to the second file. We list the symbols below</p>
+<ul>
+<li><strong>a</strong> for add</li>
+<li><strong>c</strong> for change</li>
+<li><strong>d</strong> for delete</li>
+</ul>
+<p>We will use the <code>-w</code> option to ignore white spaces while comparing the files.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="command-line-file-management.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">-w</span> imports_olsrr.txt imports_blorr.txt</span></code></pre></div>
+<p>Let us interpret the results. <code>4a5</code> indicates <strong>after line 4 in file 1, add line 5 from file 2</strong> to make both the files identical i.e. add <code>caret</code> which is line 5 in <code>imports_blorr.txt</code> after line 4 in <code>imports_olsrr.txt</code> which will make both the files identical.</p>
+<p>Let us change the file order and see the instructions from <code>diff</code>.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="command-line-file-management.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">-w</span> imports_blorr.txt imports_olsrr.txt</span></code></pre></div>
+<p><code>5d4</code> indicates <strong>delete line 5 from file 1 to match both the files at line4</strong> i.e. delete <code>caret</code> which is line 5 in <code>imports_blorr.txt</code> to make both the files identical.</p>
+</div>
+<div id="side-by-side" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Side By Side</h3>
+<p>To view the differences between the files side by side, use the <code>-y</code> option.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb80-1"><a href="command-line-file-management.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">-y</span> imports_olsrr.txt imports_blorr.txt</span></code></pre></div>
+</div>
+<div id="unified-format" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Unified Format</h3>
+<p>To view the differences between the files in a unified format, use the <code>-u</code> option.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="command-line-file-management.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">-u</span> imports_olsrr.txt imports_blorr.txt</span></code></pre></div>
+</div>
+<div id="compare-recursively" class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Compare Recursively</h3>
+<p>To compare recursively, use the <code>-r</code> option. Let us compare the <code>mypackage</code> and <code>myproject</code> folders.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="command-line-file-management.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">-r</span> mypackage myproject</span></code></pre></div>
+</div>
+<div id="file-details" class="section level3" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> File Details</h3>
+<p>To compare directories and view the names of files that differ, use the <code>-rq</code> option. In the below example, we look at the names of files that differ in <code>mypackage</code> and <code>myproject</code> folders.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="command-line-file-management.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">-rq</span> mypackage myproject</span></code></pre></div>
+</div>
+</div>
+<div id="r-functions-1" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> R Functions</h2>
+<p>In R, file operations can be performed using functions from both base R and the <a href="https://fs.r-lib.org/index.html">fs</a> package.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>touch</code>
+</td>
+<td style="text-align:left;">
+<code>file.create()</code> / <code>fs::file_create()</code> / <code>fs::file_touch()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>cp</code>
+</td>
+<td style="text-align:left;">
+<code>file.copy()</code> / <code>fs::file_copy()</code> / <code>fs::dir_copy()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>mv</code>
+</td>
+<td style="text-align:left;">
+<code>file.rename()</code> / <code>fs::file_move()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rm</code>
+</td>
+<td style="text-align:left;">
+<code>file.remove()</code> / <code>fs::file_delete()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>diff</code>
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="navigating-files-and-directories.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="command-line-input-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Command Line Basics for R Users</title>
+  <title>Chapter 9 System Info | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Command Line Basics for R Users" />
+  <meta property="og:title" content="Chapter 9 System Info | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Command Line Basics for R Users" />
+  <meta name="twitter:title" content="Chapter 9 System Info | Command Line Basics for R Users" />
   
   <meta name="twitter:description" content="A gentle introduction to the command line." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preface.html"/>
+<link rel="prev" href="command-line-file-compression.html"/>
+<link rel="next" href="r-command-line.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -382,24 +382,336 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Command Line Basics for R Users</h1>
-<p class="author"><em>Aravind Hebbali</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-02</em></p>
+<div id="command-line-sysinfo" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> System Info</h1>
+<p>In this chapter, we will explore commands that will allow us to</p>
+<ul>
+<li>display information about the system</li>
+<li>display memory usage information</li>
+<li>display file system disk space usage</li>
+<li>exit the terminal</li>
+<li>run commands a superuser</li>
+<li>shutdown the system</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>uname</code>
+</td>
+<td style="text-align:left;">
+Display important information about the system
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>free</code>
+</td>
+<td style="text-align:left;">
+Display free, used, swap memory in the system
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>df</code>
+</td>
+<td style="text-align:left;">
+Display file system disk space usage
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>exit</code>
+</td>
+<td style="text-align:left;">
+Exit the terminal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sudo</code>
+</td>
+<td style="text-align:left;">
+Run command as super user
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>shutdown</code>
+</td>
+<td style="text-align:left;">
+Shutdown the system
+</td>
+</tr>
+</tbody>
+</table>
+<div id="uname" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> uname</h2>
+<p>The <code>uname</code> command is used to view important information about the system. Using additional options, we can</p>
+<ul>
+<li>print details about operating system</li>
+<li>hardware &amp; software related information</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>uname</code>
+</td>
+<td style="text-align:left;">
+Print details about the current machine and the operating system running on it
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>uname -mp</code>
+</td>
+<td style="text-align:left;">
+Hardware related information; machine &amp; processor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>uname -srv</code>
+</td>
+<td style="text-align:left;">
+Software related information; operating system, release number and version
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>uname -n</code>
+</td>
+<td style="text-align:left;">
+Nodename of the system
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>uname -a</code>
+</td>
+<td style="text-align:left;">
+Print all available information system
+</td>
+</tr>
+</tbody>
+</table>
+<div id="print-all-available-information-about-the-system" class="section level3" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Print all available information about the system</h3>
+<div class="sourceCode" id="cb189"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb189-1"><a href="command-line-sysinfo.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-a</span></span></code></pre></div>
+<pre><code>## Linux Aravind 4.4.0-19041-Microsoft #488-Microsoft Mon Sep 01 13:43:00 PST 2020 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p><img src="img/ebook-bash-intro.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>This is the website for Command Line Basics for R Users. Visit the <a href="https://github.com/rsquaredacademy-education/bash-intro">GitHub repository for this site</a>.</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://www.aravindhebbali.com/">Aravind Hebbali</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="display-free-used-swap-memory-in-the-system" class="section level3" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Display free, used, swap memory in the system</h3>
+<div class="sourceCode" id="cb191"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb191-1"><a href="command-line-sysinfo.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span></span></code></pre></div>
+<pre><code>##               total        used        free      shared  buff/cache   available
+## Mem:        3621900     2669180      723368       17720      229352      818988
+## Swap:      11010048      190772    10819276</code></pre>
+</div>
+<div id="display-file-system-disk-space-usage" class="section level3" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> Display file system disk space usage</h3>
+<div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="command-line-sysinfo.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span></span></code></pre></div>
+<pre><code>## Filesystem     1K-blocks      Used Available Use% Mounted on
+## rootfs         188482144 122040780  66441364  65% /
+## none           188482144 122040780  66441364  65% /dev
+## none           188482144 122040780  66441364  65% /run
+## none           188482144 122040780  66441364  65% /run/lock
+## none           188482144 122040780  66441364  65% /run/shm
+## none           188482144 122040780  66441364  65% /run/user
+## tmpfs          188482144 122040780  66441364  65% /sys/fs/cgroup
+## C:\            188482144 122040780  66441364  65% /mnt/c
+## D:\             18660348  17154308   1506040  92% /mnt/d
+## F:\              3196924    231756   2965168   8% /mnt/f
+## G:\             86383612  24614588  61769024  29% /mnt/g
+## H:\             86383612  15598836  70784776  19% /mnt/h
+## J:\             83185660  21632636  61553024  27% /mnt/j</code></pre>
+</div>
+</div>
+<div id="others" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Others</h2>
+<p>In this section, let us look at a few other useful commands that will allow us
+to</p>
+<ul>
+<li>see how long a command takes to execute</li>
+<li>delay activity</li>
+<li>display and clear command history list</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>time</code>
+</td>
+<td style="text-align:left;">
+See how long a command takes to execute
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sleep</code>
+</td>
+<td style="text-align:left;">
+Delay activity in seconds
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sleep 1m</code>
+</td>
+<td style="text-align:left;">
+Delay activity in minutes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>sleep 1h</code>
+</td>
+<td style="text-align:left;">
+Delay activity in hours
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>history</code>
+</td>
+<td style="text-align:left;">
+Display command history list with line numbers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>history -c</code>
+</td>
+<td style="text-align:left;">
+Clear the command history list
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="funny-commands" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Funny Commands</h2>
+<p>Below are a few funny commands for you to try out. Use <code>sudo apt-get install</code> to install fortune and banner before trying them.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>fortune</code>
+</td>
+<td style="text-align:left;">
+Poignant, inspirational &amp; silly phrases
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>yes</code>
+</td>
+<td style="text-align:left;">
+Output a string repeatedly until killed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>banner</code>
+</td>
+<td style="text-align:left;">
+ASCII banner
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>rev</code>
+</td>
+<td style="text-align:left;">
+Reverse each character
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="r-functions-4" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> R Functions</h2>
+<p>In R, we can use <code>Sys.sleep()</code> to delay activity and <code>history()</code> to view command history.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>sleep</code>
+</td>
+<td style="text-align:left;">
+<code>Sys.sleep()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>history</code>
+</td>
+<td style="text-align:left;">
+<code>history()</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="command-line-file-compression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-command-line.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

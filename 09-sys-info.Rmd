@@ -1,4 +1,4 @@
-# System Info {#sysinfo}
+# System Info {#command-line-sysinfo}
 
 In this chapter, we will explore commands that will allow us to
 

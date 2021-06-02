@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Command Line Basics for R Users</title>
+  <title>Chapter 8 File Compression | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Command Line Basics for R Users" />
+  <meta property="og:title" content="Chapter 8 File Compression | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Command Line Basics for R Users" />
+  <meta name="twitter:title" content="Chapter 8 File Compression | Command Line Basics for R Users" />
   
   <meta name="twitter:description" content="A gentle introduction to the command line." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preface.html"/>
+<link rel="prev" href="sudo-command.html"/>
+<link rel="next" href="command-line-sysinfo.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -382,24 +382,634 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Command Line Basics for R Users</h1>
-<p class="author"><em>Aravind Hebbali</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-02</em></p>
+<div id="command-line-file-compression" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> File Compression</h1>
+<p>In this chapter, we will explore file compression using the following</p>
+<ul>
+<li><code>tar</code></li>
+<li><code>gzip</code></li>
+<li><code>zip</code></li>
+<li><code>unzip</code></li>
+</ul>
+<div id="tar" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> tar</h2>
+<p>The <code>tar</code> command is used for file compression. It works with both <code>tar</code> and
+<code>tar.gz</code> extensions. It is used to</p>
+<ul>
+<li>list files</li>
+<li>extract files</li>
+<li>create archives</li>
+<li>append file to existing archives</li>
+</ul>
+<p><code>tar</code> creates, maintains, modifies, and extracts files that are archived in the tar format. Tar stands for <strong>t</strong>ape <strong>ar</strong>chive and is an archiving file format.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>tar tvf</code>
+</td>
+<td style="text-align:left;">
+List an archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar tvfz</code>
+</td>
+<td style="text-align:left;">
+List a gzipped archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar xvf</code>
+</td>
+<td style="text-align:left;">
+Extract an archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar xvfz</code>
+</td>
+<td style="text-align:left;">
+Extract a gzipped archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar cvf</code>
+</td>
+<td style="text-align:left;">
+Create an uncompressed tar archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar cvfz</code>
+</td>
+<td style="text-align:left;">
+Create a tar gzipped archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar rvf</code>
+</td>
+<td style="text-align:left;">
+Add a file to an existing archive
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar rvfz</code>
+</td>
+<td style="text-align:left;">
+Add a file to an existing gzipped archive
+</td>
+</tr>
+</tbody>
+</table>
+<p>We will use different options along with the <code>tar</code> command for listing, extracting, creating and adding files. The <code>vf</code> (<strong>v</strong> stands for verbosely show .tar file progress and <strong>f</strong> stands for file name type of the archive file) option is common for all the above operations while the following are specific.</p>
+<ul>
+<li><code>t</code> for listing</li>
+<li><code>x</code> for extracting</li>
+<li><code>c</code> for creating</li>
+<li><code>r</code> for adding files</li>
+</ul>
+<p>While dealing with <code>tar.gz</code> archives we will use <code>z</code> in addition to <code>vf</code> and the above options.</p>
+<div id="list" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> List</h3>
+<p>Let us list all the files &amp; folders in <code>release_names.tar</code>. As mentioned above. to list the files in the archive, we use the <code>t</code> option.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="command-line-file-compression.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-tvf</span> release_names.tar </span></code></pre></div>
+<pre><code>## -rwxrwxrwx aravind/aravind 546 2019-09-16 15:59 release_names.txt
+## -rwxrwxrwx aravind/aravind  65 2019-09-16 15:58 release_names_18.txt
+## -rwxrwxrwx aravind/aravind  53 2019-09-16 15:59 release_names_19.txt</code></pre>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p><img src="img/ebook-bash-intro.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>This is the website for Command Line Basics for R Users. Visit the <a href="https://github.com/rsquaredacademy-education/bash-intro">GitHub repository for this site</a>.</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://www.aravindhebbali.com/">Aravind Hebbali</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="extract" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Extract</h3>
+<p>Let us extract files from <code>release_names.tar</code> using the <code>x</code> option in addition to <code>vf</code>.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="command-line-file-compression.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvf</span> release_names.tar </span>
+<span id="cb167-2"><a href="command-line-file-compression.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## release_names.txt
+## release_names_18.txt
+## release_names_19.txt
+## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="add" class="section level3" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Add</h3>
+<p>To add a file to an existing archive, use the <code>r</code> option. Let us add <code>release_names_18.txt</code> and <code>release_names_19.txt</code> to the archive we created in the previous step.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb169-1"><a href="command-line-file-compression.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-rvf</span> release_names.tar release_names_18.txt release_names_19.txt</span></code></pre></div>
+<pre><code>## release_names_18.txt
+## release_names_19.txt</code></pre>
+</div>
+<div id="create" class="section level3" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> Create</h3>
+<p>Using the <code>c</code> option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="command-line-file-compression.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cvf</span> pkg_names.tar pkg_names.txt</span></code></pre></div>
+<pre><code>## pkg_names.txt</code></pre>
+</div>
+</div>
+<div id="gzip" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> gzip</h2>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>gzip</code>
+</td>
+<td style="text-align:left;">
+Compress a file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>gzip -d</code>
+</td>
+<td style="text-align:left;">
+Decompress a file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>gzip -c</code>
+</td>
+<td style="text-align:left;">
+Compress a file and specify the output file name
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>zip -r</code>
+</td>
+<td style="text-align:left;">
+Compress a directory
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>zip</code>
+</td>
+<td style="text-align:left;">
+Add files to an existing zip file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>unzip</code>
+</td>
+<td style="text-align:left;">
+Extract files from a zip files
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>unzip -d</code>
+</td>
+<td style="text-align:left;">
+Extract files from a zip file and specify the output file name
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>unzip -l</code>
+</td>
+<td style="text-align:left;">
+List contents of a zip file
+</td>
+</tr>
+</tbody>
+</table>
+<p><code>gzip</code>, <code>gunzip</code>, and <code>zcat</code> commands are used to compress or expand files in the GNU GZIP format i.e. files with <code>.gz</code> extension</p>
+<div id="compress" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Compress</h3>
+<p>Let us compress <code>release_names.txt</code> file using <code>gzip</code>.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb173-1"><a href="command-line-file-compression.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> release_names.txt</span>
+<span id="cb173-2"><a href="command-line-file-compression.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt.gz
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv.gz
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="decompress" class="section level3" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Decompress</h3>
+<p>Use the <code>-d</code> option with <code>gzip</code> to decompress a file. In the below example, we decompress the <code>sept_15.csv.gz</code> file (downloaded using <code>wget</code> or <code>curl</code> earlier). You can also use <code>gunzip</code> for the same result.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb175-1"><a href="command-line-file-compression.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">-d</span> sept_15.csv.gz</span>
+<span id="cb175-2"><a href="command-line-file-compression.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+<div id="specify-filename-1" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Specify Filename</h3>
+<p>Use <code>-c</code> and <code>&gt;</code> to specify a different file name while compressing using <code>gzip</code>. In the below example, <code>gzip</code> will create <code>releases.txt.gz</code> instead of <code>release_names.txt.gz</code>.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb177-1"><a href="command-line-file-compression.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">-c</span> release_names.txt <span class="op">&gt;</span> releases.txt.gz</span>
+<span id="cb177-2"><a href="command-line-file-compression.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## analysis.R
+## bash-tutorial
+## bash.R
+## bash.Rmd
+## bash.sh
+## imports_blorr.txt
+## imports_olsrr.txt
+## lorem-ipsum.txt
+## main_project.zip
+## myfiles
+## mypackage
+## myproject
+## myproject.zip
+## myproject3
+## myproject4
+## package_names.txt
+## packproj.zip
+## pkg_names.tar
+## pkg_names.txt
+## r
+## r2
+## r_releases
+## release_names.tar
+## release_names.tar.gz
+## release_names.txt
+## release_names_18.txt
+## release_names_18_19.txt
+## release_names_19.txt
+## releases.txt.gz
+## sept_15.csv
+## urls.txt
+## zip_example.zip</code></pre>
+</div>
+</div>
+<div id="zip-unzip" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> zip &amp; unzip</h2>
+<p><code>zip</code> creates ZIP archives while <code>unzip</code> lists and extracts compressed files in a ZIP archive.</p>
+<div id="list-1" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> List</h3>
+<p>Let us list all the files and folders in <code>main_project.zip()</code> using <code>unzip</code> and the <code>-l</code> option.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb179-1"><a href="command-line-file-compression.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> <span class="at">-l</span> main_project.zip</span></code></pre></div>
+<pre><code>## Archive:  main_project.zip
+##   Length      Date    Time    Name
+## ---------  ---------- -----   ----
+##         0  2019-09-23 18:07   myproject/
+##         0  2019-09-20 14:02   myproject/.gitignore
+##         0  2019-09-23 18:07   myproject/data/
+##         0  2019-09-20 14:02   myproject/data/processed/
+##         0  2019-09-20 14:02   myproject/data/raw/
+##         0  2019-09-20 14:02   myproject/output/
+##         0  2019-09-20 14:02   myproject/README.md
+##        13  2019-09-20 14:02   myproject/run_analysis.R
+##         0  2019-09-20 14:02   myproject/src/
+##         0  2019-09-23 18:07   mypackage/
+##         0  2019-09-20 14:11   mypackage/.gitignore
+##         0  2019-09-20 14:11   mypackage/.Rbuildignore
+##         0  2019-09-20 14:10   mypackage/data/
+##         0  2019-09-20 14:11   mypackage/DESCRIPTION
+##         0  2019-09-20 14:10   mypackage/docs/
+##         0  2019-09-20 14:11   mypackage/LICENSE
+##         0  2019-09-20 14:10   mypackage/man/
+##         0  2019-09-20 14:11   mypackage/NAMESPACE
+##         0  2019-09-20 14:11   mypackage/NEWS.md
+##         0  2019-09-20 14:10   mypackage/R/
+##         0  2019-09-20 14:11   mypackage/README.md
+##         0  2019-09-20 14:11   mypackage/src/
+##         0  2019-09-20 14:10   mypackage/tests/
+##         0  2019-09-20 14:10   mypackage/vignettes/
+##         0  2019-09-23 18:07   myfiles/
+##        12  2019-09-20 15:30   myfiles/analysis.R
+##         7  2019-09-20 15:31   myfiles/NEWS.md
+##         9  2019-09-20 15:31   myfiles/README.md
+##       546  2019-09-20 15:29   myfiles/release_names.txt
+##        65  2019-09-20 15:29   myfiles/release_names_18.txt
+##        53  2019-09-20 15:30   myfiles/release_names_19.txt
+##        12  2019-09-20 15:30   myfiles/visualization.R
+##     15333  2019-10-01 16:58   bash.sh
+##         0  2019-09-16 12:42   r/
+## ---------                     -------
+##     16050                     34 files</code></pre>
+</div>
+<div id="extract-1" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Extract</h3>
+<p>Using <code>unzip</code>, let us now extract files and folders from <code>zip_example.zip</code>.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb181-1"><a href="command-line-file-compression.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> zip_example.zip</span></code></pre></div>
+<p>Using the <code>-d</code> option, we can extract the contents of <code>zip_example.zip</code> to a specific folder. In the below example, we extract it to a new folder <code>examples</code>.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb182-1"><a href="command-line-file-compression.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> zip_example.zip –d myexamples</span></code></pre></div>
+</div>
+<div id="compress-1" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Compress</h3>
+<p>Use the <code>-r</code> option along with <code>zip</code> to create a ZIP archive. In the below example, we create a ZIP archive of <code>myproject</code> folder.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb183-1"><a href="command-line-file-compression.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> myproject.zip myproject</span>
+<span id="cb183-2"><a href="command-line-file-compression.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## updating: myproject/ (stored 0%)
+## updating: myproject/.gitignore (stored 0%)
+## updating: myproject/data/ (stored 0%)
+## updating: myproject/data/processed/ (stored 0%)
+## updating: myproject/data/raw/ (stored 0%)
+## updating: myproject/output/ (stored 0%)
+## updating: myproject/README.md (stored 0%)
+## updating: myproject/run_analysis.R (stored 0%)
+## updating: myproject/src/ (stored 0%)</code></pre>
+<p>We can compress multiple directories using <code>zip</code>. The names of the directories must be separated by a space as shown in the below example where we compress <code>myproject</code> and <code>mypackage</code> into a single ZIP archive.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb185-1"><a href="command-line-file-compression.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> packproj.zip myproject mypackage</span>
+<span id="cb185-2"><a href="command-line-file-compression.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## updating: myproject/ (stored 0%)
+## updating: myproject/.gitignore (stored 0%)
+## updating: myproject/data/ (stored 0%)
+## updating: myproject/data/processed/ (stored 0%)
+## updating: myproject/data/raw/ (stored 0%)
+## updating: myproject/output/ (stored 0%)
+## updating: myproject/README.md (stored 0%)
+## updating: myproject/run_analysis.R (stored 0%)
+## updating: myproject/src/ (stored 0%)
+## updating: mypackage/ (stored 0%)
+## updating: mypackage/.gitignore (stored 0%)
+## updating: mypackage/.Rbuildignore (stored 0%)
+## updating: mypackage/data/ (stored 0%)
+## updating: mypackage/DESCRIPTION (stored 0%)
+## updating: mypackage/docs/ (stored 0%)
+## updating: mypackage/LICENSE (stored 0%)
+## updating: mypackage/man/ (stored 0%)
+## updating: mypackage/NAMESPACE (stored 0%)
+## updating: mypackage/NEWS.md (stored 0%)
+## updating: mypackage/R/ (stored 0%)
+## updating: mypackage/README.md (stored 0%)
+## updating: mypackage/src/ (stored 0%)
+## updating: mypackage/tests/ (stored 0%)
+## updating: mypackage/vignettes/ (stored 0%)</code></pre>
+</div>
+<div id="add-1" class="section level3" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> Add</h3>
+<p>To add a new file/folder to an existing archive, specify the name of the archive followed by the name of the file or the folder. In the below example, we add the <code>bash.sh</code> file to the <code>myproject.zip</code> archive created in a previous step.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb187-1"><a href="command-line-file-compression.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> myproject.zip bash.sh</span></code></pre></div>
+<pre><code>## updating: bash.sh (deflated 78%)</code></pre>
+</div>
+</div>
+<div id="r-functions-3" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> R Functions</h2>
+<div id="tar-tar.gz" class="section level3" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> tar &amp; tar.gz</h3>
+<p>In R, we can use the <code>tar()</code> and <code>untar()</code> functions from the <code>utils</code> package to handle <code>.tar</code> and <code>.tar.gz</code> archives.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>tar tvf</code>
+</td>
+<td style="text-align:left;">
+<code>utils::untar('archive.tar', list = TRUE)</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar tvfz</code>
+</td>
+<td style="text-align:left;">
+<code>utils::untar('archive.tar.gz', list = TRUE)</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar xvf</code>
+</td>
+<td style="text-align:left;">
+<code>utils::untar('archive.tar')</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar xvfz</code>
+</td>
+<td style="text-align:left;">
+<code>utils::untar('archive.tar.gz')</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar cvf</code>
+</td>
+<td style="text-align:left;">
+<code>utils::tar('archive.tar')</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>tar cvfz</code>
+</td>
+<td style="text-align:left;">
+<code>utils::tar('archive.tar', compression = 'gzip')</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="zip-gzip" class="section level3" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> zip &amp; gzip</h3>
+<p>The <a href="https://cran.r-project.org/package=zip">zip</a> package has the functionalities to handle ZIP archives. The <code>tar()</code> and <code>untar()</code> functions from the <code>utils</code> package can handle GZIP archives.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>gzip</code>
+</td>
+<td style="text-align:left;">
+<code>utils::tar(compression = 'gzip'</code> / <code>R.utils::gzip()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>gzip -d</code>
+</td>
+<td style="text-align:left;">
+<code>utils::untar()</code> / <code>R.utils::gunzip()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>gzip -c</code>
+</td>
+<td style="text-align:left;">
+<code>utils::untar(exdir = filename)</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>zip -r</code>
+</td>
+<td style="text-align:left;">
+<code>zip::zip()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>zip</code>
+</td>
+<td style="text-align:left;">
+<code>zip::zipr_append()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>unzip</code>
+</td>
+<td style="text-align:left;">
+<code>zip::unzip()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>unzip -d</code>
+</td>
+<td style="text-align:left;">
+<code>zip::unzip(exdir = dir_name)</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>unzip -l</code>
+</td>
+<td style="text-align:left;">
+<code>zip::zip_list()</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sudo-command.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="command-line-sysinfo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

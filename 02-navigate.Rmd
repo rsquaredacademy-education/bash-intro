@@ -1,4 +1,4 @@
-# Navigating File System {#navigate}
+# Navigating File System {#navigating-files-and-directories}
 
 ## Introduction
 

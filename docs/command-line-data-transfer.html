@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Command Line Basics for R Users</title>
+  <title>Chapter 6 Data Transfer | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Command Line Basics for R Users" />
+  <meta property="og:title" content="Chapter 6 Data Transfer | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Command Line Basics for R Users" />
+  <meta name="twitter:title" content="Chapter 6 Data Transfer | Command Line Basics for R Users" />
   
   <meta name="twitter:description" content="A gentle introduction to the command line." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preface.html"/>
+<link rel="prev" href="command-line-regular-expression.html"/>
+<link rel="next" href="sudo-command.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -382,24 +382,365 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Command Line Basics for R Users</h1>
-<p class="author"><em>Aravind Hebbali</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-02</em></p>
+<div id="command-line-data-transfer" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Data Transfer</h1>
+<p>In this chapter, we will explore commands that will allow us to download files
+from the internet.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>wget</code>
+</td>
+<td style="text-align:left;">
+Download files from the web
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>curl</code>
+</td>
+<td style="text-align:left;">
+Transfer data from or to a server
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>hostname</code>
+</td>
+<td style="text-align:left;">
+Name of the current host
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>ping</code>
+</td>
+<td style="text-align:left;">
+Ping a remote host
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>nslookup</code>
+</td>
+<td style="text-align:left;">
+Name server details
+</td>
+</tr>
+</tbody>
+</table>
+<p>We have not executed the commands in this ebook as downloading multiple files from the internet will take a lot of time or result in errors but we have checked all the commands offline to ensure that they work.</p>
+<div id="wget" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> wget</h2>
+<p>The <code>wget</code> command will download contents of a URL and files from the internet.
+Using additional options, we can</p>
+<ul>
+<li>download contents/files to a file</li>
+<li>continue incomplete downloads</li>
+<li>download multiple files</li>
+<li>limit download speed and number of retries</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>wget url</code>
+</td>
+<td style="text-align:left;">
+Download contents of a url
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget -o file url</code>
+</td>
+<td style="text-align:left;">
+Download contents of url to a file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget -c</code>
+</td>
+<td style="text-align:left;">
+Continue an incomplete download
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget -P folder_name -i urls.txt</code>
+</td>
+<td style="text-align:left;">
+Download all urls stored in a text file to a specific directory
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --limit-rate</code>
+</td>
+<td style="text-align:left;">
+Limit download speed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --tries</code>
+</td>
+<td style="text-align:left;">
+Limit number of retries
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --quiet</code>
+</td>
+<td style="text-align:left;">
+Turn off output
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --no-verbose</code>
+</td>
+<td style="text-align:left;">
+Print basic information
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --progress-dot</code>
+</td>
+<td style="text-align:left;">
+Change progress bar type to dot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --timestamping</code>
+</td>
+<td style="text-align:left;">
+Check if the timestamp of the file has changed before downloading
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wget --wait</code>
+</td>
+<td style="text-align:left;">
+Wait between retrievals
+</td>
+</tr>
+</tbody>
+</table>
+<div id="download-url" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Download URL</h3>
+<p>Let us first use <code>wget</code> to download contents of a URL. Note, we are not downloading file as such but just the content of the URL. We will use the URL of the home page of <a href="https://www.r-project.org/">R</a> project.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb152-1"><a href="command-line-data-transfer.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.r-project.org/</span></code></pre></div>
+<p>If you look at the list of files, you can see a new file, <code>index.html</code> which we just downloaded using <code>wget</code>. Downloading contents this way will lead to confusion if we are dealing with multiple URLs. Let us learn to save the contents to a file (we can specify the name of the file which should help avoid confusion.)</p>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p><img src="img/ebook-bash-intro.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>This is the website for Command Line Basics for R Users. Visit the <a href="https://github.com/rsquaredacademy-education/bash-intro">GitHub repository for this site</a>.</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://www.aravindhebbali.com/">Aravind Hebbali</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="specify-filename" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Specify Filename</h3>
+<p>In this example, we download contents from the same URL and in addition specify the name of the file in which the content must be saved. Here we save it in a new file, <code>rhomepage.html</code> using the <code>-o</code> option followed by the filename.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb153-1"><a href="command-line-data-transfer.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-o</span> rhomepage.html https://www.r-project.org/</span></code></pre></div>
+</div>
+<div id="download-file" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Download File</h3>
+<p>How about downloading a file instead of a URL? In this example, we will download a logfile from the <a href="http://cran-logs.rstudio.com/">RStudio CRAN</a> mirror. It contains the details of R downloads and individual package downloads. If you are a package developer and would want to know the countries in which your packages are downloaded, you will find this useful. We will download the file for 29th September and save it as <code>sep_29.csv.gz</code>.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb154-1"><a href="command-line-data-transfer.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-o</span> sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz</span></code></pre></div>
+</div>
+<div id="download-multiple-urls" class="section level3" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Download Multiple URLs</h3>
+<p>How do we download multiple URLs? One way is to specify the URLs one after the other separated by a space or save all URLs in a file and read them one by one. In the below example, we have saved multiple URLs in the file <code>urls.txt</code>.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb155-1"><a href="command-line-data-transfer.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> urls.txt</span></code></pre></div>
+<pre><code>## http://cran-logs.rstudio.com/2019/2019-09-26.csv.gz
+## http://cran-logs.rstudio.com/2019/2019-09-27.csv.gz
+## http://cran-logs.rstudio.com/2019/2019-09-28.csv.gz</code></pre>
+<p>We will download all the above URLs and save them in a new folder <code>downloads</code>. The <code>-i</code> indicates that the URLs must be read from a file (local or external). The <code>-P</code> option allows us to specify the directory into which all the files will be downloaded.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb157-1"><a href="command-line-data-transfer.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-P</span> downloads <span class="at">-i</span> urls.txt     </span></code></pre></div>
+</div>
+<div id="quiet" class="section level3" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Quiet</h3>
+<p>The <code>--quiet</code> option will turn off <code>wget</code> output. It will not show any of the following details:</p>
+<ul>
+<li>name of the file being saved</li>
+<li>file size</li>
+<li>download speed</li>
+<li>eta etc.</li>
+</ul>
+<div class="sourceCode" id="cb158"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb158-1"><a href="command-line-data-transfer.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> –-quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz</span></code></pre></div>
+</div>
+<div id="no-verbose" class="section level3" number="6.1.6">
+<h3><span class="header-section-number">6.1.6</span> No Verbose</h3>
+<p>Using the <code>-nv</code> or <code>--no-verbose</code> option, we can turn off verbose without being completely quiet (as we did in the previous example). Any error messages and basic information will still be printed.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb159-1"><a href="command-line-data-transfer.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz    </span></code></pre></div>
+</div>
+<div id="check-timestamp" class="section level3" number="6.1.7">
+<h3><span class="header-section-number">6.1.7</span> Check Timestamp</h3>
+<p>Let us say we have already downloaded a file from a URL. The file is updated from time to time and we intend to keep the local copy updated as well. Using the <code>--timestamping</code> option, the local file will have timestamp matching the remote file; if the remote file is not newer (not updated), no download will occur i.e. if the timestamp of the remote file has not changed it will not be downloaded. This is very useful in case of large files where you do not want to download them unless they have been updated.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb160-1"><a href="command-line-data-transfer.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> –-timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz</span></code></pre></div>
+</div>
+</div>
+<div id="curl" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> curl</h2>
+<p>The <code>curl</code> command will transfer data from or to a server. We will only look at
+downloading files from the internet.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>curl url</code>
+</td>
+<td style="text-align:left;">
+Download contents of a url
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>curl url -o file</code>
+</td>
+<td style="text-align:left;">
+Download contents of url to a file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>curl url &amp;gt; file</code>
+</td>
+<td style="text-align:left;">
+Download contents of url to a file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>curl -s</code>
+</td>
+<td style="text-align:left;">
+Download in silent or quiet mode
+</td>
+</tr>
+</tbody>
+</table>
+<div id="download-url-1" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Download URL</h3>
+<p>Let us download the home page of the <a href="https://www.r-project.org/">R</a> project using <code>curl</code>.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb161-1"><a href="command-line-data-transfer.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://www.r-project.org/</span></code></pre></div>
+</div>
+<div id="specify-file" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Specify File</h3>
+<p>Let us download another log file from the <a href="http://cran-logs.rstudio.com/">RStudio CRAN</a> mirror and save it into a file using the <code>-o</code> option.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb162-1"><a href="command-line-data-transfer.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-08.csv.gz <span class="at">-o</span> sept_08.csv.gz </span></code></pre></div>
+<p>Another way to save a downloaded file is to use <code>&gt;</code> followed by the name of the file as shown in the below example.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb163-1"><a href="command-line-data-transfer.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz <span class="op">&gt;</span> sep_01.csv.gz</span></code></pre></div>
+</div>
+<div id="download-silently" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Download Silently</h3>
+<p>The <code>-s</code> option will allow you to download files silently. It will mute <code>curl</code> and will not display progress meter or error messages.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb164-1"><a href="command-line-data-transfer.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz <span class="at">-o</span> sept_01.csv.gz <span class="at">-s</span></span></code></pre></div>
+</div>
+</div>
+<div id="r-functions-2" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> R Functions</h2>
+<p>In R, we can use <code>download.file()</code> to download files from the internet. The following packages offer functionalities that you will find useful.</p>
+<ul>
+<li><a href="https://cran.r-project.org/package=curl">curl</a></li>
+<li><a href="https://cran.r-project.org/package=R.utils">R.utils</a></li>
+<li><a href="https://cran.r-project.org/package=pingr">pingr</a></li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>wget</code>
+</td>
+<td style="text-align:left;">
+<code>download.file()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>curl</code>
+</td>
+<td style="text-align:left;">
+<code>curl::curl_download()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>hostname</code>
+</td>
+<td style="text-align:left;">
+<code>R.utils::getHostname.System()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>ping</code>
+</td>
+<td style="text-align:left;">
+<code>pingr::ping()</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>nslookup</code>
+</td>
+<td style="text-align:left;">
+<code>curl::nslookup()</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="command-line-regular-expression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sudo-command.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

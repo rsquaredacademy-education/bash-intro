@@ -1,4 +1,4 @@
-# Search & Regular Expression {#regex}
+# Search & Regular Expression {#command-line-regular-expression}
 
 In this chapter, we will explore commands that will
 

@@ -1,4 +1,0 @@
-car 
-checkmate
-cli
-clisymbols

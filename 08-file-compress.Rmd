@@ -1,4 +1,4 @@
-# File Compression {#compress}
+# File Compression {#command-line-file-compression}
 
 In this chapter, we will explore file compression using the following
 

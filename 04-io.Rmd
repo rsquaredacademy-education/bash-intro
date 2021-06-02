@@ -1,4 +1,4 @@
-# Input/Output {#io}
+# Input/Output {#command-line-input-output}
 
 In this chapter, we will explore commands that will
 

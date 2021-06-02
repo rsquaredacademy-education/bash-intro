@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Command Line Basics for R Users</title>
+  <title>Chapter 5 Search &amp; Regular Expression | Command Line Basics for R Users</title>
   <meta name="description" content="A gentle introduction to the command line." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Command Line Basics for R Users" />
+  <meta property="og:title" content="Chapter 5 Search &amp; Regular Expression | Command Line Basics for R Users" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Command Line Basics for R Users" />
+  <meta name="twitter:title" content="Chapter 5 Search &amp; Regular Expression | Command Line Basics for R Users" />
   
   <meta name="twitter:description" content="A gentle introduction to the command line." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preface.html"/>
+<link rel="prev" href="command-line-input-output.html"/>
+<link rel="next" href="command-line-data-transfer.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -382,24 +382,507 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Command Line Basics for R Users</h1>
-<p class="author"><em>Aravind Hebbali</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-02</em></p>
+<div id="command-line-regular-expression" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Search &amp; Regular Expression</h1>
+<p>In this chapter, we will explore commands that will</p>
+<ul>
+<li>search for a given string in a file</li>
+<li>find files using names</li>
+<li>and search for binary executable files</li>
+</ul>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>grep</code>
+</td>
+<td style="text-align:left;">
+Search for a given string in a file
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>find</code>
+</td>
+<td style="text-align:left;">
+Find files using filenames
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>which</code>
+</td>
+<td style="text-align:left;">
+Search for binary executable files
+</td>
+</tr>
+</tbody>
+</table>
+<div id="grep" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> grep</h2>
+<p>The <code>grep</code> command is used for pattern matching. Along with additional options, it can be used to</p>
+<ul>
+<li>match pattern in input text</li>
+<li>ignore case</li>
+<li>search recursively for an exact string</li>
+<li>print filename and line number for each match</li>
+<li>invert match for excluding specific strings</li>
+</ul>
+<p><code>grep</code> processes text line by line, and prints any lines which match a specified pattern. <code>grep</code>, which stands for <strong>g</strong>lobal <strong>r</strong>egular <strong>e</strong>xpression <strong>p</strong>rint is a powerful tool for matching a regular expression against text in a file, multiple files, or a stream of input.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>grep</code>
+</td>
+<td style="text-align:left;">
+Matches pattern in input text
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>grep -i</code>
+</td>
+<td style="text-align:left;">
+Ignore case
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>grep -RI</code>
+</td>
+<td style="text-align:left;">
+Search recursively for an exact string
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>grep -E</code>
+</td>
+<td style="text-align:left;">
+Use extended regular expression
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>grep -Hn</code>
+</td>
+<td style="text-align:left;">
+Print file name &amp; corresponding line number for each match
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>grep -v</code>
+</td>
+<td style="text-align:left;">
+Invert match for excluding specific strings
+</td>
+</tr>
+</tbody>
+</table>
+<div id="match-pattern-in-input-text" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Match Pattern in Input Text</h3>
+<p>Using <code>grep</code> let us search for packages that inlcude the letter <code>R</code> in their names.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb128-1"><a href="command-line-regular-expression.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> R package_names.txt</span></code></pre></div>
+<pre><code>## 14. RJDBC
+## 30. logNormReg
+## 27. gLRTH
+## 35. fermicatsR
+## 42. OptimaRegion
+## 61. PropScrRand
+## 25. RPyGeo
+## 47. SMARTp
+## 24. SCRT
+## 56. MARSS
+## 85. edfReader
+## 32. SPEDInstabR
+## 98. SmallCountRounding</code></pre>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
-<p><img src="img/ebook-bash-intro.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>This is the website for Command Line Basics for R Users. Visit the <a href="https://github.com/rsquaredacademy-education/bash-intro">GitHub repository for this site</a>.</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by <a href="https://www.aravindhebbali.com/">Aravind Hebbali</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="ignore-case-1" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Ignore Case</h3>
+<p>In the previous case, <code>grep</code> returned only those packages whose name included <code>R</code> but not <code>r</code> i.e. it did not ignore the case of the letter. Using the <code>-i</code> option, we will now search while ignoring the case of the letter.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb130-1"><a href="command-line-regular-expression.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> R package_names.txt</span></code></pre></div>
+<pre><code>## 14. RJDBC
+## 58. alfr
+## 64. viridisLite
+## 99. Survgini
+## 30. logNormReg
+## 27. gLRTH
+## 71. kfigr
+## 72. overlapping
+## 90. widyr
+## 33. tailr
+## 40. MaxentVariableSelection
+## 33. tailr
+## 72. overlapping
+## 16. randtests
+## 12. ltxsparklines
+## 91. rgw
+## 35. fermicatsR
+## 21. corclass
+## 68. AzureStor
+## 42. OptimaRegion
+## 61. PropScrRand
+## 74. crsra
+## 80. SpatioTemporal
+## 23. disparityfilter
+## 49. SemiParSampleSel
+## 76. errorlocate
+## 88. SphericalK
+## 28. splithalfr
+## 89. foretell
+## 25. RPyGeo
+## 50. mbir
+## 51. interplot
+## 6. BinOrdNonNor
+## 47. SMARTp
+## 38. BenfordTests
+## 79. mvShapiroTest
+## 92. BioCircos
+## 55. hindexcalculator
+## 41. rstudioapi
+## 57. generalhoslem
+## 24. SCRT
+## 95. TSeriesMMA
+## 82. breakfast
+## 56. MARSS
+## 70. rsed
+## 68. AzureStor
+## 85. edfReader
+## 20. rless
+## 75. pmdplyr
+## 32. SPEDInstabR
+## 3. redcapAPI
+## 70. rsed
+## 98. SmallCountRounding</code></pre>
+</div>
+<div id="highlight" class="section level3" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Highlight</h3>
+<p>The <code>--color</code> option will highlight the matched strings.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb132-1"><a href="command-line-regular-expression.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="at">--color</span> R package_names.txt</span></code></pre></div>
+<pre><code>## 14. RJDBC
+## 58. alfr
+## 64. viridisLite
+## 99. Survgini
+## 30. logNormReg
+## 27. gLRTH
+## 71. kfigr
+## 72. overlapping
+## 90. widyr
+## 33. tailr
+## 40. MaxentVariableSelection
+## 33. tailr
+## 72. overlapping
+## 16. randtests
+## 12. ltxsparklines
+## 91. rgw
+## 35. fermicatsR
+## 21. corclass
+## 68. AzureStor
+## 42. OptimaRegion
+## 61. PropScrRand
+## 74. crsra
+## 80. SpatioTemporal
+## 23. disparityfilter
+## 49. SemiParSampleSel
+## 76. errorlocate
+## 88. SphericalK
+## 28. splithalfr
+## 89. foretell
+## 25. RPyGeo
+## 50. mbir
+## 51. interplot
+## 6. BinOrdNonNor
+## 47. SMARTp
+## 38. BenfordTests
+## 79. mvShapiroTest
+## 92. BioCircos
+## 55. hindexcalculator
+## 41. rstudioapi
+## 57. generalhoslem
+## 24. SCRT
+## 95. TSeriesMMA
+## 82. breakfast
+## 56. MARSS
+## 70. rsed
+## 68. AzureStor
+## 85. edfReader
+## 20. rless
+## 75. pmdplyr
+## 32. SPEDInstabR
+## 3. redcapAPI
+## 70. rsed
+## 98. SmallCountRounding</code></pre>
+</div>
+<div id="print-filename" class="section level3" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Print Filename</h3>
+<p>If there is more than one file to search, use the <code>-H</code> option to print the filename for each match.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb134-1"><a href="command-line-regular-expression.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="at">--color</span> <span class="at">-H</span> bio package_names.txt</span></code></pre></div>
+<pre><code>## package_names.txt:84. BIOMASS
+## package_names.txt:92. BioCircos
+## package_names.txt:7. bayesbio</code></pre>
+</div>
+<div id="print-corresponding-line-number" class="section level3" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Print Corresponding Line Number</h3>
+<p>The <code>-n</code> option will print the corresponding line number of the match in the file.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb136-1"><a href="command-line-regular-expression.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="at">--color</span> <span class="at">-n</span> bio package_names.txt</span></code></pre></div>
+<pre><code>## 59:84. BIOMASS
+## 71:92. BioCircos
+## 88:7. bayesbio</code></pre>
+</div>
+<div id="print-filename-line-number" class="section level3" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Print Filename &amp; Line Number</h3>
+<p>Let us print both the file name and the line number for each match.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb138-1"><a href="command-line-regular-expression.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="at">--color</span> <span class="at">-Hn</span> R package_names.txt</span></code></pre></div>
+<pre><code>## package_names.txt:1:14. RJDBC
+## package_names.txt:3:58. alfr
+## package_names.txt:8:64. viridisLite
+## package_names.txt:14:99. Survgini
+## package_names.txt:15:30. logNormReg
+## package_names.txt:16:27. gLRTH
+## package_names.txt:18:71. kfigr
+## package_names.txt:20:72. overlapping
+## package_names.txt:21:90. widyr
+## package_names.txt:22:33. tailr
+## package_names.txt:23:40. MaxentVariableSelection
+## package_names.txt:26:33. tailr
+## package_names.txt:27:72. overlapping
+## package_names.txt:30:16. randtests
+## package_names.txt:31:12. ltxsparklines
+## package_names.txt:32:91. rgw
+## package_names.txt:33:35. fermicatsR
+## package_names.txt:37:21. corclass
+## package_names.txt:38:68. AzureStor
+## package_names.txt:41:42. OptimaRegion
+## package_names.txt:42:61. PropScrRand
+## package_names.txt:43:74. crsra
+## package_names.txt:51:80. SpatioTemporal
+## package_names.txt:52:23. disparityfilter
+## package_names.txt:54:49. SemiParSampleSel
+## package_names.txt:55:76. errorlocate
+## package_names.txt:57:88. SphericalK
+## package_names.txt:61:28. splithalfr
+## package_names.txt:62:89. foretell
+## package_names.txt:63:25. RPyGeo
+## package_names.txt:64:50. mbir
+## package_names.txt:65:51. interplot
+## package_names.txt:66:6. BinOrdNonNor
+## package_names.txt:67:47. SMARTp
+## package_names.txt:68:38. BenfordTests
+## package_names.txt:69:79. mvShapiroTest
+## package_names.txt:71:92. BioCircos
+## package_names.txt:75:55. hindexcalculator
+## package_names.txt:78:41. rstudioapi
+## package_names.txt:80:57. generalhoslem
+## package_names.txt:84:24. SCRT
+## package_names.txt:85:95. TSeriesMMA
+## package_names.txt:87:82. breakfast
+## package_names.txt:96:56. MARSS
+## package_names.txt:97:70. rsed
+## package_names.txt:98:68. AzureStor
+## package_names.txt:100:85. edfReader
+## package_names.txt:101:20. rless
+## package_names.txt:102:75. pmdplyr
+## package_names.txt:103:32. SPEDInstabR
+## package_names.txt:104:3. redcapAPI
+## package_names.txt:106:70. rsed
+## package_names.txt:107:98. SmallCountRounding</code></pre>
+</div>
+<div id="invert-match" class="section level3" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Invert Match</h3>
+<p>Use the <code>-v</code> option to select non-matching lines. In the below example, we search for packages whose name does not include <code>R</code> while ignoring the case.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb140-1"><a href="command-line-regular-expression.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="at">-i</span> R package_names.txt</span></code></pre></div>
+<pre><code>## 36. mlflow
+## 10. aweek
+## 31. BIGDAWG
+## 22. vqtl
+## 29. sspline
+## 39. mev
+## 66. SuppDists
+## 15. MIAmaxent
+## 31. BIGDAWG
+## 29. sspline
+## 60. Eagle
+## 83. WPKDE
+## 11. hdnom
+## 26. blink
+## 18. gazepath
+## 52. ClimMobTools
+## 44. expstudies
+## 65. mined
+## 81. mgcViz
+## 45. solitude
+## 9. pAnalysis
+## 65. mined
+## 94. ICAOD
+## 48. geoknife
+## 45. solitude
+## 67. tictactoe
+## 46. cbsem
+## 93. PathSelectMP
+## 96. poisbinom
+## 17. ASIP
+## 5. pls
+## 84. BIOMASS
+## 59. AdMit
+## 77. SetMethods
+## 53. MVB
+## 2. odk
+## 86. mongolite
+## 4. TIMP
+## 97. AnalyzeTS
+## 87. WGScan
+## 63. dagitty
+## 69. FField
+## 13. MaXact
+## 73. VineCopula
+## 7. bayesbio
+## 34. ibd
+## 8. MVTests
+## 19. mcmcabn
+## 43. accept
+## 78. sybilccFBA
+## 62. lue
+## 100. addhaz
+## 37. CombinePValue
+## 1. cyclocomp
+## 54. OxyBS</code></pre>
+</div>
+<div id="recursive-search" class="section level3" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Recursive Search</h3>
+<p>Use the <code>-r</code> option to search recursively. In the below example, we search all files with the <code>.txt</code> extension for the string <code>bio</code> while ignoring the case.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb142-1"><a href="command-line-regular-expression.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="at">--color</span> <span class="at">-r</span> bio <span class="pp">*</span>.txt</span></code></pre></div>
+<pre><code>## package_names.txt:84. BIOMASS
+## package_names.txt:92. BioCircos
+## package_names.txt:7. bayesbio
+## pkg_names.txt:BIOMASS
+## pkg_names.txt:BioCircos
+## pkg_names.txt:BIOMASS
+## pkg_names.txt:bayesbio</code></pre>
+</div>
+</div>
+<div id="find" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> find</h2>
+<p>The <code>find</code> command can be used for searching files and directories. Using additional options, we can</p>
+<ul>
+<li>search files by extension type</li>
+<li>ignore case while searching files/directories</li>
+</ul>
+<p><code>find</code> is a powerful tool for working with the files. It can be used on its own to locate files, or in conjunction with other programs to perform operations on those files.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Command
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>find</code>
+</td>
+<td style="text-align:left;">
+Find files or directories under the given directory; recursively
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>find -name '*.txt'</code>
+</td>
+<td style="text-align:left;">
+Find files by extension
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>find -type d -iname</code>
+</td>
+<td style="text-align:left;">
+Find directories matching a given name, in case-insensitive mode
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>find -type d -name</code>
+</td>
+<td style="text-align:left;">
+Find directories matching a given name, in case-sensitive mode
+</td>
+</tr>
+</tbody>
+</table>
+<div id="search-recursively" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Search Recursively</h3>
+<p>Let us use <code>find</code> to search for the file <code>release_names.txt</code> recursively. The <code>-name</code> option is used to specify the name of the file we are searching.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb144-1"><a href="command-line-regular-expression.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-name</span> release_names.txt</span></code></pre></div>
+<pre><code>## ./bash-tutorial/myfiles/release_names.txt
+## ./bash-tutorial/release_names.txt
+## ./release_names.txt
+## ./r_releases/release_names.txt</code></pre>
+<p>There are two files with the name <code>release_names.txt</code> present in the current working directory and in <code>r_releases</code> directory.</p>
+</div>
+<div id="search-by-extension" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Search by Extension</h3>
+<p>Let us search for all files with <code>.txt</code> extension in the <code>r_releases</code> folder.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="command-line-regular-expression.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> r_releases <span class="at">-name</span> <span class="st">&#39;*.txt&#39;</span></span></code></pre></div>
+<pre><code>## r_releases/release_names.txt
+## r_releases/release_names_2.txt
+## r_releases/release_names_3.txt</code></pre>
+<p>There are 3 files with the <code>.txt</code> extension in <code>r_releases</code> folder.</p>
+</div>
+<div id="case-insensitive-mode" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Case-insensitive Mode</h3>
+<p>Search for all folders with the name <code>R</code> or <code>r</code>. Here we use the <code>-iname</code> option to ignore case while searching. The <code>-type</code> option is used to specify whether we are searching for files or folders. Since we are searching for folder/directory, we use it along with <code>d</code> i.e. directory to indicate that we are searching for directories and not files.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb148-1"><a href="command-line-regular-expression.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> d <span class="at">-iname</span> R</span></code></pre></div>
+<pre><code>## ./bash-tutorial/mypackage/R
+## ./bash-tutorial/r
+## ./mypackage/R
+## ./r
+## ./r2/r</code></pre>
+</div>
+<div id="case-sensitive-mode" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Case-sensitive Mode</h3>
+<p>Search for all folders with the name <code>r</code>. It should exclude any folder with the name <code>R</code>.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb150-1"><a href="command-line-regular-expression.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> d <span class="at">-name</span> r</span></code></pre></div>
+<pre><code>## ./bash-tutorial/r
+## ./r
+## ./r2/r</code></pre>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="command-line-input-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="command-line-data-transfer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
