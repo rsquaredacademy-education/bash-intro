@@ -1,0 +1,59 @@
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/intro.html"
+  to = "https://bash-intro.rsquaredacademy.com/introduction-to-command-line.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/navigate.html"
+  to = "https://bash-intro.rsquaredacademy.com/navigating-files-and-directories.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/filemanagement.html"
+  to = "https://bash-intro.rsquaredacademy.com/command-line-file-management.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/io.html"
+  to = "https://bash-intro.rsquaredacademy.com/command-line-input-output.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/regex.html"
+  to = "https://bash-intro.rsquaredacademy.com/command-line-regular-expression.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/datatransfer.html"
+  to = "https://bash-intro.rsquaredacademy.com/command-line-data-transfer.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/sudo.html"
+  to = "https://bash-intro.rsquaredacademy.com/sudo-command.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/compress.html"
+  to = "https://bash-intro.rsquaredacademy.com/command-line-file-compression.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/sysinfo.html"
+  to = "https://bash-intro.rsquaredacademy.com/command-line-sysinfo.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://bash-intro.rsquaredacademy.com/others2.html"
+  to = "https://bash-intro.rsquaredacademy.com/r-command-line.html"
+  status = 301
+  force = true
