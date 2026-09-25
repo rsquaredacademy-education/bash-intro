@@ -1,0 +1,15 @@
+---
+title: "Spike Chapter 1"
+knitr:
+  opts_knit:
+    root.dir: "cline-stub"
+---
+
+## Spike Chapter 1
+
+```{bash}
+pwd
+ls
+touch spike_probe_ch1.txt
+ls
+```

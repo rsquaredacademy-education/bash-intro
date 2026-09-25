@@ -1,0 +1,15 @@
+project:
+  type: book
+  output-dir: _book
+  pre-render: "Rscript reset-spike-fixture.R"
+
+book:
+  title: "B0 Spike: root.dir Validation"
+  chapters:
+    - index.qmd
+    - ch1.qmd
+    - ch2.qmd
+
+format:
+  html: default
+  typst: default
