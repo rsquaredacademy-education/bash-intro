@@ -31,21 +31,15 @@ except where noted.
   this book works identically in Zsh; see the BSD note below.
 - **Linux:** use your native Bash terminal.
 
-::: {.callout-warning}
-## Do not run book commands in Windows PowerShell
-PowerShell aliases `ls` to `Get-ChildItem` and `curl`/`wget` to
-`Invoke-WebRequest`, which reject standard Unix syntax. Always use Git Bash,
-WSL2, or Posit Cloud on Windows.
-:::
+> **Do not run book commands in Windows PowerShell.** PowerShell aliases `ls`
+> to `Get-ChildItem` and `curl`/`wget` to `Invoke-WebRequest`, which reject
+> standard Unix syntax. Always use Git Bash, WSL2, or Posit Cloud on Windows.
 
-::: {.callout-note}
-## macOS: Zsh default and BSD differences
-macOS uses Zsh by default (since Catalina, 2019) and ships BSD coreutils
-instead of GNU coreutils. Book commands work the same, except: `head -n -5`
-(negative counts), `sed -i`, and the output format of `cal` and `date -d`
-differ from Linux. When a result looks slightly different on your Mac, it is
-still correct.
-:::
+> **Note (macOS: Zsh default and BSD differences).** macOS uses Zsh by default
+> (since Catalina, 2019) and ships BSD coreutils instead of GNU coreutils.
+> Book commands work the same, except: `head -n -5` (negative counts), `sed -i`,
+> and the output format of `cal` and `date -d` differ from Linux. When a result
+> looks slightly different on your Mac, it is still correct.
 
 ## Launch Terminal
 
