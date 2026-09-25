@@ -22,8 +22,7 @@ except where noted.
 - **Tier 1 (Windows without admin rights): Git Bash inside RStudio** — install
   [Git for Windows](https://git-scm.com/download/win), then open Git Bash via
   *Tools -> Terminal -> New Terminal* in RStudio. Runs everything except
-  @sec-sudo-command (`sudo apt-get` needs Linux) and the `free` command in
-  @sec-command-line-sysinfo. For those two chapters, switch to the Tier 0
+  [`sudo` chapter](sudo-command.qmd) (`sudo apt-get` needs Linux) and the `free` command in the [System Info chapter](command-line-sysinfo.qmd). For those two chapters, switch to the Tier 0
   Posit Cloud Space.
 - **Tier 2 (Windows with admin rights): WSL2 + Windows Terminal** — full Ubuntu
   Linux on your machine (see below). Runs everything, including `sudo` and `free`.
