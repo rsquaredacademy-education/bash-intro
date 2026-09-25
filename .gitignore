@@ -6,3 +6,4 @@ roadmap/
 cline/
 
 /.quarto/
+*.quarto_ipynb
