@@ -36,31 +36,31 @@ If you want a deeper understanding of using command line for data science, we su
 We start by introducing what the shell is, how to launch it in different operating system and explore
 commands for navigating file system and file management.
 
-* **Chapter \@ref(intro)** introduces the shell. It shows how to launch it in different operating
+* **@sec-introduction-to-command-line** introduces the shell. It shows how to launch it in different operating
 systems. Apart from introducing the RStudio terminal, it will explore basic commands and different
 ways to view the documentation.
 
-* **Chapter \@ref(navigate)** explores how to navigate between different directories, list contents of a directory and 
+* **@sec-navigating-files-and-directories** explores how to navigate between different directories, list contents of a directory and 
 create & delete files & directories.
 
-* **Chapter \@ref(filemanagement)** describes how to create, copy, move, delete and compare files and directories.
+* **@sec-command-line-file-management** describes how to create, copy, move, delete and compare files and directories.
 
-* **Chapter \@ref(io)** demonstrates how to print text on the terminal and read content from files. It will
+* **@sec-command-line-input-output** demonstrates how to print text on the terminal and read content from files. It will
 cover sorting/viewing/searching file contents.
 
-* **Chapter \@ref(regex)** shows how to search text in file(s) using pattern matching and 
+* **@sec-command-line-regular-expression** shows how to search text in file(s) using pattern matching and 
 find files and folders using names and extensions.
 
-* **Chapter \@ref(sudo)** describes how to install, update and remove packages using `sudo`.
+* **@sec-sudo-command** describes how to install, update and remove packages using `sudo`.
 
-* **Chapter \@ref(datatransfer)** explores how to download files from the internet using `wget` and `curl`.
+* **@sec-command-line-data-transfer** explores how to download files from the internet using `wget` and `curl`.
 
-* **Chapter \@ref(compress)** demonstrates how to list, extract, create and add files to archives using `tar`, `zip` 
+* **@sec-command-line-file-compression** demonstrates how to list, extract, create and add files to archives using `tar`, `zip` 
 and `unzip`.
 
-* **Chapter \@ref(sysinfo)** explains how to view system information using `uname`, `free`, `df` etc.
+* **@sec-command-line-sysinfo** explains how to view system information using `uname`, `free`, `df` etc.
 
-* **Chapter \@ref(others)** demonstrates how to execute shell commands in R using `system2()`. It will also look
+* **@sec-r-command-line** demonstrates how to execute shell commands in R using `system2()`. It will also look
 at using shell commands in RMarkdown documents and how to execute R commands and scripts from the command line. 
 
 ## Topics this book does not cover {-} 

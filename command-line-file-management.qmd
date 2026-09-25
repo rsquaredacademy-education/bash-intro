@@ -1,4 +1,4 @@
-# File Management {#command-line-file-management}
+# File Management {#sec-command-line-file-management}
 
 In this chapter, we will explore commands for file management including:
 

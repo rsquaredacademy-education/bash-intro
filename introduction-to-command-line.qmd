@@ -1,4 +1,4 @@
-# Introduction {#introduction-to-command-line}
+# Introduction {#sec-introduction-to-command-line}
 
 ```{r pkg_load, echo=FALSE}
 library(knitr)
