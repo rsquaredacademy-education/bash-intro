@@ -15,19 +15,13 @@ In this chapter, we will explore commands for file management including:
 - deleting files
 - comparing files
 
-```{r table_file_manage, echo=FALSE}
-cname   <- c("`touch`", "`cp`", "`mv`", "`rm`", "`diff`")
-descrip <- c("Create empty file(s)/change timestamp",
-             "Copy files & folders",
-             "Rename/move file", 
-             "Remove/delete file",
-             "Compare files")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `touch` | Create empty file(s)/change timestamp |
+| `cp` | Copy files & folders |
+| `mv` | Rename/move file |
+| `rm` | Remove/delete file |
+| `diff` | Compare files |
 
 ## Create new file
 
@@ -90,19 +84,13 @@ ls
 - user is prompted for confirmation before overwriting files
 - details of files being moved is displayed
 
-```{r table_mv, echo=FALSE}
-cname   <- c("`mv`", "`mv -f`", "`mv -i`", "`mv -n`", "`mv -v`")
-descrip <- c("Move or rename files/directories",
-             "Do not prompt for confirmation before overwriting files",
-             "Prompt for confirmation before overwriting files", 
-             "Do not overwrite existing files",
-             "Move files in verbose mode")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `mv` | Move or rename files/directories |
+| `mv -f` | Do not prompt for confirmation before overwriting files |
+| `mv -i` | Prompt for confirmation before overwriting files |
+| `mv -n` | Do not overwrite existing files |
+| `mv -v` | Move files in verbose mode |
 
 Let us move the `release_names_2.txt` file to the `r_releases` folder.
 
@@ -178,19 +166,13 @@ The `rm` command is used to delete/remove files & folders. Using additional opti
 - interactively remove multiple files
 - display information about files removed/deleted
 
-```{r table_rm, echo=FALSE}
-cname   <- c("`rm`", "`rm -r`", "`rm -rf`", "`rm -i`", "`rm -v`")
-descrip <- c("Remove files/directories",
-             "Recursively remove a directory & all its subdirectories",
-             "Forcibly remove directory without prompting for confirmation or showing error messages",
-             "Interactively remove multiple files, with a prompt before every removal",
-             "Remove files in verbose mode, printing a message for each removed file")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `rm` | Remove files/directories |
+| `rm -r` | Recursively remove a directory & all its subdirectories |
+| `rm -rf` | Forcibly remove directory without prompting for confirmation or showing error messages |
+| `rm -i` | Interactively remove multiple files, with a prompt before every removal |
+| `rm -v` | Remove files in verbose mode, printing a message for each removed file |
 
 ### Remove files
 
@@ -240,20 +222,14 @@ rm -v *.txt
 - compare directories recursively
 - display names of files that differ
 
-```{r table_diff, echo=FALSE}
-cname   <- c("`diff`", "`diff -w`", "`diff -y`", "`diff -u`", "`diff -r`", "`diff -rq`")
-descrip <- c("Compare files & directories",
-             "Compare files; ignoring white spaces",
-             "Compare files; showing differences side by side", 
-             "Compare files; show differences in unified format",
-             "Compare directories recursively",
-             "Compare directories; show the names of files that differ")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `diff` | Compare files & directories |
+| `diff -w` | Compare files; ignoring white spaces |
+| `diff -y` | Compare files; showing differences side by side |
+| `diff -u` | Compare files; show differences in unified format |
+| `diff -r` | Compare directories recursively |
+| `diff -rq` | Compare directories; show the names of files that differ |
 
 ### Compare Files
 
@@ -322,16 +298,10 @@ diff -rq mypackage myproject || true
 
 In R, file operations can be performed using functions from both base R and the [fs](https://fs.r-lib.org/index.html) package.
 
-```{r r_file_manage, echo=FALSE}
-cname   <- c("`touch`", "`cp`", "`mv`", "`rm`", "`diff`")
-descrip <- c("`file.create()` / `fs::file_create()` / `fs::file_touch()`",
-             "`file.copy()` / `fs::file_copy()` / `fs::dir_copy()`",
-             "`file.rename()` / `fs::file_move()`", 
-             "`file.remove()` / `fs::file_delete()`",
-             "")
-data.frame(Command = cname, R = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | R |
+|:--------|:--|
+| `touch` | `file.create()` / `fs::file_create()` / `fs::file_touch()` |
+| `cp` | `file.copy()` / `fs::file_copy()` / `fs::dir_copy()` |
+| `mv` | `file.rename()` / `fs::file_move()` |
+| `rm` | `file.remove()` / `fs::file_delete()` |
+| `diff` |  |

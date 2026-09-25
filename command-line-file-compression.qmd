@@ -26,23 +26,16 @@ The `tar` command is used for file compression. It works with both `tar` and
 
 `tar` creates, maintains, modifies, and extracts files that are archived in the tar format. Tar stands for **t**ape **ar**chive and is an archiving file format.
 
-```{r table_tar, echo=FALSE}
-cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
-             "`tar cvfz`", "`tar rvf`", "`tar rvfz`")
-descrip <- c("List an archive",
-             "List a gzipped archive",
-             "Extract an archive", 
-             "Extract a gzipped archive",
-             "Create an uncompressed tar archive",
-             "Create a tar gzipped archive", 
-             "Add a file to an existing archive", 
-             "Add a file to an existing gzipped archive")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `tar tvf` | List an archive |
+| `tar tvfz` | List a gzipped archive |
+| `tar xvf` | Extract an archive |
+| `tar xvfz` | Extract a gzipped archive |
+| `tar cvf` | Create an uncompressed tar archive |
+| `tar cvfz` | Create a tar gzipped archive |
+| `tar rvf` | Add a file to an existing archive |
+| `tar rvfz` | Add a file to an existing gzipped archive |
 
 We will use different options along with the `tar` command for listing, extracting, creating and adding files. The `vf` (**v** stands for verbosely show .tar file progress and **f** stands for file name type of the archive file) option is common for all the above operations while the following are specific.
 
@@ -88,22 +81,16 @@ tar -cvf pkg_names.tar pkg_names.txt
 
 ## gzip
 
-```{r table_gzip, echo=FALSE}
-cname   <- c("`gzip`", "`gzip -d`", "`gzip -c`", "`zip -r`", "`zip`",                       "`unzip`", "`unzip -d`", "`unzip -l`")
-descrip <- c("Compress a file",
-             "Decompress a file",
-             "Compress a file and specify the output file name",
-             "Compress a directory",
-             "Add files to an existing zip file",
-             "Extract files from a zip files",
-             "Extract files from a zip file and specify the output file name",
-             "List contents of a zip file")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `gzip` | Compress a file |
+| `gzip -d` | Decompress a file |
+| `gzip -c` | Compress a file and specify the output file name |
+| `zip -r` | Compress a directory |
+| `zip` | Add files to an existing zip file |
+| `unzip` | Extract files from a zip files |
+| `unzip -d` | Extract files from a zip file and specify the output file name |
+| `unzip -l` | List contents of a zip file |
 
 
 `gzip`, `gunzip`, and `zcat` commands are used to compress or expand files in the GNU GZIP format i.e. files with `.gz` extension
@@ -194,39 +181,26 @@ zip myproject.zip bash.sh
 
 In R, we can use the `tar()` and `untar()` functions from the `utils` package to handle `.tar` and `.tar.gz` archives.
 
-```{r r_tar, echo=FALSE}
-cname   <- c("`tar tvf`", "`tar tvfz`", "`tar xvf`", "`tar xvfz`", "`tar cvf`", 
-             "`tar cvfz`")
-descrip <- c("`utils::untar('archive.tar', list = TRUE)`",
-             "`utils::untar('archive.tar.gz', list = TRUE)`",
-             "`utils::untar('archive.tar')`",
-             "`utils::untar('archive.tar.gz')`",
-             "`utils::tar('archive.tar')`",
-             "`utils::tar('archive.tar', compression = 'gzip')`")
-data.frame(Command = cname, R = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | R |
+|:--------|:--|
+| `tar tvf` | `utils::untar('archive.tar', list = TRUE)` |
+| `tar tvfz` | `utils::untar('archive.tar.gz', list = TRUE)` |
+| `tar xvf` | `utils::untar('archive.tar')` |
+| `tar xvfz` | `utils::untar('archive.tar.gz')` |
+| `tar cvf` | `utils::tar('archive.tar')` |
+| `tar cvfz` | `utils::tar('archive.tar', compression = 'gzip')` |
 
 ### zip & gzip
 
 The [zip](https://cran.r-project.org/package=zip) package has the functionalities to handle ZIP archives. The `tar()` and `untar()` functions from the `utils` package can handle GZIP archives.
 
-```{r r_gzip, echo=FALSE}
-cname   <- c("`gzip`", "`gzip -d`", "`gzip -c`", "`zip -r`", "`zip`",                       "`unzip`", "`unzip -d`", "`unzip -l`")
-descrip <- c("`utils::tar(compression = 'gzip'` / `R.utils::gzip()`",
-             "`utils::untar()` / `R.utils::gunzip()`",
-             "`utils::untar(exdir = filename)`",
-             "`zip::zip()`",
-             "`zip::zipr_append()`",
-             "`zip::unzip()`",
-             "`zip::unzip(exdir = dir_name)`",
-             "`zip::zip_list()`")
-data.frame(Command = cname, R = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | R |
+|:--------|:--|
+| `gzip` | `utils::tar(compression = 'gzip')` / `R.utils::gzip()` |
+| `gzip -d` | `utils::untar()` / `R.utils::gunzip()` |
+| `gzip -c` | `utils::untar(exdir = filename)` |
+| `zip -r` | `zip::zip()` |
+| `zip` | `zip::zipr_append()` |
+| `unzip` | `zip::unzip()` |
+| `unzip -d` | `zip::unzip(exdir = dir_name)` |
+| `unzip -l` | `zip::zip_list()` |

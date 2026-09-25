@@ -13,39 +13,27 @@ In this chapter, we will explore commands that will
 - print file contents
 - sort file contents
 
-```{r table_io, echo=FALSE}
-cname   <- c("`echo`", "`cat`", "`head`", "`tail`", "`more`", "`less`", "`sort`")
-descrip <- c("Display messages",
-             "Print contents of a file",
-             "Prints first ten lines of a file by default", 
-             "Prints last ten lines of a file by default",
-             "Open a file for interactive reading, scrolling & searching",
-             "Open a file for interactive reading, scrolling & searching",
-             "Sort a file in ascending order")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `echo` | Display messages |
+| `cat` | Print contents of a file |
+| `head` | Prints first ten lines of a file by default |
+| `tail` | Prints last ten lines of a file by default |
+| `more` | Open a file for interactive reading, scrolling & searching |
+| `less` | Open a file for interactive reading, scrolling & searching |
+| `sort` | Sort a file in ascending order |
 
 ## Display Messages
 
 The `echo` command prints text to the terminal. It can be used for writing or appending messages to a file as well.
 
-```{r table_echo, echo=FALSE}
-cname   <- c("`echo`", "`echo -n`", "`echo > file`", "`echo >> file`", "`echo -e`")
-descrip <- c("Display messages",
-             "Print message without trailing new line",
-             "Write message to a file", 
-             "Append message to a file",
-             "Enable interpretation of special characters")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `echo` | Display messages |
+| `echo -n` | Print message without trailing new line |
+| `echo > file` | Write message to a file |
+| `echo >> file` | Append message to a file |
+| `echo -e` | Enable interpretation of special characters |
 
 ### Print Message
 
@@ -71,18 +59,12 @@ The `cat` command reads data from files, and outputs their contents. It is the s
 - copy text files into a new document
 - append the contents of a text file to the end of another text file, combining them
 
-```{r table_cat, echo=FALSE}
-cname   <- c("`cat`", "`cat >`", "`cat >>`", "`cat -n`")
-descrip <- c("Print & concatenate files",
-             "Concatenate several files into the target file",
-             "Append several files into the target file", 
-             "Number all output lines")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `cat` | Print & concatenate files |
+| `cat >` | Concatenate several files into the target file |
+| `cat >>` | Append several files into the target file |
+| `cat -n` | Number all output lines |
 
 ### Print Content
 
@@ -113,19 +95,13 @@ cat release_names_18_19.txt
 
 The `head` command will display the firt 10 lines of a file(s) by default. It can be used to display the first few lines or bytes of a file as well. 
 
-```{r table_head, echo=FALSE}
-cname   <- c("`head`", "`head -n`", "`head -c`", "`head -n -x`", "`head -c -x`")
-descrip <- c("Output the first parts of a file",
-             "Output the first n lines of a file",
-             "Output the first c bytes of a file", 
-             "Output everything but the last x lines of a file",
-             "Output everything but the last x bytes of a file")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `head` | Output the first parts of a file |
+| `head -n` | Output the first n lines of a file |
+| `head -c` | Output the first c bytes of a file |
+| `head -n -x` | Output everything but the last x lines of a file |
+| `head -c -x` | Output everything but the last x bytes of a file |
 
 ### Output the first parts of a file
 
@@ -171,20 +147,14 @@ head -c -3 release_names.txt
 
 The `tail` command displays the last 10 lines of a file(s) by default. It can be used to display the last few lines or bytes of a file as well. 
 
-```{r table_tail, echo=FALSE}
-cname   <- c("`tail`", "`tail -n num`", "`tail -n +num`", "`tail -c num`", "`tail -f`", "`tail -F`")
-descrip <- c("Display the last part of a file",
-             "Show the last num lines of a file",
-             "Show all contents of the file starting from num line", 
-             "Show last num bytes of a file",
-             "Keep reading file until Ctrl + C",
-             "Keep reading file until Ctrl + C; even if the file is rotated")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `tail` | Display the last part of a file |
+| `tail -n num` | Show the last num lines of a file |
+| `tail -n +num` | Show all contents of the file starting from num line |
+| `tail -c num` | Show last num bytes of a file |
+| `tail -f` | Keep reading file until Ctrl + C |
+| `tail -F` | Keep reading file until Ctrl + C; even if the file is rotated |
 
 ### Display the last parts of a file
 
@@ -228,42 +198,30 @@ The `more` command displays text, one screen at a time. It opens a file for
 
 Press `space` to scroll down the page, the forward slash (`/`) for searching strings, `n` to go to the next match and `q` to quit. 
 
-```{r table_more, echo=FALSE}
-cname   <- c("`more`", "`space`", "`/`", "`q`")
-descrip <- c("Open a file for interactive reading, scrolling & searching",
-             "Page down",
-             "Search for a string; press `n` to go the next match",
-             "Quit")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `more` | Open a file for interactive reading, scrolling & searching |
+| `space` | Page down |
+| `/` | Search for a string; press `n` to go the next match |
+| `q` | Quit |
 
 ## Less
 
 The `less` command is similar to `more` but offers more features. It allows the
 user to scroll up and down, go to the beggining and end of the file, forward and backward search and the ability to go the next and previous match while searching the file.
 
-```{r table_less, echo=FALSE}
-cname   <- c("`less`", "`space`", "`b`", "`G`", "`g`", "`/`", "`?`", "`n`", "`N`", "`q`")
-descrip <- c("Open a file for interactive reading, scrolling & searching",
-             "Page down",
-             "Page up",
-             "Go to the end of file",
-             "Go to the start of file",
-             "Forward search",
-             "Backward search",
-             "Go to next match",
-             "Go to previous match",
-             "Quit")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `less` | Open a file for interactive reading, scrolling & searching |
+| `space` | Page down |
+| `b` | Page up |
+| `G` | Go to the end of file |
+| `g` | Go to the start of file |
+| `/` | Forward search |
+| `?` | Backward search |
+| `n` | Go to next match |
+| `N` | Go to previous match |
+| `q` | Quit |
 
 ## Sort
 
@@ -283,19 +241,13 @@ before lines starting with a letter that appears later in the alphabet.
 
 Using additional options, the rules for sorting can be changed. We list the options in the below table.
 
-```{r table_sort, echo=FALSE}
-cname   <- c("`sort`", "`sort -r`", "`sort --ignore-case`", "`sort -n`", "`sort -u`")
-descrip <- c("Sort lines of text files",
-             "Sort a file in descending order",
-             "Ignore case while sorting",
-             "Use numeric order for sorting",
-             "Preserve only unique lines while sorting")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `sort` | Sort lines of text files |
+| `sort -r` | Sort a file in descending order |
+| `sort --ignore-case` | Ignore case while sorting |
+| `sort -n` | Use numeric order for sorting |
+| `sort -u` | Preserve only unique lines while sorting |
 
 ### Sort 
 
