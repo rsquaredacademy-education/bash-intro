@@ -1,0 +1,11 @@
+/preface.html /index.html 301
+/intro.html /introduction-to-command-line.html 301
+/navigate.html /navigating-files-and-directories.html 301
+/filemanagement.html /command-line-file-management.html 301
+/io.html /command-line-input-output.html 301
+/regex.html /command-line-regular-expression.html 301
+/datatransfer.html /command-line-data-transfer.html 301
+/sudo.html /sudo-command.html 301
+/compress.html /command-line-file-compression.html 301
+/sysinfo.html /command-line-sysinfo.html 301
+/others2.html /r-command-line.html 301

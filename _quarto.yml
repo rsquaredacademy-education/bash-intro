@@ -4,6 +4,8 @@ project:
   pre-render: "Rscript scripts/reset-fixture.R"
   resources:
     - "_redirects"
+    - "404.html"
+    - "robots.txt"
 
 quarto-required: ">=1.6.0"
 
