@@ -1,10 +1,13 @@
 project:
   type: book
   output-dir: docs
-  quarto-required: ">=1.6.0"
   pre-render: "Rscript scripts/reset-fixture.R"
   resources:
     - "_redirects"
+
+quarto-required: ">=1.6.0"
+
+sitemap: true
 
 book:
   title: "Command Line Basics for R Users"
@@ -31,7 +34,6 @@ website:
   description: "A gentle introduction to the command line for R users."
   open-graph: true
   twitter-card: true
-  sitemap: true
   navbar:
     right:
       - text: "GitHub"
