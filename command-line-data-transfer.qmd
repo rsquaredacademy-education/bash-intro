@@ -18,7 +18,7 @@ from the internet.
 | `ping` | Ping a remote host |
 | `nslookup` | Name server details |
 
-We have not executed the commands in this ebook as downloading multiple files from the internet will take a lot of time or result in errors but we have checked all the commands offline to ensure that they work.
+Remote-download commands below are shown but not executed during automated builds (rendering stays offline so builds never depend on the network). Each tool has an offline demo using committed fixtures, and every output you see in this chapter was produced from those fixtures.
 
 ## wget
 
@@ -53,24 +53,31 @@ Let us first use `wget` to download contents of a URL. Note, we are not download
 wget https://www.r-project.org/
 ```
 
-If you look at the list of files, you can see a new file, `index.html` which we just downloaded using `wget`. Downloading contents this way will lead to confusion if we are dealing with multiple URLs. Let us learn to save the contents to a file (we can specify the name of the file which should help avoid confusion.)
+Downloading a bare URL saves the response under a default name such as `index.html`, which gets confusing with multiple URLs. Save the contents to an explicitly named file instead (we can specify the name of the file which should help avoid confusion).
 
 ### Specify Filename
 
-In this example, we download contents from the same URL and in addition specify the name of the file in which the content must be saved. Here we save it in a new file, `rhomepage.html` using the `-o` option followed by the filename.
+In this example, we download contents from the same URL and in addition specify the name of the file in which the content must be saved. Here we save it in a new file, `rhomepage.html` using the `-O` option followed by the filename.
 
 ```{bash}
 #| eval: false
-wget -o rhomepage.html https://www.r-project.org/
+wget -O rhomepage.html https://www.r-project.org/
 ```
 
 ### Download File
 
-How about downloading a file instead of a URL? In this example, we will download a logfile from the [RStudio CRAN](http://cran-logs.rstudio.com/) mirror. It contains the details of R downloads and individual package downloads. If you are a package developer and would want to know the countries in which your packages are downloaded, you will find this useful. We will download the file for 29th September and save it as `sep_29.csv.gz`.
+How about downloading a file instead of a URL? In this example, we will download a logfile from the [RStudio CRAN](http://cran-logs.rstudio.com/) mirror. It contains the details of R downloads and individual package downloads. If you are a package developer and would want to know the countries in which your packages are downloaded, you will find this useful. We will download the file for 29th September and save it as `sep_29.csv.gz`. (The 2019 CRAN-log URLs below illustrate the pattern but the archive layout has since changed, so treat them as illustration and run the offline demo instead.)
 
 ```{bash}
 #| eval: false
-wget -o sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz
+wget -O sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz
+```
+
+Try the same `-O` pattern offline (no network needed) against a committed fixture:
+
+```{bash}
+wget -O wget_demo.csv.gz file://$PWD/cran_log_sample.csv.gz
+ls -lh wget_demo.csv.gz
 ```
 
 ### Download Multiple URLs 
@@ -99,7 +106,7 @@ The `--quiet` option will turn off `wget` output. It will not show any of the fo
 
 ```{bash}
 #| eval: false
-wget –-quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz
+wget --quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz
 ```
 
 ### No Verbose
@@ -108,7 +115,7 @@ Using the `-nv` or `--no-verbose` option, we can turn off verbose without being 
 
 ```{bash}
 #| eval: false
-wget –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz    
+wget --no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz    
 ```
 
 ### Check Timestamp
@@ -117,7 +124,7 @@ Let us say we have already downloaded a file from a URL. The file is updated fro
 
 ```{bash}
 #| eval: false
-wget –-timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz
+wget --timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz
 ```
 
 ## curl
@@ -148,6 +155,13 @@ Let us download another log file from the [RStudio CRAN](http://cran-logs.rstudi
 ```{bash}
 #| eval: false
 curl http://cran-logs.rstudio.com/2019/2019-09-08.csv.gz -o sept_08.csv.gz 
+```
+
+Same pattern, offline, using a committed fixture:
+
+```{bash}
+curl -o curl_demo.csv.gz file://$PWD/cran_log_sample.csv.gz
+ls -lh curl_demo.csv.gz
 ```
 
 Another way to save a downloaded file is to use `>` followed by the name of the file as shown in the below example.
