@@ -2,6 +2,7 @@ project:
   type: book
   output-dir: docs
   quarto-required: ">=1.6.0"
+  pre-render: "Rscript scripts/reset-fixture.R"
   resources:
     - "_redirects"
 
