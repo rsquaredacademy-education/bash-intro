@@ -1,3 +1,10 @@
+---
+title: "Navigating File System"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
 # Navigating File System {#sec-navigating-files-and-directories}
 
 ## Introduction
@@ -25,12 +32,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 `pwd` displays the name of the **p**resent **w**orking **d**irectory. 
 
-```{bash c3a, eval=FALSE}
-pwd
-```
-
-```{bash c3b, echo=FALSE}
-cd cline
+```{bash}
 pwd
 ```
 
@@ -42,50 +44,27 @@ pwd
 
 With no options, it will list the files and directories in the current directory, sorted alphabetically.
 
-```{bash c4a, eval=FALSE}
-ls
-```
-
-```{bash c4b, echo=FALSE}
-cd cline
+```{bash}
 ls
 ```
 
 `cd` (**c**hange **d**irectory) changes the current working directory. It is among the most used commands as it allows the user to move around the file system.
 
-```{bash c6a, eval=FALSE}
-cd r
-pwd
-```
-
-```{bash c6b, echo=FALSE}
-cd cline
+```{bash}
 cd r
 pwd
 ```
 
 `mkdir` will create new directory. It will allow you to set file mode (permissions associated with the directory) i.e. who can open/modify/delete the directory.
 
-```{bash c5a, eval=FALSE}
-mkdir rfiles
-ls
-```
-
-```{bash c5b, echo=FALSE}
-cd cline
+```{bash}
 mkdir rfiles
 ls
 ```
 
 `rmdir` will remove empty directories from the file system. It can be used to remove multiple empty directories as well. If the directory is not empty, `rmdir` will not remove it and instead display a warning that the directory is not empty.
 
-```{bash c10a, eval=FALSE}
-rmdir rfiles
-ls
-```
-
-```{bash c10b, echo=FALSE}
-cd cline
+```{bash}
 rmdir rfiles
 ls
 ```
@@ -115,52 +94,28 @@ data.frame(Command = cname, Description = descrip) %>%
 
 All files and directories stem from one main directory, the root directory. All the other directories in the system are sub-directories of the root directory and the root directory has no parent directory. It is represented by a single slash (`/`). `cd /` will change the current working directory to the root directory.
 
-```{bash c8a, eval=FALSE}
-cd /
-pwd
-```
-
-```{bash c8b, echo=FALSE}
-cd cline
+```{bash}
 cd /
 pwd
 ```
 
 The parent directory i.e. the directory one level up from the current directory which contains the directory we are in now is represented by two dots (`..`). `cd ..` will change us into the parent directory of the current directory.
 
-```{bash c7a, eval=FALSE}
-cd ..
-pwd
-```
-
-```{bash c7b, echo=FALSE}
-cd cline
+```{bash}
 cd ..
 pwd
 ```
 
 The home directory is the directory we are placed in, by default, when we launch a new terminal session. It is represented by the tilde (`~`).
 
-```{bash c74a, eval=FALSE}
-cd ~
-pwd
-```
-
-```{bash c74b, echo=FALSE}
-cd cline
+```{bash}
 cd ~
 pwd
 ```
 
 To change into the previous working directory, use `cd -`.
 
-```{bash c75a, eval=FALSE}
-cd -
-pwd
-```
-
-```{bash c75b, echo=FALSE}
-cd cline
+```{bash}
 cd -
 pwd
 ```
@@ -193,67 +148,37 @@ data.frame(Command = cname, Description = descrip) %>%
 
 ### List files one per line
 
-```{bash c11a, eval=FALSE}
-ls -l
-```
-
-```{bash c11b, echo=FALSE}
-cd cline
+```{bash}
 ls -l
 ```
 
 ### List all files including hidden files
 
-```{bash c12a, eval=FALSE}
-ls -a
-```
-
-```{bash c12b, echo=FALSE}
-cd cline
+```{bash}
 ls -a
 ```
 
 ### Display file permissions, ownership, size & modification date
 
-```{bash c13a, eval=FALSE}
-ls -la
-```
-
-```{bash c13b, echo=FALSE}
-cd cline
+```{bash}
 ls -la
 ```
 
 ### Display size in human readable format
 
-```{bash c14a, eval=FALSE}
-ls -lh
-```
-
-```{bash c14b, echo=FALSE}
-cd cline
+```{bash}
 ls -lh
 ```
 
 ### Sort list by size
 
-```{bash c15a, eval=FALSE}
-ls -lS
-```
-
-```{bash c15b, echo=FALSE}
-cd cline
+```{bash}
 ls -lS
 ```
 
 ### Sort list by modification date
 
-```{bash c16a, eval=FALSE}
-ls -ltr
-```
-
-```{bash c16b, echo=FALSE}
-cd cline
+```{bash}
 ls -ltr
 ```
 

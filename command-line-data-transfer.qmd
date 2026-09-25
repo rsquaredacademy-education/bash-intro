@@ -1,3 +1,10 @@
+---
+title: "Data Transfer"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
 # Data Transfer {#sec-command-line-data-transfer}
 
 In this chapter, we will explore commands that will allow us to download files 
@@ -54,14 +61,9 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us first use `wget` to download contents of a URL. Note, we are not downloading file as such but just the content of the URL. We will use the URL of the home page of [R](https://www.r-project.org/) project. 
 
-```{bash c113a, eval=FALSE}
+```{bash}
+#| eval: false
 wget https://www.r-project.org/
-```
-
-```{bash c113b, echo=FALSE, eval=FALSE}
-cd cline
-wget https://www.r-project.org/
-ls
 ```
 
 If you look at the list of files, you can see a new file, `index.html` which we just downloaded using `wget`. Downloading contents this way will lead to confusion if we are dealing with multiple URLs. Let us learn to save the contents to a file (we can specify the name of the file which should help avoid confusion.)
@@ -70,26 +72,17 @@ If you look at the list of files, you can see a new file, `index.html` which we 
 
 In this example, we download contents from the same URL and in addition specify the name of the file in which the content must be saved. Here we save it in a new file, `rhomepage.html` using the `-o` option followed by the filename.
 
-```{bash c114a, eval=FALSE}
+```{bash}
+#| eval: false
 wget -o rhomepage.html https://www.r-project.org/
-```
-
-```{bash c114b, echo=FALSE, eval=FALSE}
-cd cline
-wget -o rhomepage.html https://www.r-project.org/
-ls
 ```
 
 ### Download File
 
 How about downloading a file instead of a URL? In this example, we will download a logfile from the [RStudio CRAN](http://cran-logs.rstudio.com/) mirror. It contains the details of R downloads and individual package downloads. If you are a package developer and would want to know the countries in which your packages are downloaded, you will find this useful. We will download the file for 29th September and save it as `sep_29.csv.gz`.
 
-```{bash c108a, eval=FALSE}
-wget -o sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz
-```
-
-```{bash c108b, echo=FALSE, eval=FALSE}
-cd cline
+```{bash}
+#| eval: false
 wget -o sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz
 ```
 
@@ -97,18 +90,14 @@ wget -o sep_29.csv.gz http://cran-logs.rstudio.com/2019/2019-09-29.csv.gz
 
 How do we download multiple URLs? One way is to specify the URLs one after the other separated by a space or save all URLs in a file and read them one by one. In the below example, we have saved multiple URLs in the file `urls.txt`. 
 
-```{bash c115a, eval=FALSE}
-cat urls.txt
-```
-
-```{bash c115b, echo=FALSE}
-cd cline
+```{bash}
 cat urls.txt
 ```
 
 We will download all the above URLs and save them in a new folder `downloads`. The `-i` indicates that the URLs must be read from a file (local or external). The `-P` option allows us to specify the directory into which all the files will be downloaded. 
 
-```{bash c109a, eval=FALSE}
+```{bash}
+#| eval: false
 wget -P downloads -i urls.txt     
 ```
 
@@ -121,7 +110,8 @@ The `--quiet` option will turn off `wget` output. It will not show any of the fo
 - download speed
 - eta etc.
 
-```{bash c110a, eval=FALSE}
+```{bash}
+#| eval: false
 wget –-quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz
 ```
 
@@ -129,7 +119,8 @@ wget –-quiet http://cran-logs.rstudio.com/2019/2019-10-06.csv.gz
 
 Using the `-nv` or `--no-verbose` option, we can turn off verbose without being completely quiet (as we did in the previous example). Any error messages and basic information will still be printed.
 
-```{bash c111a, eval=FALSE}
+```{bash}
+#| eval: false
 wget –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz    
 ```
 
@@ -137,7 +128,8 @@ wget –-no-verbose http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz
 
 Let us say we have already downloaded a file from a URL. The file is updated from time to time and we intend to keep the local copy updated as well. Using the `--timestamping` option, the local file will have timestamp matching the remote file; if the remote file is not newer (not updated), no download will occur i.e. if the timestamp of the remote file has not changed it will not be downloaded. This is very useful in case of large files where you do not want to download them unless they have been updated.
 
-```{bash c112a, eval=FALSE}
+```{bash}
+#| eval: false
 wget –-timestamping http://cran-logs.rstudio.com/2019/2019-10-13.csv.gz
 ```
 
@@ -163,12 +155,8 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us download the home page of the [R](https://www.r-project.org/) project using `curl`.
 
-```{bash c65a, eval=FALSE}
-curl https://www.r-project.org/
-```
-
-```{bash c65b, echo=FALSE, eval=FALSE}
-cd cline
+```{bash}
+#| eval: false
 curl https://www.r-project.org/
 ```
 
@@ -176,23 +164,15 @@ curl https://www.r-project.org/
 
 Let us download another log file from the [RStudio CRAN](http://cran-logs.rstudio.com/) mirror and save it into a file using the `-o` option. 
 
-```{bash c66a, eval=FALSE}
-curl http://cran-logs.rstudio.com/2019/2019-09-08.csv.gz -o sept_08.csv.gz 
-```
-
-```{bash c66b, echo=FALSE, eval=FALSE}
-cd cline
+```{bash}
+#| eval: false
 curl http://cran-logs.rstudio.com/2019/2019-09-08.csv.gz -o sept_08.csv.gz 
 ```
 
 Another way to save a downloaded file is to use `>` followed by the name of the file as shown in the below example.
 
-```{bash c89a, eval=FALSE}
-curl http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz > sep_01.csv.gz
-```
-
-```{bash c89b, echo=FALSE, eval=FALSE}
-cd cline
+```{bash}
+#| eval: false
 curl http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz > sep_01.csv.gz
 ```
 
@@ -200,14 +180,9 @@ curl http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz > sep_01.csv.gz
 
 The `-s` option will allow you to download files silently. It will mute `curl` and will not display progress meter or error messages.
 
-```{bash c67a, eval=FALSE}
+```{bash}
+#| eval: false
 curl http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz -o sept_01.csv.gz -s
-```
-
-```{bash c67b, echo=FALSE, eval=FALSE}
-cd cline
-curl http://cran-logs.rstudio.com/2019/2019-09-01.csv.gz -o sept_01.csv.gz -s
-ls
 ```
 
 ## R Functions

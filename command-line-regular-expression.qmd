@@ -1,3 +1,10 @@
+---
+title: "Search & Regular Expression"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
 # Search & Regular Expression {#sec-command-line-regular-expression}
 
 In this chapter, we will explore commands that will
@@ -49,12 +56,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Using `grep` let us search for packages that inlcude the letter `R` in their names.
 
-```{bash c57a, eval=FALSE}
-grep R package_names.txt
-```
-
-```{bash c57b, echo=FALSE}
-cd cline
+```{bash}
 grep R package_names.txt
 ```
 
@@ -62,12 +64,7 @@ grep R package_names.txt
 
 In the previous case, `grep` returned only those packages whose name included `R` but not `r` i.e. it did not ignore the case of the letter. Using the `-i` option, we will now search while ignoring the case of the letter.
 
-```{bash c58a, eval=FALSE}
-grep -i R package_names.txt
-```
-
-```{bash c58b, echo=FALSE}
-cd cline
+```{bash}
 grep -i R package_names.txt
 ```
 
@@ -75,12 +72,7 @@ grep -i R package_names.txt
 
 The `--color` option will highlight the matched strings. 
 
-```{bash c85a, eval=FALSE}
-grep -i --color R package_names.txt
-```
-
-```{bash c85b, echo=FALSE}
-cd cline
+```{bash}
 grep -i --color R package_names.txt
 ```
 
@@ -88,12 +80,7 @@ grep -i --color R package_names.txt
 
 If there is more than one file to search, use the `-H` option to print the filename for each match. 
 
-```{bash c86a, eval=FALSE}
-grep -i --color -H bio package_names.txt
-```
-
-```{bash c86b, echo=FALSE}
-cd cline
+```{bash}
 grep -i --color -H bio package_names.txt
 ```
 
@@ -101,12 +88,7 @@ grep -i --color -H bio package_names.txt
 
 The `-n` option will print the corresponding line number of the match in the file.
 
-```{bash c87a, eval=FALSE}
-grep -i --color -n bio package_names.txt
-```
-
-```{bash c87b, echo=FALSE}
-cd cline
+```{bash}
 grep -i --color -n bio package_names.txt
 ```
 
@@ -114,12 +96,7 @@ grep -i --color -n bio package_names.txt
 
 Let us print both the file name and the line number for each match.
 
-```{bash c59a, eval=FALSE}
-grep -i --color -Hn R package_names.txt
-```
-
-```{bash c59b, echo=FALSE}
-cd cline
+```{bash}
 grep -i --color -Hn R package_names.txt
 ```
 
@@ -127,12 +104,7 @@ grep -i --color -Hn R package_names.txt
 
 Use the `-v` option to select non-matching lines. In the below example, we search for packages whose name does not include `R` while ignoring the case.
 
-```{bash c60a, eval=FALSE}
-grep -v -i R package_names.txt
-```
-
-```{bash c60b, echo=FALSE}
-cd cline
+```{bash}
 grep -v -i R package_names.txt
 ```
 
@@ -140,12 +112,7 @@ grep -v -i R package_names.txt
 
 Use the `-r` option to search recursively. In the below example, we search all files with the `.txt` extension for the string `bio` while ignoring the case.
 
-```{bash c88a, eval=FALSE}
-grep -i --color -r bio *.txt
-```
-
-```{bash c88b, echo=FALSE}
-cd cline
+```{bash}
 grep -i --color -r bio *.txt
 ```
 
@@ -175,12 +142,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us use `find` to search for the file `release_names.txt` recursively. The `-name` option is used to specify the name of the file we are searching.
 
-```{bash c61a, eval=FALSE}
-find -name release_names.txt
-```
-
-```{bash c61b, echo=FALSE}
-cd cline
+```{bash}
 find -name release_names.txt
 ```
 
@@ -190,12 +152,7 @@ There are two files with the name `release_names.txt` present in the current wor
 
 Let us search for all files with `.txt` extension in the `r_releases` folder.
 
-```{bash c62a, eval=FALSE}
-find r_releases -name '*.txt'
-```
-
-```{bash c62b, echo=FALSE}
-cd cline
+```{bash}
 find r_releases -name '*.txt'
 ```
 
@@ -205,12 +162,7 @@ There are 3 files with the `.txt` extension in `r_releases` folder.
 
 Search for all folders with the name `R` or `r`. Here we use the `-iname` option to ignore case while searching. The `-type` option is used to specify whether we are searching for files or folders. Since we are searching for folder/directory, we use it along with `d` i.e. directory to indicate that we are searching for directories and not files.
 
-```{bash c63a, eval=FALSE}
-find -type d -iname R
-```
-
-```{bash c63b, echo=FALSE}
-cd cline
+```{bash}
 find -type d -iname R
 ```
 
@@ -218,11 +170,6 @@ find -type d -iname R
 
 Search for all folders with the name `r`. It should exclude any folder with the name `R`.
 
-```{bash c64a, eval=FALSE}
-find -type d -name r
-```
-
-```{bash c64b, echo=FALSE}
-cd cline
+```{bash}
 find -type d -name r
 ```

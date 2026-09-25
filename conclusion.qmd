@@ -42,14 +42,4 @@
 
 If you see mistakes or want to suggest changes, please create an issue on the
 <a href="https://github.com/rsquaredacademy-education/bash-intro" target="_blank">source 
-repository</a> or reach out to us at support@rsquaredacademy.com.
-
-<!-- clean up folder structure -->
-
-```{r r99, echo=FALSE}
-system2("rm", c("-r", "cline"))
-```
-
-```{bash c99, echo=FALSE}
-cp -r /mnt/j/R/courses/live/command-line-basics/bash-tutorial /mnt/j/R/ebooks/bash-intro/cline
-``` 
+repository</a> or reach out to us at support@rsquaredacademy.com. 

@@ -1,3 +1,10 @@
+---
+title: "Input/Output"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
 # Input/Output {#sec-command-line-input-output}
 
 In this chapter, we will explore commands that will
@@ -44,7 +51,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us start with a simple example. We will print the text `Action of the Toes` to the terminal. It is the release name for R version 3.6.1.
 
-```{bash c33, eval=FALSE}
+```{bash}
 echo Action of the Toes
 ```
 
@@ -52,7 +59,7 @@ echo Action of the Toes
 
 What if we want to redirect the output? Instead of printing the text to the terminal, we want to write it to a file. In such cases, use `>` along with the file name to redirect the output to the file. Keep in mind that `>` will overwrite files. If you want to append to files instead of overwriting, use `>>`.
 
-```{bash c34, eval=FALSE}
+```{bash}
 echo Great Truth > release.txt
 ```
 
@@ -81,12 +88,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us print the content of the `release_names.txt` file (it contains R release names).
 
-```{bash c35a, eval=FALSE}
-cat release_names.txt
-```
-
-```{bash c35b, echo=FALSE}
-cd cline
+```{bash}
 cat release_names.txt
 ```
 
@@ -94,12 +96,7 @@ cat release_names.txt
 
 If you want to number the output line, use the `-n` option.
 
-```{bash c36a, eval=FALSE}
-cat -n release_names.txt
-```
-
-```{bash c36b, echo=FALSE}
-cd cline
+```{bash}
 cat -n release_names.txt
 ```
 
@@ -107,18 +104,8 @@ cat -n release_names.txt
 
 To concatenate the contents of several files into a target file, use `>`. In the below example, we concatenate the contents of the files `release_names_18.txt` and `release_names_19.txt` into a single file `release_names_18_19.txt`. In this case we are not printing the contents of the file to the terminal and instead we concatenate the contents from both the files and redirect the output to the target file.
 
-```{bash c37a, eval=FALSE}
+```{bash}
 cat release_names_18.txt release_names_19.txt > release_names_18_19.txt
-cat release_names_18_19.txt
-```
-
-```{bash c37, echo=FALSE}
-cd cline
-cat release_names_18.txt release_names_19.txt > release_names_18_19.txt
-```
-
-```{bash c38, echo=FALSE}
-cd cline
 cat release_names_18_19.txt
 ```
 
@@ -144,12 +131,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us use `head` to display the first 10 lines of the `release_names.txt` file.
 
-```{bash c39a, eval=FALSE}
-head release_names.txt
-```
-
-```{bash c39b, echo=FALSE}
-cd cline
+```{bash}
 head release_names.txt
 ```
 
@@ -157,12 +139,7 @@ head release_names.txt
 
 Using the `n` option, we can specify the number of lines to be displayed. In the below example, we display the first 5 lines.
 
-```{bash c40a, eval=FALSE}
-head -n 5 release_names.txt
-```
-
-```{bash c40b, echo=FALSE}
-cd cline
+```{bash}
 head -n 5 release_names.txt
 ```
 
@@ -170,12 +147,7 @@ head -n 5 release_names.txt
 
 The `c` option can be used to display characters or bytes instead of lines. Let us display the first 5 bytes of the `release_names.txt` file.
 
-```{bash c41a, eval=FALSE}
-head -c 5 release_names.txt
-```
-
-```{bash c41b, echo=FALSE}
-cd cline
+```{bash}
 head -c 5 release_names.txt
 ```
 
@@ -183,12 +155,7 @@ head -c 5 release_names.txt
 
 To display the last parts of a file, use `-` while specifying the number of lines. In the below example, we display the last 5 lines of the file.
 
-```{bash c42a, eval=FALSE}
-head -n -5 release_names.txt
-```
-
-```{bash c42b, echo=FALSE}
-cd cline
+```{bash}
 head -n -5 release_names.txt
 ```
 
@@ -196,12 +163,7 @@ head -n -5 release_names.txt
 
 In this example, we display the last 3 bytes of the file using the `c` option and `-` while specifying the number of bytes.
 
-```{bash c43a, eval=FALSE}
-head -c -3 release_names.txt
-```
-
-```{bash c43b, echo=FALSE}
-cd cline
+```{bash}
 head -c -3 release_names.txt
 ```
 
@@ -228,12 +190,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us use `tail` to display the last 10 lines of the file.
 
-```{bash c100a, eval=FALSE}
-tail release_names.txt
-```
-
-```{bash c100b, echo=FALSE}
-cd cline
+```{bash}
 tail release_names.txt
 ```
 
@@ -241,12 +198,7 @@ tail release_names.txt
 
 As we did in the previous section, use `n` to specify the number of lines to be displayed.
 
-```{bash c101a, eval=FALSE}
-tail -n 5 release_names.txt
-```
-
-```{bash c101b, echo=FALSE}
-cd cline
+```{bash}
 tail -n 5 release_names.txt
 ```
 
@@ -254,12 +206,7 @@ tail -n 5 release_names.txt
 
 We can use `tail` to display all contents of a file starting from a specific line. In the below example, we display all contents of the file starting from the 10th line using the `n` option and `+` prefix while specifying the number of lines.
 
-```{bash c102a, eval=FALSE}
-tail -n +10 release_names.txt
-```
-
-```{bash c102b, echo=FALSE}
-cd cline
+```{bash}
 tail -n +10 release_names.txt
 ```
 
@@ -267,12 +214,7 @@ tail -n +10 release_names.txt
 
 Use the `c` option to display the last 7 bytes of a file.
 
-```{bash c103a, eval=FALSE}
-tail -c 7 release_names.txt
-```
-
-```{bash c103b, echo=FALSE}
-cd cline
+```{bash}
 tail -c 7 release_names.txt
 ```
 
@@ -359,12 +301,7 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us sort the contents of the `pkg_names.txt` file. It contains names R packages randomly selected from CRAN.
 
-```{bash c48a, eval=FALSE}
-sort pkg_names.txt
-```
-
-```{bash c48b, echo=FALSE}
-cd cline
+```{bash}
 sort pkg_names.txt
 ```
 
@@ -372,12 +309,7 @@ sort pkg_names.txt
 
 Using the `-r` option which stands for `--reverse` the contents of the file can be sorted in descending/reverse order. Let us now sort the contents of the `pkg_names.txt` file in reverse order.
 
-```{bash c49a, eval=FALSE}
-sort -r pkg_names.txt
-```
-
-```{bash c49b, echo=FALSE}
-cd cline
+```{bash}
 sort -r pkg_names.txt
 ```
 
@@ -385,12 +317,7 @@ sort -r pkg_names.txt
 
 To ignore case while sorting contents, use the `--ignore-case` option. Time to sort the `pkg_names.txt` file while ignoring case.
 
-```{bash c84a, eval=FALSE}
-sort --ignore-case pkg_names.txt
-```
-
-```{bash c84b, echo=FALSE}
-cd cline
+```{bash}
 sort --ignore-case pkg_names.txt
 ```
 
@@ -398,12 +325,7 @@ sort --ignore-case pkg_names.txt
 
 To sort numerically, use the `-n` option which stands for `--numeric-sort`. In this example, we will use a different file, `package_names.txt` where the package names are prefixed by random numbers between 1 and 100. 
 
-```{bash c51a, eval=FALSE}
-sort -n package_names.txt
-```
-
-```{bash c51b, echo=FALSE}
-cd cline
+```{bash}
 sort -n package_names.txt
 ```
 
@@ -411,12 +333,7 @@ sort -n package_names.txt
 
 The `-u` option which stands for `--unique` will preserve only unique lines while sorting the contents of the file. In the below example, we remove all duplicate lines from the `pkg_names.txt` while sorting.
 
-```{bash c52a, eval=FALSE}
-sort -u pkg_names.txt
-```
-
-```{bash c52b, echo=FALSE}
-cd cline
+```{bash}
 sort -u pkg_names.txt
 ```
 
@@ -426,44 +343,24 @@ sort -u pkg_names.txt
        
 ### Count words, bytes and lines
 
-```{bash c53a, eval=FALSE}
-wc release_names.txt
-```
-
-```{bash c53b, echo=FALSE}
-cd cline
+```{bash}
 wc release_names.txt
 ```
 
 ### Count lines in a file
 
-```{bash c54a, eval=FALSE}
-wc -l release_names.txt
-```
-
-```{bash c54b, echo=FALSE}
-cd cline
+```{bash}
 wc -l release_names.txt
 ```
 
 ### Count words in a file
 
-```{bash c55a, eval=FALSE}
-wc -w release_names.txt
-```
-
-```{bash c55b, echo=FALSE}
-cd cline
+```{bash}
 wc -w release_names.txt
 ```
 
 ### Count characters(bytes) in a file
 
-```{bash c56a, eval=FALSE}
-wc -c release_names.txt
-```
-
-```{bash c56b, echo=FALSE}
-cd cline
+```{bash}
 wc -c release_names.txt
 ```

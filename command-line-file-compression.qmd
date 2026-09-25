@@ -1,3 +1,10 @@
+---
+title: "File Compression"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
 # File Compression {#sec-command-line-file-compression}
 
 In this chapter, we will explore file compression using the following
@@ -50,12 +57,7 @@ While dealing with `tar.gz` archives we will use `z` in addition to `vf` and the
 
 Let us list all the files & folders in `release_names.tar`. As mentioned above. to list the files in the archive, we use the `t` option.
 
-```{bash c70a, eval=FALSE}
-tar -tvf release_names.tar 
-```
-
-```{bash c70b, echo=FALSE}
-cd cline
+```{bash}
 tar -tvf release_names.tar 
 ```
 
@@ -63,15 +65,8 @@ tar -tvf release_names.tar
 
 Let us extract files from `release_names.tar` using the `x` option in addition to `vf`.
 
-```{bash c71a, eval=FALSE}
-tar -xvf release_names.tar 
-ls
-```
-
-```{bash c71b, echo=FALSE}
-cd cline
-rm release_names.txt release_names_18.txt release_names_19.txt
-tar -xvf release_names.tar 
+```{bash}
+tar -xvf release_names.tar
 ls
 ```
 
@@ -79,12 +74,7 @@ ls
 
 To add a file to an existing archive, use the `r` option. Let us add `release_names_18.txt` and `release_names_19.txt` to the archive we created in the previous step. 
 
-```{bash c69a, eval=FALSE}
-tar -rvf release_names.tar release_names_18.txt release_names_19.txt
-```
-
-```{bash c69b, echo=FALSE}
-cd cline
+```{bash}
 tar -rvf release_names.tar release_names_18.txt release_names_19.txt
 ```
 
@@ -92,12 +82,7 @@ tar -rvf release_names.tar release_names_18.txt release_names_19.txt
 
 Using the `c` option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.
 
-```{bash c68a, eval=FALSE}
-tar -cvf pkg_names.tar pkg_names.txt
-```
-
-```{bash c68b, echo=FALSE}
-cd cline
+```{bash}
 tar -cvf pkg_names.tar pkg_names.txt
 ```
 
@@ -127,36 +112,20 @@ data.frame(Command = cname, Description = descrip) %>%
 
 Let us compress `release_names.txt` file using `gzip`.
 
-```{bash c72a, eval=FALSE}
+```{bash}
 gzip release_names.txt
 ls
-```
-
-```{bash c72b, echo=FALSE}
-cd cline
-gzip release_names.txt
-ls
-```
-
-```{bash c72c, echo=FALSE}
-cd cline
 gunzip release_names.txt.gz
 ```
 
 
 ### Decompress 
 
-Use the `-d` option with `gzip` to decompress a file. In the below example, we decompress the `sept_15.csv.gz` file (downloaded using `wget` or `curl` earlier). You can also use `gunzip` for the same result.
+Use the `-d` option with `gzip` to decompress a file. In the below example, we stream the decompressed contents of `cran_log_sample.csv.gz` to the terminal while keeping the fixture compressed for later chapters. You can also use `gunzip` (or `gzip -d` on a disposable copy) for the same result.
 
 
-```{bash c73a, eval=FALSE}
-gzip -d sept_15.csv.gz
-ls
-```
-
-```{bash c73b, echo=FALSE}
-cd cline
-gzip -d sept_15.csv.gz
+```{bash}
+gzip -dc cran_log_sample.csv.gz | head -n 3
 ls
 ```
 
@@ -164,13 +133,7 @@ ls
 
 Use `-c` and `>` to specify a different file name while compressing using `gzip`. In the below example, `gzip` will create `releases.txt.gz` instead of `release_names.txt.gz`.
 
-```{bash c90a, eval=FALSE}
-gzip -c release_names.txt > releases.txt.gz
-ls
-```
-
-```{bash c90b, echo=FALSE}
-cd cline
+```{bash}
 gzip -c release_names.txt > releases.txt.gz
 ls
 ```
@@ -183,12 +146,7 @@ ls
 
 Let us list all the files and folders in `main_project.zip()` using `unzip` and the `-l` option. 
 
-```{bash c97a, eval=FALSE}
-unzip -l main_project.zip
-```
-
-```{bash c97b, echo=FALSE}
-cd cline
+```{bash}
 unzip -l main_project.zip
 ```
 
@@ -196,61 +154,37 @@ unzip -l main_project.zip
 
 Using `unzip`, let us now extract files and folders from `zip_example.zip`.
 
-```{bash c95a, eval=FALSE}
+```{bash}
 unzip zip_example.zip
 ```
 
-```{bash c95b, echo=FALSE, eval=FALSE}
-cd cline
-unzip zip_example.zip
-```
+Using the `-d` option, we can extract the contents of `zip_example.zip` to a specific folder. In the below example, we extract it to a new folder `myexamples`.
 
-Using the `-d` option, we can extract the contents of `zip_example.zip` to a specific folder. In the below example, we extract it to a new folder `examples`.
-
-```{bash c96a, eval=FALSE}
-unzip zip_example.zip –d myexamples
-```
-
-```{r unzip_d, echo=FALSE, eval=FALSE}
-system2("unzip", c("zip_example.zip", "-d", "examples"), TRUE)
+```{bash}
+unzip zip_example.zip -d myexamples
 ```
 
 ### Compress 
 
 Use the `-r` option along with `zip` to create a ZIP archive. In the below example, we create a ZIP archive of `myproject` folder.
 
-```{bash c91a, eval=FALSE}
+```{bash}
 zip -r myproject.zip myproject
 ls
-```
-
-```{bash c91b, echo=FALSE}
-cd cline
-zip -r myproject.zip myproject
 ```
 
 We can compress multiple directories using `zip`. The names of the directories must be separated by a space as shown in the below example where we compress `myproject` and `mypackage` into a single ZIP archive.
 
-```{bash c92a, eval=FALSE}
+```{bash}
 zip -r packproj.zip myproject mypackage
 ls
-```
-
-```{bash c92b, echo=FALSE}
-cd cline
-zip -r packproj.zip myproject mypackage
 ```
 
 ### Add 
 
 To add a new file/folder to an existing archive, specify the name of the archive followed by the name of the file or the folder. In the below example, we add the `bash.sh` file to the `myproject.zip` archive created in a previous step.
 
-```{bash c93a, eval=FALSE}
-zip myproject.zip bash.sh
-```
-
-```{bash c93b, echo=FALSE}
-cd cline
+```{bash}
 zip myproject.zip bash.sh
 ```
 
