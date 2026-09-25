@@ -1,11 +1,5 @@
 # Introduction {#sec-introduction-to-command-line}
 
-```{r pkg_load, echo=FALSE}
-library(knitr)
-library(kableExtra)
-library(magrittr)
-```
-
 ## What is Shell/Terminal?
 
 Shell is a text based application for viewing, handling & manipulating files. It
@@ -18,94 +12,77 @@ as
 
 It is sufficient to know a handful of commands to get started with the shell.
 
+## Choose your setup
+
+Pick the first tier that fits you. All tiers run every command in this book,
+except where noted.
+
+- **Tier 0 (recommended, zero setup): [Posit Cloud Space](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH)** — one-click RStudio in
+  your browser with Linux bash and all book files ready. Nothing to install.
+- **Tier 1 (Windows without admin rights): Git Bash inside RStudio** — install
+  [Git for Windows](https://git-scm.com/download/win), then open Git Bash via
+  *Tools -> Terminal -> New Terminal* in RStudio. Runs everything except
+  @sec-sudo-command (`sudo apt-get` needs Linux) and the `free` command in
+  @sec-command-line-sysinfo. For those two chapters, switch to the Tier 0
+  Posit Cloud Space.
+- **Tier 2 (Windows with admin rights): WSL2 + Windows Terminal** — full Ubuntu
+  Linux on your machine (see below). Runs everything, including `sudo` and `free`.
+- **macOS:** use the built-in Terminal (Zsh since Catalina). Every command in
+  this book works identically in Zsh; see the BSD note below.
+- **Linux:** use your native Bash terminal.
+
+::: {.callout-warning}
+## Do not run book commands in Windows PowerShell
+PowerShell aliases `ls` to `Get-ChildItem` and `curl`/`wget` to
+`Invoke-WebRequest`, which reject standard Unix syntax. Always use Git Bash,
+WSL2, or Posit Cloud on Windows.
+:::
+
+::: {.callout-note}
+## macOS: Zsh default and BSD differences
+macOS uses Zsh by default (since Catalina, 2019) and ships BSD coreutils
+instead of GNU coreutils. Book commands work the same, except: `head -n -5`
+(negative counts), `sed -i`, and the output format of `cal` and `date -d`
+differ from Linux. When a result looks slightly different on your Mac, it is
+still correct.
+:::
+
 ## Launch Terminal
 
-Although we will use the terminal in RStudio on [RStudio Cloud](https://rstudio.cloud/), we should still know how to launch the terminal in different operating systems.
+Although we recommend the [Posit Cloud Space](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH)
+so that everyone uses the same environment, you should still know how to launch
+a terminal on your own machine.
 
 ### mac
 
 Applications -> Utility -> Terminal
 
-```{r launch_mac, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_mac-terminal.png")
-```
+![Terminal on macOS](img/cline_mac-terminal.png){#fig-launch-mac fig-align="center" width="70%"}
 
 ### Windows
 
-#### Option 1
+#### Option 1 — Git Bash (no admin rights needed)
 
-Go to the Start Menu or screen and enter `Command Prompt` in the search field.
+Install [Git for Windows](https://git-scm.com/download/win) and launch **Git Bash**.
+Inside RStudio, select *Tools -> Terminal -> New Terminal*; if Git Bash is your
+configured terminal you can run every Tier 1 chapter right there.
 
-```{r launch_windows_1, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_windows-terminal-1.png")
-```
+#### Option 2 — WSL2 with Windows Terminal (full Ubuntu Linux)
 
-#### Option 2
+1. Open PowerShell **as Administrator** and run `wsl --install -d Ubuntu`.
+2. Reboot when prompted, then launch Ubuntu and create your Linux user.
+3. Install [Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701)
+   and open an Ubuntu tab.
 
-Start Menu -> Windows System -> Command Prompt
-
-```{r launch_windows_2, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_windows-terminal-2.png")
-```
-
-#### Option 3
-
-Hold the Windows key and press the `R` key to get a `Run` window. Type `cmd` in the box and click on the `OK` button.
-
-```{r launch_windows_3, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_windows-terminal-3.png")
-```
+You can learn more about the Windows Subsystem for Linux
+[here](https://docs.microsoft.com/en-us/windows/wsl/about).
 
 ### Linux
 
 - Applications -> Accessories -> Terminal
 - Applications -> System      -> Terminal
 
-```{r launch_liux, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_linux-terminal.png")
-```
-
-### Windows Subsystem for Linux
-
-If you want to use bash on Windows, try the Windows subsystem for Linux. It only works on 64 bit Windows 10. Below are the steps to enable Windows subsystem fro Linux:
-
-#### Step 1 - Enable Developer Mode
-
-To enable Developer Mode open the Settings app and head to **Update & Security > For Developers**. Press the **Developer Mode** switch.
-
-```{r launch_wsl_1, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_wsl-1.png")
-```
-
-#### Step 2 - Enable Windows Subsystem for Linux
-
-To enable the Windows Subsystem for Linux (Beta), open the **Control Panel**, click **Programs and Features**, and click **Turn Windows Features On or Off** in left side bar under Programs and Features. Enable the **Windows Subsystem for Linux (Beta)** option in the list here and click OK. After you do, you'll be prompted to reboot your computer. Click **Restart Now** to reboot your computer and Windows 10 will install the new feature.
-
-```{r launch_wsl_2, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_wsl-2.png")
-```
-
-#### Step 3 - Install your Linux Distribution of Choice
-
-Open the Microsoft store and choose your favorite Linux distribution.
-
-```{r launch_wsl_3, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_wsl-3.png")
-```
-
-In the distro's page, click on "Get".
-
-```{r launch_wsl_4, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_wsl-4.png")
-```
-
-Launch the distro from the **Start Menu**.
-
-```{r launch_wsl_5, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_wsl-5.png")
-```
-
-You can learn more about the Windows Subsystem for Linux [here](https://docs.microsoft.com/en-us/windows/wsl/about).
+![Terminal on Linux](img/cline_linux-terminal.png){#fig-launch-linux fig-align="center" width="70%"}
 
 ### RStudio Terminal
 
@@ -114,32 +91,22 @@ RStudio introduced the terminal with version 1.1.383. The terminal tab is next t
 - Shift + Alt + T 
 - Tools -> Terminal -> New Terminal
 
-Note, the terminal depends on the underlying operating system. To learn more about the RStudio terminal, read this [article](https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal) or watch this [webinar](https://resources.rstudio.com/webinars/terminal-updates). In this book, we will use the RStudio terminal on [RStudio Cloud](https://rstudio.cloud/) to ensure that all users have access to Linux bash. You can try all the commands used in this book on your local system as well except in case of Windows users.
+Note, the terminal depends on the underlying operating system. To learn more about the RStudio terminal, read this [article](https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal) or watch this [webinar](https://resources.rstudio.com/webinars/terminal-updates). In this book, we will use the RStudio terminal on [Posit Cloud](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH) to ensure that all users have access to Linux bash. You can try all the commands used in this book on your local system as well except in case of Windows users.
 
-```{r rstudio_terminal, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_rstudio-termina.png")
-```
+![RStudio terminal](img/cline_rstudio-termina.png){#fig-rstudio-terminal fig-align="center" width="70%"}
 
 ## Prompt
 
 As soon as you launch the terminal, you will see the hostname, machine name and
 the prompt. In case of mac & Linux users, the prompt is `$`. For Windows users, it is `>`.
 
-```{r table_prompt, echo=FALSE}
-cname   <- c("macOS", "Linux", "Windows")
-descrip <- c("$",
-             "$",
-             ">")
-data.frame(OS = cname, Prompt = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| OS | Prompt |
+|:---|:-------|
+| macOS | `$` |
+| Linux | `$` |
+| Windows | `>` |
 
-```{r rstudio_terminal_prompt, echo=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/cline_prompt-canva.png")
-```
+![Anatomy of the shell prompt](img/cline_prompt-canva.png){#fig-prompt fig-align="center" width="70%"}
 
 ## Get Started
 
@@ -150,82 +117,74 @@ To begin with, let us learn to display
 - the calendar 
 - and clear the screen.
 
-```{r table_get_started, echo=FALSE}
-cname   <- c("`whoami`", "`date`", "`cal`", "`clear`")
-descrip <- c("Who is the user?",
-             "Get date, time and timezone",
-             "Display calendar", 
-             "Clear the screen")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | Description |
+|:--------|:------------|
+| `whoami` | Who is the user? |
+| `date` | Get date, time and timezone |
+| `cal` | Display calendar |
+| `clear` | Clear the screen |
 
 `whoami` prints the effective user id i.e. the name of the user who runs the command. Use it to verify the user as which you are logged into the system.
 
-```{bash whoami}
+```{bash}
 whoami
 ```
 
 `date` will display or change the value of the system's time and date information.
 
-```{bash c2}
+```{bash}
 date
 ```
 
 `cal` will display a formatted calendar and `clear` will clear all text on the screen and display a new prompt. You can clear the screen by pressing `Ctrl + L` as well.
 
-```{bash cal}
+```{bash}
 cal
 ```
 
 In R, we can get the user information from `Sys.info()` or `whoami()` from the [whoami](https://cran.r-project.org/package=whoami) package. The current date & time are returned by `Sys.date()` & `Sys.time()`. To clear the R console, we use Ctrl + L.
 
-```{r r_get_started, echo=FALSE}
-cname   <- c("`whoami`", "`date`", "`cal`", "`clear`")
-descrip <- c("`Sys.info()` / `whoami::whoami()`",
-             "`Sys.date()` / `Sys.time()`",
-             "", 
-             "`Ctrl + L`")
-data.frame(Command = cname, R = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
-```
+| Command | R |
+|:--------|:--|
+| `whoami` | `Sys.info()` / `whoami::whoami()` |
+| `date` | `Sys.date()` / `Sys.time()` |
+| `cal` |  |
+| `clear` | `Ctrl + L` |
 
 ## Help/Documentation
 
 Before we proceed further, let us learn to view the documentation/manual pages of the commands. 
 
-```{r table_help, echo=FALSE}
-cname   <- c("`man`", "`whatis`")
-descrip <- c("Display manual pages for a command",
-             "Single line description of a command")
-data.frame(Command = cname, Description = descrip) %>% 
-  kable() %>% 
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed", "responsive")
-  )
+| Command | Description |
+|:--------|:------------|
+| `man` | Display manual pages for a command |
+| `whatis` | Single line description of a command |
+
+`man` is used to view the system's reference manual. Git Bash ships **no**
+manpages, so if `man` is unavailable in your terminal, append `--help` to any
+command instead (works everywhere) and consult [tldr.sh](https://tldr.sh/)
+for practical examples.
+
+```{bash}
+#| eval: false
+man ls
 ```
 
-`man` is used to view the system's reference manual. Let us use it to view the documentation of the `whatis` command which we will use next. 
-
-```{bash man}
-man whatis
+```{bash}
+ls --help | head -n 12
 ```
 
-`whatis` displays short manual page descriptions (each manual page has a short description available within it). 
+`whatis` displays short manual page descriptions (each manual page has a short description available within it). Like `man`, it needs the system manual database, so it is shown but not executed here.
 
-```{bash whatis}
+```{bash}
+#| eval: false
 whatis ls
 ```
 
 You will find [tldr.sh](https://tldr.sh/) very useful while exploring new commands and there is a related R package, [tldrrr](https://github.com/kirillseva/tldrrr) as well.
 
-```{r tldrrr}
+```{r}
+#| eval: false
 # devtools::install_github("kirillseva/tldrrr")
 tldrrr::tldr("pwd")
 ```
