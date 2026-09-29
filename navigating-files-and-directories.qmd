@@ -1,0 +1,178 @@
+---
+title: "Navigating File System"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
+# Navigating File System {#sec-navigating-files-and-directories}
+
+## Introduction
+
+In this chapter, we will learn commands that will help us
+
+- navigate between different folders/directories 
+- return current working directory 
+- list all the files & folders in a directory 
+- create and delete directories
+
+| Command | Description |
+|:--------|:------------|
+| `pwd` | Print working directory |
+| `ls` | List directory contents |
+| `cd` | Change current working directory |
+| `mkdir` | Create directory |
+| `rmdir` | Remove/delete directory |
+
+`pwd` displays the name of the **p**resent **w**orking **d**irectory. 
+
+```{bash}
+pwd
+```
+
+`ls` displays information about files and directories in the current directory along with their associated metadata such as 
+
+- size
+- ownership
+- modification date 
+
+With no options, it will list the files and directories in the current directory, sorted alphabetically.
+
+```{bash}
+ls
+```
+
+`cd` (**c**hange **d**irectory) changes the current working directory. It is among the most used commands as it allows the user to move around the file system.
+
+```{bash}
+cd r
+pwd
+```
+
+`mkdir` will create new directory. It will allow you to set file mode (permissions associated with the directory) i.e. who can open/modify/delete the directory.
+
+```{bash}
+mkdir rfiles
+ls
+```
+
+`rmdir` will remove empty directories from the file system. It can be used to remove multiple empty directories as well. If the directory is not empty, `rmdir` will not remove it and instead display a warning that the directory is not empty.
+
+```{bash}
+rmdir rfiles
+ls
+```
+
+## Change Working Directory
+
+Let us focus a bit more on changing working directory. The below table shows commands for changing working directory to
+
+- up one level
+- previous working directory
+- home directory
+- and root directory
+
+| Command | Description |
+|:--------|:------------|
+| `cd .` | Navigate into directory |
+| `cd ..` | Go up one level |
+| `cd -` | Go to previous working directory |
+| `cd ~` | Change directory to home directory |
+| `cd /` | Change directory to root directory |
+
+All files and directories stem from one main directory, the root directory. All the other directories in the system are sub-directories of the root directory and the root directory has no parent directory. It is represented by a single slash (`/`). `cd /` will change the current working directory to the root directory.
+
+```{bash}
+cd /
+pwd
+```
+
+The parent directory i.e. the directory one level up from the current directory which contains the directory we are in now is represented by two dots (`..`). `cd ..` will change us into the parent directory of the current directory.
+
+```{bash}
+cd ..
+pwd
+```
+
+The home directory is the directory we are placed in, by default, when we launch a new terminal session. It is represented by the tilde (`~`).
+
+```{bash}
+cd ~
+pwd
+```
+
+To change into the previous working directory, use `cd -`.
+
+```{bash}
+cd -
+pwd
+```
+
+The current working directory is represented by a single dot (`.`). `cd .` will change us into the current directory i.e. it will do nothing. 
+
+## List Directory Contents
+
+`ls` will list the contents of a directory. Using different arguments, we can
+
+- list hidden files
+- view file permissions, ownership, size & modification date
+- sort by size & modification date
+
+| Command | Description |
+|:--------|:------------|
+| `ls` | List directory contents |
+| `ls -l` | List files one per line |
+| `ls -a` | List all files including hidden files |
+| `ls -la` | Display file permissions, ownership, size & modification date |
+| `ls -lh` | Long format list with size displayed in human readable format |
+| `ls -lS` | Long format list sorted by size |
+| `ls -ltr` | Long format list sorted by modification date |
+
+### List files one per line
+
+```{bash}
+ls -l
+```
+
+### List all files including hidden files
+
+```{bash}
+ls -a
+```
+
+### Display file permissions, ownership, size & modification date
+
+```{bash}
+ls -la
+```
+
+### Display size in human readable format
+
+```{bash}
+ls -lh
+```
+
+### Sort list by size
+
+```{bash}
+ls -lS
+```
+
+### Sort list by modification date
+
+```{bash}
+ls -ltr
+```
+
+## R Functions
+
+In R, `getwd()` will return the current working directory. You can use `here()` from the [here](https://here.r-lib.org/) package as well. To change the current
+working directory, use `setwd()`. The [fs](https://fs.r-lib.org/index.html) package provides useful functions for file operations. 
+
+| Command | R |
+|:--------|:--|
+| `pwd` | `getwd()` / `here::here()` |
+| `ls` | `dir()` / `list.files()` / `list.dirs()` / `fs::dir_ls()` / `dir_info()` |
+| `cd` | `setwd()` |
+| `mkdir` | `dir.create()` / `fs::dir_create()` |
+| `rmdir` | `fs::dir_delete()` |

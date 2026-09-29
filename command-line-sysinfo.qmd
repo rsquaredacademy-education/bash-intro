@@ -1,0 +1,94 @@
+---
+engine: knitr
+---
+
+# System Info {#sec-command-line-sysinfo}
+
+In this chapter, we will explore commands that will allow us to
+
+- display information about the system
+- display memory usage information
+- display file system disk space usage 
+- exit the terminal
+- run commands a superuser
+- shutdown the system
+
+| Command | Description |
+|:--------|:------------|
+| `uname` | Display important information about the system |
+| `free` | Display free, used, swap memory in the system |
+| `df` | Display file system disk space usage |
+| `exit` | Exit the terminal |
+| `sudo` | Run command as super user |
+| `shutdown` | Shutdown the system |
+
+## uname
+
+The `uname` command is used to view important information about the system. Using additional options, we can
+
+- print details about operating system
+- hardware & software related information
+
+| Command | Description |
+|:--------|:------------|
+| `uname` | Print details about the current machine and the operating system running on it |
+| `uname -mp` | Hardware related information; machine & processor |
+| `uname -srv` | Software related information; operating system, release number and version |
+| `uname -n` | Nodename of the system |
+| `uname -a` | Print all available information system |
+
+### Print all available information about the system
+
+```{bash c104a}
+uname -a
+```
+
+### Display free, used, swap memory in the system
+
+```{bash c105a}
+free
+```
+
+### Display file system disk space usage
+
+```{bash c106a}
+df
+```
+
+## Others
+
+In this section, let us look at a few other useful commands that will allow us 
+to
+
+- see how long a command takes to execute
+- delay activity
+- display and clear command history list
+
+| Command | Description |
+|:--------|:------------|
+| `time` | See how long a command takes to execute |
+| `sleep` | Delay activity in seconds |
+| `sleep 1m` | Delay activity in minutes |
+| `sleep 1h` | Delay activity in hours |
+| `history` | Display command history list with line numbers |
+| `history -c` | Clear the command history list |
+
+## Funny Commands
+
+Below are a few funny commands for you to try out. Use `sudo apt-get install` to install fortune and banner before trying them.
+
+| Command | Description |
+|:--------|:------------|
+| `fortune` | Poignant, inspirational & silly phrases |
+| `yes` | Output a string repeatedly until killed |
+| `banner` | ASCII banner |
+| `rev` | Reverse each character |
+
+## R Functions
+
+In R, we can use `Sys.sleep()` to delay activity and `history()` to view command history.
+
+| Command | R |
+|:--------|:--|
+| `sleep` | `Sys.sleep()` |
+| `history` | `history()` |

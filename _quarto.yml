@@ -1,0 +1,65 @@
+project:
+  type: book
+  output-dir: docs
+  pre-render: "Rscript scripts/reset-fixture.R"
+  resources:
+    - "_redirects"
+    - "404.html"
+    - "robots.txt"
+
+quarto-required: ">=1.6.0"
+
+sitemap: true
+
+book:
+  title: "Command Line Basics for R Users"
+  author: "Aravind Hebbali"
+  date: last-modified
+  chapters:
+    - index.qmd
+    - introduction-to-command-line.qmd
+    - navigating-files-and-directories.qmd
+    - command-line-file-management.qmd
+    - command-line-input-output.qmd
+    - command-line-regular-expression.qmd
+    - command-line-data-transfer.qmd
+    - sudo-command.qmd
+    - command-line-file-compression.qmd
+    - command-line-sysinfo.qmd
+    - r-command-line.qmd
+    # Phase 3 (D1) inserts pipes-and-redirection.qmd here
+    - conclusion.qmd
+
+website:
+  site-url: https://bash-intro.rsquaredacademy.com
+  title: "Command Line Basics for R Users"
+  description: "A gentle introduction to the command line for R users."
+  open-graph: true
+  twitter-card: true
+  navbar:
+    right:
+      - text: "GitHub"
+        href: https://github.com/rsquaredacademy-education/bash-intro
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    search: true
+    code-overflow: wrap
+    include-in-header: _ga_partial.html
+  pdf:
+    documentclass: scrreprt
+    papersize: us-letter
+    pdf-engine: typst
+    keep-typ: false
+    code-overflow: wrap
+    mainfont: "Libertinus Serif"
+    monofont: "DejaVu Sans Mono"
+    toc: true
+    number-sections: true
+  epub:
+    toc-depth: 2
+    epub-chapter-level: 1
+    cover-image: img/ebook-bash-intro.png

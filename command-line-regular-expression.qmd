@@ -1,0 +1,157 @@
+---
+title: "Search & Regular Expression"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
+# Search & Regular Expression {#sec-command-line-regular-expression}
+
+In this chapter, we will explore commands that will
+
+- search for a given string in a file
+- find files using names
+- and search for binary executable files
+
+| Command | Description |
+|:--------|:------------|
+| `grep` | Search for a given string in a file |
+| `find` | Find files using filenames |
+| `which` | Search for binary executable files |
+
+## grep
+
+The `grep` command is used for pattern matching. Along with additional options, it can be used to
+
+- match pattern in input text
+- ignore case
+- search recursively for an exact string
+- print filename and line number for each match
+- invert match for excluding specific strings
+
+`grep` processes text line by line, and prints any lines which match a specified pattern. `grep`, which stands for **g**lobal **r**egular **e**xpression **p**rint is a powerful tool for matching a regular expression against text in a file, multiple files, or a stream of input. 
+
+| Command | Description |
+|:--------|:------------|
+| `grep` | Matches pattern in input text |
+| `grep -i` | Ignore case |
+| `grep -RI` | Search recursively for an exact string |
+| `grep -E` | Use extended regular expression |
+| `grep -Hn` | Print file name & corresponding line number for each match |
+| `grep -v` | Invert match for excluding specific strings |
+
+### Match Pattern in Input Text
+
+Using `grep` let us search for packages that inlcude the letter `R` in their names.
+
+```{bash}
+grep R package_names.txt
+```
+
+### Ignore Case
+
+In the previous case, `grep` returned only those packages whose name included `R` but not `r` i.e. it did not ignore the case of the letter. Using the `-i` option, we will now search while ignoring the case of the letter.
+
+```{bash}
+grep -i R package_names.txt
+```
+
+### Highlight
+
+The `--color` option will highlight the matched strings. 
+
+```{bash}
+grep -i --color R package_names.txt
+```
+
+### Print Filename 
+
+If there is more than one file to search, use the `-H` option to print the filename for each match. 
+
+```{bash}
+grep -i --color -H bio package_names.txt
+```
+
+### Print Corresponding Line Number
+
+The `-n` option will print the corresponding line number of the match in the file.
+
+```{bash}
+grep -i --color -n bio package_names.txt
+```
+
+### Print Filename & Line Number
+
+Let us print both the file name and the line number for each match.
+
+```{bash}
+grep -i --color -Hn R package_names.txt
+```
+
+### Invert Match
+
+Use the `-v` option to select non-matching lines. In the below example, we search for packages whose name does not include `R` while ignoring the case.
+
+```{bash}
+grep -v -i R package_names.txt
+```
+
+### Recursive Search
+
+Use the `-r` option to search recursively. In the below example, we search all files with the `.txt` extension for the string `bio` while ignoring the case.
+
+```{bash}
+grep -i --color -r bio *.txt
+```
+
+## find
+
+The `find` command can be used for searching files and directories. Using additional options, we can
+
+- search files by extension type
+- ignore case while searching files/directories
+
+`find` is a powerful tool for working with the files. It can be used on its own to locate files, or in conjunction with other programs to perform operations on those files.
+
+| Command | Description |
+|:--------|:------------|
+| `find` | Find files or directories under the given directory; recursively |
+| `find -name '*.txt'` | Find files by extension |
+| `find -type d -iname` | Find directories matching a given name, in case-insensitive mode |
+| `find -type d -name` | Find directories matching a given name, in case-sensitive mode |
+
+### Search Recursively
+
+Let us use `find` to search for the file `release_names.txt` recursively. The `-name` option is used to specify the name of the file we are searching.
+
+```{bash}
+find -name release_names.txt
+```
+
+There are two files with the name `release_names.txt` present in the current working directory and in `r_releases` directory.
+
+### Search by Extension
+
+Let us search for all files with `.txt` extension in the `r_releases` folder.
+
+```{bash}
+find r_releases -name '*.txt'
+```
+
+There are 3 files with the `.txt` extension in `r_releases` folder.
+
+### Case-insensitive Mode
+
+Search for all folders with the name `R` or `r`. Here we use the `-iname` option to ignore case while searching. The `-type` option is used to specify whether we are searching for files or folders. Since we are searching for folder/directory, we use it along with `d` i.e. directory to indicate that we are searching for directories and not files.
+
+```{bash}
+find -type d -iname R
+```
+
+### Case-sensitive Mode
+
+Search for all folders with the name `r`. It should exclude any folder with the name `R`.
+
+```{bash}
+find -type d -name r
+```

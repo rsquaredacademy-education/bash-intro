@@ -2,3 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
+roadmap/
+cline/
+
+/.quarto/
+*.quarto_ipynb
+docs/
+spike/.quarto/
+spike/_book/

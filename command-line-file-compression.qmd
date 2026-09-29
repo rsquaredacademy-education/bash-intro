@@ -1,0 +1,206 @@
+---
+title: "File Compression"
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
+# File Compression {#sec-command-line-file-compression}
+
+In this chapter, we will explore file compression using the following
+
+- `tar`
+- `gzip`
+- `zip`
+- `unzip`
+
+## tar
+
+The `tar` command is used for file compression. It works with both `tar` and
+`tar.gz` extensions. It is used to
+
+- list files 
+- extract files 
+- create archives
+- append file to existing archives
+
+`tar` creates, maintains, modifies, and extracts files that are archived in the tar format. Tar stands for **t**ape **ar**chive and is an archiving file format.
+
+| Command | Description |
+|:--------|:------------|
+| `tar tvf` | List an archive |
+| `tar tvfz` | List a gzipped archive |
+| `tar xvf` | Extract an archive |
+| `tar xvfz` | Extract a gzipped archive |
+| `tar cvf` | Create an uncompressed tar archive |
+| `tar cvfz` | Create a tar gzipped archive |
+| `tar rvf` | Add a file to an existing archive |
+| `tar rvfz` | Add a file to an existing gzipped archive |
+
+We will use different options along with the `tar` command for listing, extracting, creating and adding files. The `vf` (**v** stands for verbosely show .tar file progress and **f** stands for file name type of the archive file) option is common for all the above operations while the following are specific.
+
+- `t` for listing
+- `x` for extracting
+- `c` for creating
+- `r` for adding files
+
+While dealing with `tar.gz` archives we will use `z` in addition to `vf` and the above options. 
+
+### List
+
+Let us list all the files & folders in `release_names.tar`. As mentioned above. to list the files in the archive, we use the `t` option.
+
+```{bash}
+tar -tvf release_names.tar 
+```
+
+### Extract
+
+Let us extract files from `release_names.tar` using the `x` option in addition to `vf`.
+
+```{bash}
+tar -xvf release_names.tar
+ls
+```
+
+### Add 
+
+To add a file to an existing archive, use the `r` option. Let us add `release_names_18.txt` and `release_names_19.txt` to the archive we created in the previous step. 
+
+```{bash}
+tar -rvf release_names.tar release_names_18.txt release_names_19.txt
+```
+
+### Create 
+
+Using the `c` option we can create tar archives. In the below example, we are using a single file but you can specify multiple files and folders as well.
+
+```{bash}
+tar -cvf pkg_names.tar pkg_names.txt
+```
+
+## gzip
+
+| Command | Description |
+|:--------|:------------|
+| `gzip` | Compress a file |
+| `gzip -d` | Decompress a file |
+| `gzip -c` | Compress a file and specify the output file name |
+| `zip -r` | Compress a directory |
+| `zip` | Add files to an existing zip file |
+| `unzip` | Extract files from a zip files |
+| `unzip -d` | Extract files from a zip file and specify the output file name |
+| `unzip -l` | List contents of a zip file |
+
+
+`gzip`, `gunzip`, and `zcat` commands are used to compress or expand files in the GNU GZIP format i.e. files with `.gz` extension
+
+### Compress 
+
+Let us compress `release_names.txt` file using `gzip`.
+
+```{bash}
+gzip release_names.txt
+ls
+gunzip release_names.txt.gz
+```
+
+
+### Decompress 
+
+Use the `-d` option with `gzip` to decompress a file. In the below example, we stream the decompressed contents of `cran_log_sample.csv.gz` to the terminal while keeping the fixture compressed for later chapters. You can also use `gunzip` (or `gzip -d` on a disposable copy) for the same result.
+
+
+```{bash}
+gzip -dc cran_log_sample.csv.gz | head -n 3
+ls
+```
+
+### Specify Filename
+
+Use `-c` and `>` to specify a different file name while compressing using `gzip`. In the below example, `gzip` will create `releases.txt.gz` instead of `release_names.txt.gz`.
+
+```{bash}
+gzip -c release_names.txt > releases.txt.gz
+ls
+```
+
+## zip & unzip
+
+`zip` creates ZIP archives while `unzip` lists and extracts compressed files in a ZIP archive.
+
+### List 
+
+Let us list all the files and folders in `main_project.zip()` using `unzip` and the `-l` option. 
+
+```{bash}
+unzip -l main_project.zip
+```
+
+### Extract 
+
+Using `unzip`, let us now extract files and folders from `zip_example.zip`.
+
+```{bash}
+unzip zip_example.zip
+```
+
+Using the `-d` option, we can extract the contents of `zip_example.zip` to a specific folder. In the below example, we extract it to a new folder `myexamples`.
+
+```{bash}
+unzip zip_example.zip -d myexamples
+```
+
+### Compress 
+
+Use the `-r` option along with `zip` to create a ZIP archive. In the below example, we create a ZIP archive of `myproject` folder.
+
+```{bash}
+zip -r myproject.zip myproject
+ls
+```
+
+We can compress multiple directories using `zip`. The names of the directories must be separated by a space as shown in the below example where we compress `myproject` and `mypackage` into a single ZIP archive.
+
+```{bash}
+zip -r packproj.zip myproject mypackage
+ls
+```
+
+### Add 
+
+To add a new file/folder to an existing archive, specify the name of the archive followed by the name of the file or the folder. In the below example, we add the `bash.sh` file to the `myproject.zip` archive created in a previous step.
+
+```{bash}
+zip myproject.zip bash.sh
+```
+
+## R Functions
+
+### tar & tar.gz
+
+In R, we can use the `tar()` and `untar()` functions from the `utils` package to handle `.tar` and `.tar.gz` archives.
+
+| Command | R |
+|:--------|:--|
+| `tar tvf` | `utils::untar('archive.tar', list = TRUE)` |
+| `tar tvfz` | `utils::untar('archive.tar.gz', list = TRUE)` |
+| `tar xvf` | `utils::untar('archive.tar')` |
+| `tar xvfz` | `utils::untar('archive.tar.gz')` |
+| `tar cvf` | `utils::tar('archive.tar')` |
+| `tar cvfz` | `utils::tar('archive.tar', compression = 'gzip')` |
+
+### zip & gzip
+
+The [zip](https://cran.r-project.org/package=zip) package has the functionalities to handle ZIP archives. The `tar()` and `untar()` functions from the `utils` package can handle GZIP archives.
+
+| Command | R |
+|:--------|:--|
+| `gzip` | `utils::tar(compression = 'gzip')` / `R.utils::gzip()` |
+| `gzip -d` | `utils::untar()` / `R.utils::gunzip()` |
+| `gzip -c` | `utils::untar(exdir = filename)` |
+| `zip -r` | `zip::zip()` |
+| `zip` | `zip::zipr_append()` |
+| `unzip` | `zip::unzip()` |
+| `unzip -d` | `zip::unzip(exdir = dir_name)` |
+| `unzip -l` | `zip::zip_list()` |
