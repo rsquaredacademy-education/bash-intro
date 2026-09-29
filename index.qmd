@@ -14,7 +14,7 @@ This is the website for Command Line Basics for R Users. Visit the [GitHub repos
 
 # Preface {-}
 
-In this book, you will be introduced to shell commands. We have selected a set of commands we think will be useful in general to a wide range of audience. We have created a [Posit Cloud Space](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH) to ensure that all readers are using the same environment while using code examples. Our goal is to ensure that after reading this book, you should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R & RMarkdown and execute R scripts in the shell. Apart from learning shell commands, the book will also focus on
+In this book, you will be introduced to shell commands. We have selected a set of commands we think will be useful in general to a wide range of audience. We have created a [Posit Cloud Space](https://posit.cloud/project/518720) to ensure that all readers are using the same environment while using code examples. Our goal is to ensure that after reading this book, you should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R & RMarkdown and execute R scripts in the shell. Apart from learning shell commands, the book will also focus on
 
 - exploring R release names
 - mapping shell commands to R functions
@@ -83,7 +83,7 @@ We do assume the reader is familiar with R and RStudio.
 ## Using code examples {-}
 
 All the codes used in this book are available in our [GitHub repository](https://github.com/rsquaredacademy-education/).
-We encourage you to use [Posit Cloud](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH) (it is free), especially Windows users as 
+We encourage you to use [Posit Cloud](https://posit.cloud/project/518720) (it is free), especially Windows users as 
 you will get access to Linux Bash and all the code and files/directories used in the examples.
 
 ## Software information {-}

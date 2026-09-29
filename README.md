@@ -6,7 +6,7 @@ A gentle introduction to the command line for R users — every shell command ma
 
 📖 **Read the book:** https://bash-intro.rsquaredacademy.com
 
-[![Launch in Posit Cloud](https://img.shields.io/badge/Posit_Cloud-Launch-blue)](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH)
+[![Launch in Posit Cloud](https://img.shields.io/badge/Posit_Cloud-Launch-blue)](https://posit.cloud/project/518720)
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/rsquaredacademy-education/bash-intro)
 
 ## Syllabus
