@@ -1,0 +1,16 @@
+{
+  "name": "bash-intro",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "quarto.quarto",
+        "REditorSupport.r"
+      ]
+    }
+  },
+  "postCreateCommand": "Rscript scripts/reset-fixture.R",
+  "remoteUser": "root"
+}

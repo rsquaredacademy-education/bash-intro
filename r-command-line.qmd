@@ -91,3 +91,9 @@ Rscript analysis.R
 ```
 
 If you are more interested, try the [littler](https://cran.r-project.org/package=littler) package as well.
+
+## Exercises
+
+1. From R, run `system2(command = "ls")` to list files, then `system2(command = "rm", args = c("-r", "myexamples"))` as shown in the chapter. State what you expect in the R console and in the working directory in each case.
+2. From R, run `system2(command = "echo", args = c("Great Truth"), stdout = "release.txt")`, then check `release.txt` contains the text. Then run `system2(command = "diff", args = c("imports_olsrr.txt", "imports_blorr.txt"), stdout = TRUE)` and note the differences print to the R console instead of a file. Clean up `release.txt` afterwards if it is not part of the fixtures.
+3. From the shell, run `Rscript -e "head(mtcars)"` and `Rscript analysis.R`, and compare with `R -e "head(mtcars); tail(mtcars)"`. State the expected difference: running code without launching the full R console versus executing a script file.

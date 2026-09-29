@@ -195,3 +195,9 @@ In R, we can use `download.file()` to download files from the internet. The foll
 | `hostname` | `R.utils::getHostname.System()` |
 | `ping` | `pingr::ping()` |
 | `nslookup` | `curl::nslookup()` |
+
+## Exercises
+
+1. Offline `wget` copy (no network used): from inside `cline/`, run `wget -O wget_demo.csv.gz file://$PWD/cran_log_sample.csv.gz`, then verify with `ls -lh wget_demo.csv.gz` — the new file should exist with non-zero size. Clean up with `rm wget_demo.csv.gz`.
+2. Offline `curl` copy: from inside `cline/`, run `curl -o curl_demo.csv.gz file://$PWD/cran_log_sample.csv.gz`, then compare with the original using `cmp cran_log_sample.csv.gz curl_demo.csv.gz` — silence means identical. Clean up with `rm curl_demo.csv.gz`.
+3. Inspect `urls.txt` with `cat`, then write down (do not execute) the `wget -P downloads -i urls.txt` command you would use to fetch all listed URLs into a `downloads/` folder. Explain in one sentence each what `-P` and `-i` do.

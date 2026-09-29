@@ -10,3 +10,9 @@ sudo **S**uper **U**ser **DO** is a prefix of commands that only superuser or ro
 | `sudo apt-get remove` | Remove packages (retain configuration, plugins and settings) |
 | `sudo apt-get purge` | Remove packages including personalized settings |
 | `sudo apt-get autoremove` | Remove any dependencies no longer in use |
+
+## Exercises
+
+1. Safe listing (no `sudo` needed): run `dpkg --list | head -n 10` and `apt list --installed 2>/dev/null | head -n 10`. Describe in one sentence what kind of information each shows — both list installed software without changing the system.
+2. Without running them, write the commands `sudo apt-get update`, `sudo apt-get install <pkg>`, `sudo apt-get remove <pkg>`, `sudo apt-get purge <pkg>`, and `sudo apt-get autoremove`. State which of `remove`/`purge` keeps configuration files and which deletes them.
+3. Explain in 2–3 sentences why `apt-get install`/`remove`/`purge` require the `sudo` prefix while `dpkg --list` and `apt list --installed` do not (superuser privileges modify system software; read-only queries are safe for any user).

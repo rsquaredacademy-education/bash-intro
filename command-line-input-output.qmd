@@ -316,3 +316,9 @@ wc -w release_names.txt
 ```{bash}
 wc -c release_names.txt
 ```
+
+## Exercises
+
+1. Run `echo Great Truth > release_ex.txt` followed by `cat release_ex.txt` — you should see just one line. Then run `echo Action of the Toes >> release_ex.txt` and `cat release_ex.txt` again — you should now see 2 lines. Explain in your own words the difference between `>` and `>>`, then clean up with `rm release_ex.txt`.
+2. In `cline/`, run `cat -n release_names.txt` (content with line numbers), then `head -n 5 release_names.txt` (first 5 lines) and `tail -n 5 release_names.txt` (last 5 lines). Use `wc -l release_names.txt` to get the total line count and check your head/tail outputs are consistent with it.
+3. In `cline/`, run `sort pkg_names.txt`, then `sort -r pkg_names.txt` (first and last lines swapped), then `sort -u pkg_names.txt` (duplicates removed — compare counts with `wc -l`). Then run `sort -n package_names.txt` on the number-prefixed file — lines should order numerically rather than alphabetically.
