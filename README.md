@@ -31,7 +31,7 @@ Each chapter ends with 3 hands-on exercises. Worked solutions live in [`solution
 
 ## Zero-setup environments
 
-- **Tier 0 (primary):** Posit Cloud Space — 1-click RStudio in the browser (link above).
+- **Tier 0 (primary):** Posit Cloud project — 1-click RStudio in the browser (link above).
 - **Alternative:** GitHub Codespaces — click the badge above; the `.devcontainer` boots R 4.4.2 + Quarto + fixtures automatically.
 - **Local:** Windows (WSL2 or Git Bash), macOS (Terminal/Zsh), Linux (native Bash). See Chapter 1's decision tree.
 

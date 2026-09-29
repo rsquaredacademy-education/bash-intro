@@ -17,13 +17,13 @@ It is sufficient to know a handful of commands to get started with the shell.
 Pick the first tier that fits you. All tiers run every command in this book,
 except where noted.
 
-- **Tier 0 (recommended, zero setup): [Posit Cloud Space](https://posit.cloud/content/13023750)** — one-click RStudio in
+- **Tier 0 (recommended, zero setup): [Posit Cloud project](https://posit.cloud/content/13023750)** — one-click RStudio in
   your browser with Linux bash and all book files ready. Nothing to install.
 - **Tier 1 (Windows without admin rights): Git Bash inside RStudio** — install
   [Git for Windows](https://git-scm.com/download/win), then open Git Bash via
   *Tools -> Terminal -> New Terminal* in RStudio. Runs everything except
   [`sudo` chapter](sudo-command.qmd) (`sudo apt-get` needs Linux) and the `free` command in the [System Info chapter](command-line-sysinfo.qmd). For those two chapters, switch to the Tier 0
-  Posit Cloud Space.
+  Posit Cloud project.
 - **Tier 2 (Windows with admin rights): WSL2 + Windows Terminal** — full Ubuntu
   Linux on your machine (see below). Runs everything, including `sudo` and `free`.
 - **macOS:** use the built-in Terminal (Zsh since Catalina). Every command in
@@ -42,7 +42,7 @@ except where noted.
 
 ## Launch Terminal
 
-Although we recommend the [Posit Cloud Space](https://posit.cloud/content/13023750)
+Although we recommend the [Posit Cloud project](https://posit.cloud/content/13023750)
 so that everyone uses the same environment, you should still know how to launch
 a terminal on your own machine.
 
