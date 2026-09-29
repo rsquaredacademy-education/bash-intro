@@ -1,5 +1,6 @@
 ---
 title: "Shell ↔ R Cheat Sheet"
+engine: knitr
 ---
 
 One page mapping every shell command in this book to its R equivalent. Keep it beside your terminal.

@@ -1,5 +1,6 @@
 ---
 title: "Appendix: Git in 10 Minutes for RStudio Users"
+engine: knitr
 ---
 
 You already know the shell — Git is the natural next step for version-controlling R projects. Everything below also maps to RStudio's Git pane (Tools -> Version Control).
