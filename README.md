@@ -27,7 +27,7 @@ A gentle introduction to the command line for R users — every shell command ma
 | A | Shell ↔ R Cheat Sheet | One-page command reference (CC BY-NC-SA 4.0) |
 | B | Git in 10 Minutes | Git workflow for RStudio users |
 
-Each chapter ends with 3 hands-on exercises. Solutions live in a companion repository (link TBD).
+Each chapter ends with 3 hands-on exercises. Worked solutions live in [`solutions/`](solutions/) (one file per chapter, kept out of the rendered book so you can attempt first).
 
 ## Zero-setup environments
 
