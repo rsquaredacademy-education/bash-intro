@@ -49,3 +49,7 @@ CI (`.github/workflows/deploy.yml`) renders HTML, Typst PDF, and ePub on `ubuntu
 ## License
 
 CC BY-NC-SA 4.0.
+
+## For maintainers: migrating other ebooks
+
+This book is the Quarto pilot for the Rsquared catalog. Reusable starting point: [rsquared-quarto-theme](https://github.com/rsquaredacademy-education/rsquared-quarto-theme) (`_quarto.yml` boilerplate, Netlify CI workflow, fixture scripts, migration runbook with all pilot gotchas).
