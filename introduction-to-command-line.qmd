@@ -84,7 +84,7 @@ RStudio introduced the terminal with version 1.1.383. The terminal tab is next t
 - Shift + Alt + T 
 - Tools -> Terminal -> New Terminal
 
-Note, the terminal depends on the underlying operating system. To learn more about the RStudio terminal, read this [article](https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal) or watch this [webinar](https://resources.rstudio.com/webinars/terminal-updates). In this book, we will use the RStudio terminal on [Posit Cloud](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH) to ensure that all users have access to Linux bash. You can try all the commands used in this book on your local system as well except in case of Windows users.
+Note, the terminal depends on the underlying operating system. To learn more about the RStudio terminal, read this [article](https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal). In this book, we will use the RStudio terminal on [Posit Cloud](https://posit.cloud/spaces/PLACEHOLDER_RSQUARED_BASH) to ensure that all users have access to Linux bash. You can try all the commands used in this book on your local system as well except in case of Windows users.
 
 ![RStudio terminal](img/cline_rstudio-termina.png){#fig-rstudio-terminal fig-align="center" width="70%"}
 
