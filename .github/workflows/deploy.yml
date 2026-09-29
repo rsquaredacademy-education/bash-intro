@@ -28,6 +28,9 @@ jobs:
         with:
           version: "1.6.40"
 
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+
       - name: Render HTML
         run: |
           Rscript scripts/reset-fixture.R
