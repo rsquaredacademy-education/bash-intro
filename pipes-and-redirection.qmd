@@ -65,7 +65,9 @@ sort < pkg_names.txt > sorted_pkgs.txt
 mkdir -p pipe_demo && cp release_names.txt pipe_demo/ && ls pipe_demo
 ```
 
-Clean up with `rm -rf pipe_demo`.
+```{bash}
+rm -rf pipe_demo
+```
 
 ## `|` versus `|>` and `%>%`
 
