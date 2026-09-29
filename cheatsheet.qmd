@@ -1,0 +1,39 @@
+---
+title: "Shell ↔ R Cheat Sheet"
+---
+
+One page mapping every shell command in this book to its R equivalent. Keep it beside your terminal.
+
+| Shell | R equivalent |
+|:------|:-------------|
+| `pwd` | `getwd()` / `here::here()` |
+| `ls` | `dir()` / `list.files()` / `fs::dir_ls()` |
+| `ls -la` | `fs::dir_info()` |
+| `cd dir` | `setwd("dir")` |
+| `mkdir dir` | `dir.create("dir")` / `fs::dir_create()` |
+| `rmdir dir` | `fs::dir_delete()` |
+| `touch file` | `file.create()` / `fs::file_touch()` |
+| `cp a b` | `file.copy()` / `fs::file_copy()` |
+| `mv a b` | `file.rename()` / `fs::file_move()` |
+| `rm file` | `file.remove()` / `fs::file_delete()` |
+| `echo text` | `cat()` / `message()` |
+| `cat file` | `readLines()` |
+| `head -n 5 file` | `head(readLines("file"), 5)` |
+| `tail -n 5 file` | `tail(readLines("file"), 5)` |
+| `wc -l file` | `length(readLines("file"))` |
+| `sort file` | `sort()` |
+| `sort -u file` | `unique(sort())` |
+| `grep pattern file` | `grep()` / `stringr::str_detect()` |
+| `find dir -name '*.txt'` | `list.files(dir, pattern = "\\.txt$")` |
+| `wget URL` / `curl -O URL` | `download.file()` / `curl::curl_download()` |
+| `tar -xvf f.tar` | `utils::untar()` |
+| `zip -r z.zip dir` | `zip::zip()` |
+| `unzip f.zip` | `zip::unzip()` |
+| `gzip -dc f.gz` | `gzcon()` / `readr::read_csv()` |
+| `sleep 5` | `Sys.sleep(5)` |
+| `history` | `history()` |
+| `diff a b` | `waldo::compare()` / `diffobj::diffObj()` |
+| `system2("ls")` | run shell from R |
+| `Rscript script.R` | run R from shell |
+
+*Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).*

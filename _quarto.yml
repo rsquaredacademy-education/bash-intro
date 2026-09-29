@@ -29,6 +29,8 @@ book:
     - r-command-line.qmd
     # Phase 3 (D1) inserts pipes-and-redirection.qmd here
     - conclusion.qmd
+    - cheatsheet.qmd
+    - git-appendix.qmd
 
 website:
   site-url: https://bash-intro.rsquaredacademy.com

@@ -1,0 +1,66 @@
+---
+title: "Appendix: Git in 10 Minutes for RStudio Users"
+---
+
+You already know the shell — Git is the natural next step for version-controlling R projects. Everything below also maps to RStudio's Git pane (Tools -> Version Control).
+
+## Configure once
+
+```{bash}
+#| eval: false
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+## The 6-command workflow
+
+| Step | Shell | RStudio Git pane |
+|:-----|:------|:-----------------|
+| 1. Check state | `git status` | Diff / status list |
+| 2. Stage | `git add file.R` (or `git add -u`) | Tick the Staged box |
+| 3. Commit | `git commit -m "feat: short message"` | Commit button |
+| 4. Sync down | `git pull` | Pull button (blue down arrow) |
+| 5. Sync up | `git push` | Push button (green up arrow) |
+| 6. History | `git log --oneline -10` | History button |
+
+## Branches
+
+```{bash}
+#| eval: false
+git branch feature          # create
+git switch feature          # move to it
+git switch -c hotfix        # create + move in one step
+git switch master           # back to production branch
+```
+
+Rule of thumb from this book's workflow: do work on a feature branch, keep `master` deployable, and push only at the end of a phase.
+
+## Ignore files
+
+Create a `.gitignore` so generated files never get committed:
+
+```{bash}
+#| eval: false
+cat .gitignore
+```
+
+```text
+.Rhistory
+.RData
+cline/
+docs/
+```
+
+This book's own `.gitignore` keeps the `cline/` working directory and rendered `docs/` output out of version control — the same pattern works for your R projects (`data/`, `output/`, `.Rhistory`).
+
+## Undo safely
+
+- Wrong stage: `git restore --staged file.R`
+- Wrong edit (file still uncommitted): `git restore file.R`
+- Never rewrite history on shared branches — prefer a new commit that fixes the mistake.
+
+## Exercises
+
+1. In a scratch folder, run `git init`, create `notes.R`, then `git status`, `git add notes.R`, `git commit -m "docs: first notes"`, and `git log --oneline`. You should see exactly one commit.
+2. Edit `notes.R`, run `git status` (file shows as modified), stage and commit again. `git log --oneline` should now show two commits.
+3. Add a `.gitignore` containing `*.html`, create `report.html`, and run `git status` — the HTML file should not appear. Remove it with `rm report.html`.
