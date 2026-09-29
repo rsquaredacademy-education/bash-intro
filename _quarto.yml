@@ -27,7 +27,7 @@ book:
     - command-line-file-compression.qmd
     - command-line-sysinfo.qmd
     - r-command-line.qmd
-    # Phase 3 (D1) inserts pipes-and-redirection.qmd here
+    - pipes-and-redirection.qmd
     - conclusion.qmd
     - cheatsheet.qmd
     - git-appendix.qmd

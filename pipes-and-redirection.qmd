@@ -1,0 +1,102 @@
+---
+engine: knitr
+knitr:
+  opts_knit:
+    root.dir: "cline"
+---
+
+# Pipes & Redirection {#sec-pipes-and-redirection}
+
+So far every command has worked on one file at a time. Real data work chains small tools together: decompress a log, skip its header, pull out one column, count values, and keep the top 10 — without ever opening the 5,000-row file in an editor or loading it into R first.
+
+## Why pipes matter for R users
+
+Before calling `readr::read_csv()` on a large download, you want to know: how many rows? Which columns? What are the most frequent values? The shell answers in milliseconds by **streaming** data through a pipeline. Nothing is stored in between — each command reads, transforms, and passes onward.
+
+## The `|` operator
+
+The pipe `|` connects the standard output of one command to the standard input of the next:
+
+```{bash}
+gzip -dc cran_log_sample.csv.gz | head -n 3
+```
+
+`gzip -dc` decompresses to standard output (`-d`) and keeps the original file (`-c`), so the fixture stays compressed. We use `gzip -dc` instead of `zcat` because `zcat` fails on macOS (it expects `.Z` files there).
+
+> On macOS, several coreutils differ from Linux GNU versions (e.g. `date`, `sed -i`, `head -n -5`). The commands in this chapter behave identically on both.
+
+## The canonical pipeline
+
+Our question: which packages were downloaded most in the CRAN log sample? Build the answer one stage at a time:
+
+```{bash}
+gzip -dc cran_log_sample.csv.gz | tail -n +2 | cut -d',' -f7 | tr -d '"' | sort | uniq -c | sort -nr | head -n 10
+```
+
+Stage by stage:
+
+| Stage | Purpose |
+|:------|:--------|
+| `gzip -dc cran_log_sample.csv.gz` | Stream the uncompressed CSV (5,001 lines: header + 5,000 rows) |
+| `tail -n +2` | Skip line 1, the header (`"date","time",…`), so `"package"` is not counted as a download |
+| `cut -d',' -f7` | Extract field 7, the `package` column (field 3 is `size` — verify with the header) |
+| `tr -d '"'` | Strip quotes so `"aws.s3"` and `aws.s3` group together |
+| `sort` | Group identical names (required before `uniq -c`) |
+| `uniq -c` | Count each group |
+| `sort -nr` | Sort numerically (`-n`), descending (`-r`) |
+| `head -n 10` | Keep the top 10 |
+
+The result: `rsconnect` (124 downloads) tops the sample, followed by `magrittr` (122) and `aws.s3` (115).
+
+> `cut -d','` splits on every comma naively — it breaks on CSVs with quoted commas inside fields. For such files use a real CSV parser (`readr::read_csv()` in R, or `xsv`/`csvkit` on the shell).
+
+## Redirection and chaining recap
+
+Chapter 4 covered `>` (overwrite) and `>>` (append). Two more operators complete the set:
+
+```{bash}
+#| eval: false
+sort < pkg_names.txt > sorted_pkgs.txt
+```
+
+`<` feeds a file into a command's standard input. And `&&` runs the next command only if the previous one succeeded:
+
+```{bash}
+mkdir -p pipe_demo && cp release_names.txt pipe_demo/ && ls pipe_demo
+```
+
+Clean up with `rm -rf pipe_demo`.
+
+## `|` versus `|>` and `%>%`
+
+The shell pipe and the R pipe rhyme but differ:
+
+| | Shell `|` | R `\|>` / `%>%` |
+|:--|:----------|:----------------|
+| Passes | raw text stream | R objects |
+| Evaluation | streaming (constant memory) | eager (each step completes first) |
+| Errors | exit codes (`echo $?`), easy to ignore silently | conditions that stop unless handled |
+
+In R, the equivalent of the counting stage is `table()` + `sort()`:
+
+```{r}
+#| eval: false
+logs <- readr::read_csv("cran_log_sample.csv.gz", show_col_types = FALSE)
+sort(table(logs$package), decreasing = TRUE)[1:10]
+```
+
+Use the shell to **inspect and slim down** data before it ever enters R; use R once the data fits comfortably in memory.
+
+| Command | R |
+|:--------|:--|
+| `cmd1 \| cmd2` | `cmd2(cmd1(x))` / `x \|> cmd1() \|> cmd2()` |
+| `>` / `>>` | `writeLines()` / `readr::write_csv()` |
+| `<` | `readLines()` |
+| `&&` | `&&` |
+| `sort \| uniq -c \| sort -nr` | `sort(table(x), decreasing = TRUE)` |
+
+## Exercises
+
+1. Run the canonical pipeline from this chapter. Confirm the top line reads `124 rsconnect` and the output has exactly 10 lines (check with `... | wc -l`).
+2. Which countries download most? Reuse the pipeline but extract field 9 (`country`) instead of field 7. Confirm the top line reads `1959 NL`.
+3. Drop the `tail -n +2` stage and re-run. You should see `"package"` appear in the counts with a count of 1 — proof the header row pollutes results when not skipped.
