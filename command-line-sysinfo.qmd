@@ -92,3 +92,9 @@ In R, we can use `Sys.sleep()` to delay activity and `history()` to view command
 |:--------|:--|
 | `sleep` | `Sys.sleep()` |
 | `history` | `history()` |
+
+## Exercises
+
+1. Run `uname -mp` (hardware: machine and processor), `uname -srv` (software: OS, release, version), and `uname -a` (all information). State which option you used for each and what you observed.
+2. Run `free` and `df` without options. Describe in one sentence each what memory/swap details and disk-space details you observe. (Git Bash users: these commands are unavailable — run them in the Tier 0 Posit Cloud space instead.)
+3. Run `time sleep 2` — the timing report should show about 2 seconds. Then run `history` and find those commands in the list with their line numbers. Do not run `history -c` for this exercise.

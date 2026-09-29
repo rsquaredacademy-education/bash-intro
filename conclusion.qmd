@@ -43,3 +43,9 @@
 If you see mistakes or want to suggest changes, please create an issue on the
 <a href="https://github.com/rsquaredacademy-education/bash-intro" target="_blank">source 
 repository</a> or reach out to us at support@rsquaredacademy.com. 
+
+## Exercises
+
+1. Navigation + R mapping: from the shell, navigate into `cline/` and run `ls`. Then do the same from R with `system2(command = "ls")` and by running R from the shell with `Rscript -e "dir()"`. Confirm all three approaches list the same files.
+2. Search + R mapping: from the shell, search `package_names.txt` for a pattern with `grep -i`. Then repeat the search from R by wrapping the same command in `system2(..., stdout = TRUE)`. Confirm both return the same matches.
+3. End-to-end mini-workflow: navigate to a folder, locate a `.R` script by searching, and execute it from the shell with `Rscript`. List the three steps you took and the final evidence (script output or created file) proving the workflow succeeded.

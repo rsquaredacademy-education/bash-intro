@@ -305,3 +305,9 @@ In R, file operations can be performed using functions from both base R and the 
 | `mv` | `file.rename()` / `fs::file_move()` |
 | `rm` | `file.remove()` / `fs::file_delete()` |
 | `diff` |  |
+
+## Exercises
+
+1. In `cline/`, run `touch myexercise.R` then `ls` and confirm the new empty file appears. Then run `cp release_names.txt release_names_ex.txt` and `ls` — you should see both files. Clean up with `rm myexercise.R release_names_ex.txt`.
+2. In `cline/`, run `mkdir -p ex_releases`, then `cp release_names.txt ex_releases/` and check with `ls ex_releases` — you should see 1 file. Then run `touch myexercise2.R` followed by `mv -v myexercise2.R ex_releases/` and observe the verbose message. Verify with `ls ex_releases` (2 files), then clean up with `rm -rf ex_releases`.
+3. In `cline/`, run `diff imports_olsrr.txt imports_blorr.txt || true`. Note the short difference block with `a`/`d`/`c` instructions and which package name is the extra line. Then re-run with `diff -y` (side-by-side) and `diff -u` (unified) — describe in one sentence each how the views differ.
