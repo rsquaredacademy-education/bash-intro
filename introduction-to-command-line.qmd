@@ -17,7 +17,7 @@ It is sufficient to know a handful of commands to get started with the shell.
 Pick the first tier that fits you. All tiers run every command in this book,
 except where noted.
 
-- **Tier 0 (recommended, zero setup): [Posit Cloud Space](https://posit.cloud/project/518720)** — one-click RStudio in
+- **Tier 0 (recommended, zero setup): [Posit Cloud Space](https://posit.cloud/content/13023750)** — one-click RStudio in
   your browser with Linux bash and all book files ready. Nothing to install.
 - **Tier 1 (Windows without admin rights): Git Bash inside RStudio** — install
   [Git for Windows](https://git-scm.com/download/win), then open Git Bash via
@@ -42,7 +42,7 @@ except where noted.
 
 ## Launch Terminal
 
-Although we recommend the [Posit Cloud Space](https://posit.cloud/project/518720)
+Although we recommend the [Posit Cloud Space](https://posit.cloud/content/13023750)
 so that everyone uses the same environment, you should still know how to launch
 a terminal on your own machine.
 
@@ -84,7 +84,7 @@ RStudio introduced the terminal with version 1.1.383. The terminal tab is next t
 - Shift + Alt + T 
 - Tools -> Terminal -> New Terminal
 
-Note, the terminal depends on the underlying operating system. To learn more about the RStudio terminal, see the terminal pane documentation in RStudio (Tools -> Terminal). In this book, we will use the RStudio terminal on [Posit Cloud](https://posit.cloud/project/518720) to ensure that all users have access to Linux bash. You can try all the commands used in this book on your local system as well except in case of Windows users.
+Note, the terminal depends on the underlying operating system. To learn more about the RStudio terminal, see the terminal pane documentation in RStudio (Tools -> Terminal). In this book, we will use the RStudio terminal on [Posit Cloud](https://posit.cloud/content/13023750) to ensure that all users have access to Linux bash. You can try all the commands used in this book on your local system as well except in case of Windows users.
 
 ![RStudio terminal](img/cline_rstudio-termina.png){#fig-rstudio-terminal fig-align="center" width="70%"}
 
