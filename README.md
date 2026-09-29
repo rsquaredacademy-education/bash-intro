@@ -23,7 +23,8 @@ A gentle introduction to the command line for R users — every shell command ma
 | 8 | File Compression | `tar`, `gzip`, `zip`, `unzip` |
 | 9 | System Info | `uname`, `free`, `df`, `sleep`, `history` |
 | 10 | R & the Shell | `system2()`, `Rscript`, R Markdown `bash` engine |
-| 11 | Conclusion | Wrap-up + integrative exercises |
+| 11 | Pipes & Redirection | `\|`, streaming counts, shell `\|` vs R `\|>` |
+| 12 | Conclusion | Wrap-up + integrative exercises |
 | A | Shell ↔ R Cheat Sheet | One-page command reference (CC BY-NC-SA 4.0) |
 | B | Git in 10 Minutes | Git workflow for RStudio users |
 

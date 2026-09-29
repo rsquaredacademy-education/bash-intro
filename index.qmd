@@ -57,6 +57,8 @@ and `unzip`.
 * **[R & the Shell](r-command-line.qmd)** demonstrates how to execute shell commands in R using `system2()`. It will also look
 at using shell commands in RMarkdown documents and how to execute R commands and scripts from the command line. 
 
+* **[Pipes & Redirection](pipes-and-redirection.qmd)** chains commands with `|`, streams data without loading it into R, and maps the shell pipe to R's `|>`.
+
 ## Topics this book does not cover {-} 
 
 While the book explores several shell commands and demonstrates how to execute them in R, it does not cover the following topics:
@@ -65,7 +67,6 @@ While the book explores several shell commands and demonstrates how to execute t
 - editing files
 - file permissions
 - user information
-- pipes
 - awk
 - sed
 
