@@ -53,6 +53,7 @@ jobs:
           cp /tmp/stage-pdf/*.pdf docs/ || true
           cp /tmp/stage-epub/*.epub docs/ || true
           cp netlify.toml 404.html robots.txt docs/
+          bash scripts/make-sitemap.sh docs https://bash-intro.rsquaredacademy.com
 
       - name: Verify redirects
         run: bash scripts/test-redirects.sh docs
