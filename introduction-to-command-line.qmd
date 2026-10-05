@@ -187,3 +187,5 @@ tldrrr::tldr("pwd")
 1. Run `whoami`, then `date`, then `cal` one after another in your terminal. For each command, write down in one sentence what was displayed. Then run `clear` (or press `Ctrl + L`) and confirm you get a fresh empty prompt.
 2. Run `ls --help | head -n 12`. Identify one option flag mentioned there and write down what the help text says it does. Then try `man ls` — note whether it opens a manual page or reports no manual on your system (Git Bash ships no manpages; `--help` is the fallback).
 3. Visit [tldr.sh](https://tldr.sh/) in a browser (or run `tldr ls` if installed) and find one practical example for `ls` you had not seen in this chapter.
+
+Worked solutions in `solutions/introduction.md` (attempt first).

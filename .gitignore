@@ -10,3 +10,20 @@ cline/
 docs/
 spike/.quarto/
 spike/_book/
+
+# Exercise scratch that chapters create at the repo root. The canonical
+# fixtures live in cline/, restored from seed/cline-seed.tar.gz; these root
+# copies are leftovers from running exercises and are never read by a build.
+/release.txt
+
+# Same reasoning: each of these exists inside seed/cline-seed.tar.gz and is
+# read from cline/ (via knitr root.dir), never from the repo root.
+/analysis.R
+/imports_blorr.txt
+/imports_olsrr.txt
+/zip_example.zip
+
+# _bookdown.yml / _output.yml are pre-Quarto bookdown config, superseded by
+# _quarto.yml. Kept for reference until the migration is declared final.
+_bookdown.yml
+_output.yml

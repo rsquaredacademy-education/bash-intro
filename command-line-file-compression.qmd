@@ -1,5 +1,4 @@
 ---
-title: "File Compression"
 knitr:
   opts_knit:
     root.dir: "cline"
@@ -210,3 +209,5 @@ The [zip](https://cran.r-project.org/package=zip) package has the functionalitie
 1. List without extracting: run `tar -tvf release_names.tar` and `unzip -l main_project.zip`. You should see listings of the archived files and folders, with no new files created.
 2. Stream without decompressing: run `gzip -dc cran_log_sample.csv.gz | head -n 3` — you should see the first 3 CSV lines while the fixture stays compressed.
 3. Create and extend: copy a text file to `myarchive_src.txt`, run `tar -cvf myarchive.tar myarchive_src.txt`, then append another file with `tar -rvf myarchive.tar release_names.txt` and verify with `tar -tvf myarchive.tar`. Separately, run `zip myarchive.zip myarchive_src.txt` and verify with `unzip -l myarchive.zip`. Clean up all `myarchive*` files afterwards.
+
+Worked solutions in `solutions/file-compression.md` (attempt first).

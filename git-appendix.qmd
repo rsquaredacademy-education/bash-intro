@@ -1,7 +1,8 @@
 ---
-title: "Appendix: Git in 10 Minutes for RStudio Users"
 engine: knitr
 ---
+
+# Appendix: Git in 10 Minutes for RStudio Users {#sec-git-appendix}
 
 You already know the shell — Git is the natural next step for version-controlling R projects. Everything below also maps to RStudio's Git pane (Tools -> Version Control).
 
@@ -65,3 +66,5 @@ This book's own `.gitignore` keeps the `cline/` working directory and rendered `
 1. In a scratch folder, run `git init`, create `notes.R`, then `git status`, `git add notes.R`, `git commit -m "docs: first notes"`, and `git log --oneline`. You should see exactly one commit.
 2. Edit `notes.R`, run `git status` (file shows as modified), stage and commit again. `git log --oneline` should now show two commits.
 3. Add a `.gitignore` containing `*.html`, create `report.html`, and run `git status` — the HTML file should not appear. Remove it with `rm report.html`.
+
+Worked solutions in `solutions/git-appendix.md` (attempt first).

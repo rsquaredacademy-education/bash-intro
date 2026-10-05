@@ -1,5 +1,4 @@
 ---
-title: "Navigating File System"
 knitr:
   opts_knit:
     root.dir: "cline"
@@ -182,3 +181,5 @@ working directory, use `setwd()`. The [fs](https://fs.r-lib.org/index.html) pack
 1. From inside the book's `cline/` folder, run `pwd`, then `mkdir practice_nav` followed by `ls` — you should see `practice_nav` appear. Then run `rmdir practice_nav` followed by `ls` and confirm it is gone.
 2. Still in `cline/`, run `cd r`, then `pwd` (path should end in `/r`). Then `cd ..` and `pwd` (back in `cline/`), then `cd -` and `pwd`. Finish with `cd ~`, `pwd` (home directory), and `cd -`, `pwd` to return. Write down the directory shown after each `pwd`.
 3. In `cline/`, run `ls -l`, then `ls -la`, then `ls -lh`, then `ls -lS`, then `ls -ltr`. Note what changes each time: hidden entries (starting with `.`) appear with `-a`, human-readable sizes with `-h`, and different ordering with `-lS` (by size) versus `-ltr` (by time, oldest first). Which variant would you use to find the most recently modified file?
+
+Worked solutions in `solutions/navigating.md` (attempt first).

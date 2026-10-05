@@ -1,18 +1,13 @@
 ---
-title: "Command Line Basics for R Users"
-author: "Aravind Hebbali"
 description: "A gentle introduction to the command line."
 ---
 
-# Welcome {-}
-
+# Preface {.unnumbered}
 ![Cover image: Command Line Basics for R Users](img/ebook-bash-intro.png){#fig-cover fig-align="center" width="60%"}
 
 This is the website for Command Line Basics for R Users. Visit the [GitHub repository for this site](https://github.com/rsquaredacademy-education/bash-intro).	
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by [Aravind Hebbali](https://www.aravindhebbali.com/) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
-
-# Preface {-}
 
 In this book, you will be introduced to shell commands. We have selected a set of commands we think will be useful in general to a wide range of audience. We have created a [Posit Cloud project](https://posit.cloud/content/13023750) to ensure that all readers are using the same environment while using code examples. Our goal is to ensure that after reading this book, you should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R & RMarkdown and execute R scripts in the shell. Apart from learning shell commands, the book will also focus on
 
@@ -25,8 +20,7 @@ In this book, you will be introduced to shell commands. We have selected a set o
 
 If you want a deeper understanding of using command line for data science, we suggest you read [Data Science at the Command Line](https://www.datascienceatthecommandline.com/). [Software Carpentry](https://software-carpentry.org/) too has a lesson on [shell](https://swcarpentry.github.io/shell-novice/). We have listed more references at the end of the book for the benefit of the readers.
 
-## Outline {-}
-
+## Outline {.unnumbered}
 We start by introducing what the shell is, how to launch it in different operating system and explore
 commands for navigating file system and file management.
 
@@ -45,9 +39,9 @@ cover sorting/viewing/searching file contents.
 * **[Search & Regular Expression](command-line-regular-expression.qmd)** shows how to search text in file(s) using pattern matching and 
 find files and folders using names and extensions.
 
-* **[sudo](sudo-command.qmd)** describes how to install, update and remove packages using `sudo`.
-
 * **[Data Transfer](command-line-data-transfer.qmd)** explores how to download files from the internet using `wget` and `curl`.
+
+* **[sudo](sudo-command.qmd)** describes how to install, update and remove packages using `sudo`.
 
 * **[File Compression](command-line-file-compression.qmd)** demonstrates how to list, extract, create and add files to archives using `tar`, `zip` 
 and `unzip`.
@@ -59,8 +53,7 @@ at using shell commands in RMarkdown documents and how to execute R commands and
 
 * **[Pipes & Redirection](pipes-and-redirection.qmd)** chains commands with `|`, streams data without loading it into R, and maps the shell pipe to R's `|>`.
 
-## Topics this book does not cover {-} 
-
+## Topics this book does not cover {.unnumbered}
 While the book explores several shell commands and demonstrates how to execute them in R, it does not cover the following topics:
 
 - shell scripting
@@ -70,8 +63,7 @@ While the book explores several shell commands and demonstrates how to execute t
 - awk
 - sed
 
-## About this book {-}
-
+## About this book {.unnumbered}
 This book is focused on practical exploration of shell commands. We focus on a select set of commands we hope 
 will be useful to beginners and motivate them to explore the command line further. 
 
@@ -81,14 +73,12 @@ commands.
 
 We do assume the reader is familiar with R and RStudio. 
 
-## Using code examples {-}
-
+## Using code examples {.unnumbered}
 All the codes used in this book are available in our [GitHub repository](https://github.com/rsquaredacademy-education/).
 We encourage you to use [Posit Cloud](https://posit.cloud/content/13023750) (it is free), especially Windows users as 
 you will get access to Linux Bash and all the code and files/directories used in the examples.
 
-## Software information {-}
-
+## Software information {.unnumbered}
 The R session information when compiling this book is shown below:
 
 ```{r session}

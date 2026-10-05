@@ -102,3 +102,5 @@ Use the shell to **inspect and slim down** data before it ever enters R; use R o
 1. Run the canonical pipeline from this chapter. Confirm the top line reads `124 rsconnect` and the output has exactly 10 lines (check with `... | wc -l`).
 2. Which countries download most? Reuse the pipeline but extract field 9 (`country`) instead of field 7. Confirm the top line reads `1959 NL`.
 3. Drop the `tail -n +2` stage and re-run. You should see `"package"` appear in the counts with a count of 1 — proof the header row pollutes results when not skipped.
+
+Worked solutions in `solutions/pipes.md` (attempt first).

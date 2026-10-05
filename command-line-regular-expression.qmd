@@ -1,5 +1,4 @@
 ---
-title: "Search & Regular Expression"
 knitr:
   opts_knit:
     root.dir: "cline"
@@ -161,3 +160,5 @@ find -type d -name r
 1. In `cline/`, run `grep R package_names.txt`, then repeat with `grep -i R package_names.txt`. Describe the difference: the first matches only uppercase `R`, the second matches both cases and returns more lines.
 2. Search for `bio` case-insensitively in `package_names.txt` with `grep -i -Hn bio package_names.txt`. Each matching line should print with its filename prefix and line number.
 3. In `cline/`, run `find r_releases -name '*.txt'` — you should see the 3 `.txt` files. Then run `find -type d -name R` and `find -type d -iname R` and compare: `-name` is case-sensitive while `-iname` matches both `R` and `r` directories.
+
+Worked solutions in `solutions/regex.md` (attempt first).
