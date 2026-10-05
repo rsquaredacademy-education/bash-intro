@@ -56,6 +56,18 @@ jobs:
           Rscript scripts/reset-fixture.R
           quarto render --to epub --output-dir /tmp/stage-epub
 
+      # Slug list is derived from _quarto.yml, so a new chapter is covered the
+      # moment it is declared rather than the moment someone remembers the gate.
+      - name: Verify slugs rendered
+        run: sh scripts/verify-slugs.sh /tmp/stage-html
+
+      - name: Verify no unresolved cross-references
+        run: |
+          if grep -r '??</strong>' /tmp/stage-html/*.html; then
+            echo "FAIL: unresolved cross-references (??) found"; exit 1
+          fi
+          echo "OK: no unresolved cross-references"
+
       # downloads: [pdf, epub] is advertised on the landing page; assert the
       # artifacts really shipped rather than trusting the assemble step.
       - name: Verify downloads are present
@@ -75,8 +87,12 @@ jobs:
       - name: Verify redirects
         run: bash scripts/test-redirects.sh docs
 
-      - name: Link check
+      # Advisory: external links rot for reasons this repo cannot control.
+      # The weekly linkcheck.yml workflow is the one that fails on the deployed
+      # site.
+      - name: Link check (advisory)
         uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
         with:
           args: "docs/**/*.html --root-dir docs --exclude 'mailto:*'"
 

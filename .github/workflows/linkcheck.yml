@@ -1,0 +1,25 @@
+name: Link check
+
+# Weekly, separate from the build.
+#
+# This book does NOT commit docs/ (it deploys to Netlify from the render step and
+# .gitignore excludes docs/), so there is no ./docs to scan here. Check the live
+# site instead. If docs/ is ever committed, switch to the docs/*.html form used
+# by the other five books.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  lychee:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links on the deployed site
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress 'https://bash-intro.rsquaredacademy.com/**/*.html' --exclude 'mailto:*'
+          fail: true
