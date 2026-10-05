@@ -58,7 +58,7 @@ format:
     pdf-engine: typst
     keep-typ: false
     code-overflow: wrap
-    mainfont: "Libertinus Serif"
+    mainfont: "Linux Libertine"
     monofont: "DejaVu Sans Mono"
     toc: true
     number-sections: true
