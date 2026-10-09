@@ -46,7 +46,7 @@ knitr:
 ### Feedback
 
 If you see mistakes or want to suggest changes, please create an issue on the
-<a href="https://github.com/rsquaredacademy-education/bash-intro" target="_blank">source 
+<a href="https://github.com/rsquaredacademy-publications/bash-intro" target="_blank">source 
 repository</a> or reach out to us at support@rsquaredacademy.com. 
 
 ## Exercises

@@ -5,7 +5,7 @@ description: "A gentle introduction to the command line."
 # Preface {.unnumbered}
 ![Cover image: Command Line Basics for R Users](img/ebook-bash-intro.png){#fig-cover fig-align="center" width="60%"}
 
-This is the website for Command Line Basics for R Users. Visit the [GitHub repository for this site](https://github.com/rsquaredacademy-education/bash-intro).	
+This is the website for Command Line Basics for R Users. Visit the [GitHub repository for this site](https://github.com/rsquaredacademy-publications/bash-intro).	
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work by [Aravind Hebbali](https://www.aravindhebbali.com/) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
@@ -74,7 +74,7 @@ commands.
 We do assume the reader is familiar with R and RStudio. 
 
 ## Using code examples {.unnumbered}
-All the codes used in this book are available in our [GitHub repository](https://github.com/rsquaredacademy-education/).
+All the codes used in this book are available in our [GitHub repository](https://github.com/rsquaredacademy-publications/).
 We encourage you to use [Posit Cloud](https://posit.cloud/content/13023750) (it is free), especially Windows users as 
 you will get access to Linux Bash and all the code and files/directories used in the examples.
 

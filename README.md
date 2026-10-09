@@ -7,7 +7,7 @@ A gentle introduction to the command line for R users — every shell command ma
 📖 **Read the book:** https://bash-intro.rsquaredacademy.com
 
 [![Launch in Posit Cloud](https://img.shields.io/badge/Posit_Cloud-Launch-blue)](https://posit.cloud/content/13023750)
-[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/rsquaredacademy-education/bash-intro)
+[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/rsquaredacademy-publications/bash-intro)
 
 ## Syllabus
 
@@ -52,4 +52,4 @@ CC BY-NC-SA 4.0.
 
 ## For maintainers: migrating other ebooks
 
-This book is the Quarto pilot for the Rsquared catalog. Reusable starting point: [rsquared-quarto-theme](https://github.com/rsquaredacademy-education/rsquared-quarto-theme) (`_quarto.yml` boilerplate, Netlify CI workflow, fixture scripts, migration runbook with all pilot gotchas).
+This book is the Quarto pilot for the Rsquared catalog. Reusable starting point: [rsquared-quarto-theme](https://github.com/rsquaredacademy-publications/rsquared-quarto-theme) (`_quarto.yml` boilerplate, Netlify CI workflow, fixture scripts, migration runbook with all pilot gotchas).

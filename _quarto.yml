@@ -42,7 +42,7 @@ website:
   navbar:
     right:
       - text: "GitHub"
-        href: https://github.com/rsquaredacademy-education/bash-intro
+        href: https://github.com/rsquaredacademy-publications/bash-intro
 
 format:
   html:
