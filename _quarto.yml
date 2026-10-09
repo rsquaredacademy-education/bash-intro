@@ -17,6 +17,7 @@ book:
   date: last-modified
   chapters:
     - index.qmd
+    - about-the-author.qmd
     - introduction-to-command-line.qmd
     - navigating-files-and-directories.qmd
     - command-line-file-management.qmd
